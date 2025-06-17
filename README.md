@@ -5,8 +5,17 @@ This repository houses a collection of test sample projects designed to demonstr
 ## 👥 Audience
 This repository is primarily intended for the technical team responsible for developing, testing, and maintaining Dotfuscator. The samples provide practical, code-based scenarios to aid in product validation, feature development, and understanding Dotfuscator's behavior across various application types.
 
-## ⚙️ Target Framework:
-The master branch of this repository is consistently updated to target the latest supported .NET version. This ensures that samples reflect modern development practices and are compatible with the most current tooling.
+## 🌿 Versioning Strategy
+To effectively support Dotfuscator's non-regression testing across different .NET framework versions, this repository utilizes a **long-lived release branch strategy with targeted backporting**.
+
+- **`main` Branch:**
+    - This branch always contains the test samples configured for the latest supported .NET version (e.g., .NET 8). All new development, feature enhancements, and fixes for the cutting-edge samples are primarily introduced here.
+- **Release Branches (release/netX.Y):**
+    - Dedicated, long-lived branches exist for older .NET versions that require ongoing non-regression testing (e.g., release/net7.0, release/net6.0).
+    - Each release branch holds the complete solution configured specifically for its respective .NET framework version.
+- **Backporting Changes:**
+    - When an enhancement, new sample syntax, or bug fix (such as adding an inheritance example after identifying an issue) is implemented and merged into the main branch, it can be selectively backported to relevant older release branches using Git's cherry-pick command.
+    - This ensures that critical test scenarios and improvements are propagated to all necessary historical versions, maintaining a robust suite for comprehensive non-regression testing.
 
 ## ✨ Key Features
 **Microsoft Stack Focus**: All projects are built using the Microsoft .NET ecosystem and C#.
