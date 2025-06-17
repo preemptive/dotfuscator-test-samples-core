@@ -1,0 +1,1 @@
+# dotfuscator-test-samples-core
