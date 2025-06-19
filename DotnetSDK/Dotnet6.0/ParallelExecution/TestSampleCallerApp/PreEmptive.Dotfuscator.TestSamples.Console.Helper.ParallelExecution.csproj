@@ -1,0 +1,28 @@
+﻿<Project>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+	<Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+
+	<PropertyGroup>
+		<DotfuscatorMSBuildDir Condition=" '$(DotfuscatorMSBuildDir)' == '' ">C:\Program Files (x86)\MSBuild\PreEmptive\Dotfuscator\7</DotfuscatorMSBuildDir>
+		<DotfuscatorGenerateConfigFileIfMissing>true</DotfuscatorGenerateConfigFileIfMissing>
+		<DotfuscatorEnabled>true</DotfuscatorEnabled><!--Condition="'$(Configuration)' == 'Release'"-->
+		<DotfuscatorLicense>FC93BF9B5B934C289D11C84A6F46B79D:kishore.v@celestialsys.com</DotfuscatorLicense>
+	</PropertyGroup>
+
+	<Import Project="$(DotfuscatorMSBuildDir)/PreEmptive.Dotfuscator.Common.targets"/>
+
+	<ItemGroup>
+	  <Reference Include="TestSampleConApp">
+	    <HintPath>..\TestSampleConApp\bin\Release\net6.0\TestSampleConApp.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+</Project>

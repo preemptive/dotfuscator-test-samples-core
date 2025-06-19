@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreEmptive.Dotfuscator.TestSamples.Console.Helper.ParallelExecution", "PreEmptive.Dotfuscator.TestSamples.Console.Helper.ParallelExecution.csproj", "{BB08244F-B4A7-4A33-850A-30C24BB40171}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSampleConApp", "..\TestSampleConApp\TestSampleConApp.csproj", "{326A2188-2267-E9B5-17CC-8B5535A0CE71}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB08244F-B4A7-4A33-850A-30C24BB40171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB08244F-B4A7-4A33-850A-30C24BB40171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB08244F-B4A7-4A33-850A-30C24BB40171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB08244F-B4A7-4A33-850A-30C24BB40171}.Release|Any CPU.Build.0 = Release|Any CPU
+		{326A2188-2267-E9B5-17CC-8B5535A0CE71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{326A2188-2267-E9B5-17CC-8B5535A0CE71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{326A2188-2267-E9B5-17CC-8B5535A0CE71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{326A2188-2267-E9B5-17CC-8B5535A0CE71}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0AC7D12B-A001-423E-9B78-DF0771BF9475}
+	EndGlobalSection
+EndGlobal
