@@ -1,3 +1,0 @@
-Current Path: D:\Tickets\PRE-1905_EPIC_QE\NewRegressionSamples\PreEmptive.Dotfuscator.TestSamples.Console\TestSampleConApp\bin\Release\net6.0
-Project Path: D:\Tickets\PRE-1905_EPIC_QE\NewRegressionSamples\PreEmptive.Dotfuscator.TestSamples.Console\TestSampleConApp\
-Process ID:   34240
