@@ -1,0 +1,3 @@
+Current Path: D:\dotfuscator-test-samples\dotfuscator-test-samples-core\DotnetSDK\Dotnet6.0\PreEmptive.Dotfuscator.TestSamples.ConsoleApp\bin\Release\net6.0
+Project Path: D:\dotfuscator-test-samples\dotfuscator-test-samples-core\DotnetSDK\Dotnet6.0\PreEmptive.Dotfuscator.TestSamples.ConsoleApp\
+Process ID:   7124
