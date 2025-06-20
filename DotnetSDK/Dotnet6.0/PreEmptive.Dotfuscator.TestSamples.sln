@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreEmptive.Dotfuscator.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreEmptive.Dotfuscator.TestSamples.WPF", "PreEmptive.Dotfuscator.TestSamples.WPF\PreEmptive.Dotfuscator.TestSamples.WPF.csproj", "{B0C8F980-35BF-B353-FB45-370626A31DFC}"
 EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

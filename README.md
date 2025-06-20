@@ -6,16 +6,31 @@ This repository houses a collection of test sample projects designed to demonstr
 This repository is primarily intended for the technical team responsible for developing, testing, and maintaining Dotfuscator. The samples provide practical, code-based scenarios to aid in product validation, feature development, and understanding Dotfuscator's behavior across various application types.
 
 ## 🌿 Versioning Strategy
-To effectively support Dotfuscator's non-regression testing across different .NET framework versions, this repository utilizes a **long-lived release branch strategy with targeted backporting**.
+To effectively support Dotfuscator's non-regression testing across different .NET framework versions, this repository utilizes a **folder-based versioning strategy within the `main` branch**, allowing for clear separation and targeted backporting.
 
-- **`main` Branch:**
-    - This branch always contains the test samples configured for the latest supported .NET version (e.g., .NET 8). All new development, feature enhancements, and fixes for the cutting-edge samples are primarily introduced here.
-- **Release Branches (release/netX.Y):**
-    - Dedicated, long-lived branches exist for older .NET versions that require ongoing non-regression testing (e.g., release/net7.0, release/net6.0).
-    - Each release branch holds the complete solution configured specifically for its respective .NET framework version.
-- **Backporting Changes:**
-    - When an enhancement, new sample syntax, or bug fix (such as adding an inheritance example after identifying an issue) is implemented and merged into the main branch, it can be selectively backported to relevant older release branches using Git's cherry-pick command.
-    - This ensures that critical test scenarios and improvements are propagated to all necessary historical versions, maintaining a robust suite for comprehensive non-regression testing.
+**`main` Branch Structure:**
+- The main branch contains top-level directories, each dedicated to a specific .NET framework version (e.g., dotnet8.0/, dotnet6.0/).
+- Each of these directories holds a complete solution (.sln) and its associated projects, all configured specifically for that particular .NET version.
+- For example:
+```
+/
+├── dotnet8.0/
+│   └── PreEmptive.Dotfuscator.TestSamples.sln (configured for .NET 8)
+│       ├── PreEmptive.Dotfuscator.TestSamples.Console/
+│       └── ... (other .NET 8 projects)
+├── dotnet6.0/
+│   └── PreEmptive.Dotfuscator.TestSamples.sln (configured for .NET 6)
+│       ├── PreEmptive.Dotfuscator.TestSamples.Console/
+│       └── ... (other .NET 6 projects)
+└── README.md
+```
+
+**Latest Supported Version:**
+- The dotnetX.Y/ directory corresponding to the latest supported .NET version (e.g., dotnet8.0/) serves as the primary development area. All new development, feature enhancements, and initial fixes for cutting-edge samples are introduced in the projects within this directory.
+
+**Backporting Changes:**
+- When an enhancement, new sample syntax, or bug fix (such as adding an inheritance example after identifying an issue) is implemented within the projects of the latest supported .NET version directory, it can be manuallybackported to the projects in relevant older .NET version directories (e.g., copying the updated class/file from dotnet8.0/ to dotnet6.0/).
+- This ensures that critical test scenarios and improvements are propagated to all necessary historical versions, maintaining a robust suite for comprehensive non-regression testing, all within the main branch's history..
 
 ## ✨ Key Features
 **Microsoft Stack Focus**: All projects are built using the Microsoft .NET ecosystem and C#.
