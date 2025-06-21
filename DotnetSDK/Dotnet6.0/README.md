@@ -63,6 +63,8 @@ These projects serve as a robust testbed to:
 PreEmptive.Dotfuscator.TestSamples/
 ├── PreEmptive.Dotfuscator.TestSamples.ConsoleApp/
 └── PreEmptive.Dotfuscator.TestSamples.Helper.ParallelExecution/
+├── PreEmptive.Dotfuscator.TestSamples.WinForms/
+└── PreEmptive.Dotfuscator.TestSamples.WPF/
 ```
 
 ---
