@@ -1,4 +1,8 @@
-﻿namespace MauiApp1
+﻿
+
+using PreEmptive.Dotfuscator.TestSamples.MAUI.Models;
+
+namespace MauiApp1
 {
     public partial class MainPage : ContentPage
     {
@@ -9,10 +13,17 @@
         {
             InitializeComponent();
             _filePath = Path.Combine(FileSystem.AppDataDirectory, "testfile.txt");
+            
         }
 
         private void OnLockFileClicked(object sender, EventArgs e)
         {
+            BaseProcessor processor = new TextProcessor();
+            string description = processor.Describe();
+
+            string staticType = StaticTextProcessor.ProcessorType();
+
+            DisplayAlert("Info", $"{description}\nStatic: {staticType}", "OK");
             try
             {
                 _lockedStream = new FileStream(_filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
