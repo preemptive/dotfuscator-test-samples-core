@@ -411,3 +411,10 @@ log.txt
 
 # Ignore all DotfuscatorConfig files
 **/DotfuscatorConfig.xml
+
+# Ignore all Dotfuscator folders and their contents
+Dotfuscator/
+**/Dotfuscator/
+
+# Ignore all .map files
+*.map
