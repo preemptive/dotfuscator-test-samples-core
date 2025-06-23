@@ -1,3 +1,0 @@
-Current Path: D:\DotfuscatorSample_Liju\DotnetSDK\Dotnet6.0\PreEmptive.Dotfuscator.TestSamples.ConsoleApp\bin\Release\net6.0
-Project Path: D:\DotfuscatorSample_Liju\DotnetSDK\Dotnet6.0\PreEmptive.Dotfuscator.TestSamples.ConsoleApp\
-File Written Successfully:
