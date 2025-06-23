@@ -1,4 +1,5 @@
 using PreEmptive.Dotfuscator.TestSamples.ConsoleApp.Abstracts;
+using PreEmptive.Dotfuscator.TestSamples.ConsoleApp.Interfaces;
 using System.Reflection;
 
 namespace PreEmptive.Dotfuscator.TestSamples.ConsoleApp.Classes
@@ -13,7 +14,48 @@ namespace PreEmptive.Dotfuscator.TestSamples.ConsoleApp.Classes
             using var reader = new StreamReader(stream!);
             
             Console.WriteLine(reader.ReadToEnd());
-            Console.ReadLine();
+            
+        }
+    }
+
+    // abstract static implementation
+    public class SystemProcessHandler : IProcessFactory<SystemProcessHandler>
+    {
+        private int ProcessId;
+
+        private SystemProcessHandler(int processId)
+        {
+            ProcessId = processId;
+        }
+
+        public static SystemProcessHandler CreateFromId(int processId)
+        {
+            return new SystemProcessHandler(processId);
+        }
+
+        public void DisplayProcessDetails()
+        {
+            Console.WriteLine($"[System] Process ID: {ProcessId}, Status: Running, CPU: 14%");
+        }
+    }
+
+    public class BusinessProcessHandler : IProcessFactory<BusinessProcessHandler>
+    {
+        private int ProcessId;
+
+        private BusinessProcessHandler(int processId)
+        {
+            ProcessId = processId;
+        }
+
+        public static BusinessProcessHandler CreateFromId(int processId)
+        {
+            return new BusinessProcessHandler(processId);
+        }
+
+        public void DisplayProcessDetails()
+        {
+            Console.WriteLine($"[Business] Process ID: {ProcessId}, Stage: Completed");
         }
     }
 }

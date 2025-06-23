@@ -33,10 +33,19 @@ namespace PreEmptive.Dotfuscator.TestSamples.ConsoleApp
             // Write to log
             File.WriteAllText(logPath, $"Current Path: {current}{Environment.NewLine}" +
                                        $"Project Path: {projectPath}{Environment.NewLine}" +
-                                       $"Process ID:   {processId}");
+                                       "File Written Successfully");
 
             Console.WriteLine("Processes executed. Log file created.");
-          
+
+
+            // Implementation call for abstract static members
+            var sysHandler = SystemProcessHandler.CreateFromId(1001);
+            var bizHandler = BusinessProcessHandler.CreateFromId(2002);
+
+            sysHandler.DisplayProcessDetails();
+            bizHandler.DisplayProcessDetails();
+
+
         }
     }
 }

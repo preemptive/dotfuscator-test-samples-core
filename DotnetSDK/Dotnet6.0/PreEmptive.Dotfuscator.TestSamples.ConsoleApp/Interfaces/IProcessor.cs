@@ -4,4 +4,5 @@ namespace PreEmptive.Dotfuscator.TestSamples.ConsoleApp.Interfaces
     {
         void Process();
     }
+
 }
