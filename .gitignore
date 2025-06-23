@@ -404,3 +404,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+
+# Ignore all log.txt files
+log.txt
+
+# Ignore all DotfuscatorConfig files
+**/DotfuscatorConfig.xml
