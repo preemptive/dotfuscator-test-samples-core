@@ -408,6 +408,7 @@ FodyWeavers.xsd
 
 # Ignore all log.txt files
 **/log.txt
+**/Resources/log.txt
 
 # Ignore all DotfuscatorConfig files
 **/DotfuscatorConfig.xml
