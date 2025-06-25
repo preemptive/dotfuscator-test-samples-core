@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Text.RegularExpressions;
+using PreEmptive.Dotfuscator.TestSamples.ConsoleApp.Abstracts;
 using PreEmptive.Dotfuscator.TestSamples.ConsoleApp.Classes;
 
 namespace PreEmptive.Dotfuscator.TestSamples.ConsoleApp
@@ -33,10 +34,19 @@ namespace PreEmptive.Dotfuscator.TestSamples.ConsoleApp
             // Write to log
             File.WriteAllText(logPath, $"Current Path: {current}{Environment.NewLine}" +
                                        $"Project Path: {projectPath}{Environment.NewLine}" +
-                                       $"Process ID:   {processId}");
+                                       "File Written Successfully:");
 
             Console.WriteLine("Processes executed. Log file created.");
-          
+
+
+            // abstract method implementation
+            ProcessHandler sysHandler = new SystemProcessHandler();
+            ProcessHandler bizHandler = new BusinessProcessHandler();
+
+            sysHandler.DisplayProcessDetails(processId);
+            Console.WriteLine();
+            bizHandler.DisplayProcessDetails(processId);
+
         }
     }
 }

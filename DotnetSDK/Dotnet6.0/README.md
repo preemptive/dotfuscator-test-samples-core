@@ -27,6 +27,18 @@ All sample applications target **.NET 6.0**.
 - Executes multiple concurrent Dotfuscator builds in parallel
 - Designed to simulate high-concurrency test environments
 
+### 3. `PreEmptive.Dotfuscator.TestSamples.WinForms`
+
+- Windows Form application which uses resources,Library of classes - Abstract,public, private, Interfaces , unused classes and methods
+- Application implements these features
+- Designed to simulate high-concurrency test environments
+
+### 4. `PreEmptive.Dotfuscator.TestSamples.WPF`
+
+- Windows Presentation Foundation (WPF)  application which uses resources,Library of classes - Abstract,public, private, Interfaces , unused classes and methods
+- Application implements these features
+- Designed to simulate high-concurrency test environments
+
 ---
 
 ## 🔧 Purpose
@@ -51,6 +63,8 @@ These projects serve as a robust testbed to:
 PreEmptive.Dotfuscator.TestSamples/
 ├── PreEmptive.Dotfuscator.TestSamples.ConsoleApp/
 └── PreEmptive.Dotfuscator.TestSamples.Helper.ParallelExecution/
+├── PreEmptive.Dotfuscator.TestSamples.WinForms/
+└── PreEmptive.Dotfuscator.TestSamples.WPF/
 ```
 
 ---

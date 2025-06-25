@@ -9,23 +9,19 @@
   </global>
   <input>
     <loadpaths>
-      <file dir="${configdir}/bin/Release/net6.0" />
-      <file dir="${configdir}/bin/Debug/net6.0" />
+      <file dir="${configdir}/bin/Release/net8.0-android" />
+      <file dir="${configdir}/bin/Release/net8.0-windows10.0.19041.0/win10-x64" />
+      <file dir="${configdir}/bin/Release/net8.0-ios/iossimulator-x64" />
+      <file dir="${configdir}/bin/Release/net8.0-maccatalyst/maccatalyst-arm64" />
+      <file dir="${configdir}/bin/Release/net8.0-maccatalyst/maccatalyst-x64" />
     </loadpaths>
     <asmlist>
-      <inputassembly refid="5564128a-459c-40e0-a823-c1d1f458eabf">
+      <inputassembly refid="30e203df-fe4b-480c-942a-36c4722d890a">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="${configdir}\obj\Release\net6.0" name="PreEmptive.Dotfuscator.TestSamples.Helper.ParallelExecution.dll" />
-      </inputassembly>
-      <inputassembly refid="7cb44d73-646c-477c-bf16-754e712c1f6c">
-        <option>honoroas</option>
-        <option>stripoa</option>
-        <option>library</option>
-        <option>transformxaml</option>
-        <file dir="${configdir}\..\PreEmptive.Dotfuscator.TestSamples.ConsoleApp\bin\Release\net6.0" name="PreEmptive.Dotfuscator.TestSamples.ConsoleApp.dll" />
+        <file dir="${configdir}\obj\Release\net8.0-ios\iossimulator-x64" name="PreEmptive.Dotfuscator.TestSamples.MAUI.dll" />
       </inputassembly>
     </asmlist>
   </input>

@@ -13,7 +13,28 @@ namespace PreEmptive.Dotfuscator.TestSamples.ConsoleApp.Classes
             using var reader = new StreamReader(stream!);
             
             Console.WriteLine(reader.ReadToEnd());
-            Console.ReadLine();
+           
+        }
+    }
+    class SystemProcessHandler : ProcessHandler
+    {
+        public override void DisplayProcessDetails(int processId)
+        {
+            // Simulate fetching process info (in a real app, use System.Diagnostics)
+            Console.WriteLine($"[SystemProcessHandler] Process ID: {processId}");
+            Console.WriteLine("Status: Running");
+            Console.WriteLine("Memory Usage: 120 MB");
+        }
+    }
+
+    class BusinessProcessHandler : ProcessHandler
+    {
+        public override void DisplayProcessDetails(int processId)
+        {
+            // Simulate fetching business process info
+            Console.WriteLine($"[BusinessProcessHandler] Process ID: {processId}");
+            Console.WriteLine("Stage: Approval");
+            Console.WriteLine("Assigned To: John Doe");
         }
     }
 }
