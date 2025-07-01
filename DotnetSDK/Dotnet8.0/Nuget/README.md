@@ -103,7 +103,7 @@ dotfuscator.exe DotfuscatorConfig.xml -v
 ### 🚦 8. Run the Obfuscated Console App
 
 ```bash
-bin/Release/net8.0/PreEmptive.Dotfuscator.TestSamples.ConsoleApp
+dotnet run
 ```
 
 ---
@@ -131,7 +131,7 @@ dotfuscator.exe DotfuscatorConfig.xml -v
 ### 🚦 11. Run the Obfuscated ParallelExecution App
 
 ```bash
-bin/Release/net8.0/PreEmptive.Dotfuscator.TestSamples.Helper.ParallelExecution
+dotnet run
 ```
 
 ---
