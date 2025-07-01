@@ -418,3 +418,8 @@ FodyWeavers.xsd
 
 # Specifically ignore Map.xml, Map1.xml, Map2.xml, etc., inside any Dotfuscator folder
 **/Dotfuscator/Map*.xml
+**/Map.[0-9]*.xml
+**/Dotfuscated/Map.xml
+
+
+
