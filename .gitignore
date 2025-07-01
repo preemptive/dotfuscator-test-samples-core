@@ -422,4 +422,8 @@ FodyWeavers.xsd
 **/Dotfuscated/Map.xml
 
 
+# Ignore all Zone.Identifier
+*.Zone.Identifier
+
+
 
