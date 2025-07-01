@@ -1,84 +1,106 @@
-# NuGet Build and Obfuscation Steps on Ubuntu
+# 🎯 NuGet Build and Obfuscation on Ubuntu
 
-This project includes two console applications for build and testing:
+This project includes two console applications for demonstration and testing:
 
-- `PreEmptive.Dotfuscator.TestSamples.ConsoleApp`
-- `PreEmptive.Dotfuscator.TestSamples.Helper.ParallelExecution`
+- 🖥️ `PreEmptive.Dotfuscator.TestSamples.ConsoleApp`
+- ⚙️ `PreEmptive.Dotfuscator.TestSamples.Helper.ParallelExecution`
 
-## Prerequisites
+---
 
-Ensure you have .NET SDK and Runtimes installed.
+## 🚀 Prerequisites
 
-### 1. Check Installed SDKs
+Ensure you have the .NET SDK and Runtimes installed on Ubuntu.
+
+### ✅ 1. Check Installed SDKs
 
 ```bash
 dotnet --list-sdks
 ```
 
-Sample output:
+<sub>Sample output:</sub>
+
 ```
 8.0.117 [/usr/lib/dotnet/sdk]
 ```
 
-### 2. Check Installed Runtimes
+---
+
+### ✅ 2. Check Installed Runtimes
 
 ```bash
 dotnet --list-runtimes
 ```
 
-Sample output:
+<sub>Sample output:</sub>
+
 ```
 Microsoft.AspNetCore.App 8.0.17 [/usr/lib/dotnet/shared/Microsoft.AspNetCore.App]
 Microsoft.NETCore.App 8.0.17 [/usr/lib/dotnet/shared/Microsoft.NETCore.App]
 ```
 
-### 3. Check Default SDK Version
+---
+
+### ✅ 3. Check Default SDK Version
 
 ```bash
 dotnet --version
 ```
 
-Output:
+<sub>Sample output:</sub>
+
 ```
 8.0.117
 ```
 
-### 4. Check NuGet Version
+---
+
+### ✅ 4. Check NuGet Version
 
 ```bash
 dotnet nuget --version
 ```
 
-Output:
+<sub>Sample output:</sub>
+
 ```
 NuGet Command Line 6.8.1.32767
 ```
 
 ---
 
-## Environment Setup Instructions
+## ⚙️ Environment Setup
 
-### 5. Configure Environment variables
+### 🔧 5. Configure Environment Variables
 
-	DOTFUSCATOR_HOME = /path/nugetInstalledDir/PreEmptive.Protection.Dotfuscator.Pro/tools/programdir/netcore
-	DOTFUSCATOR_MSBUILDPATH = /path/nugetInstalledDir/PreEmptive.Protection.Dotfuscator.Pro/tools/msbuilddir
-	DOTFUSCATOR_LICENSE = xxxxxxx:user@domain.com
+```bash
+export DOTFUSCATOR_HOME=/path/nugetInstalledDir/PreEmptive.Protection.Dotfuscator.Pro/tools/programdir/netcore
+export DOTFUSCATOR_MSBUILDPATH=/path/nugetInstalledDir/PreEmptive.Protection.Dotfuscator.Pro/tools/msbuilddir
+export DOTFUSCATOR_LICENSE=xxxxxxx:user@domain.com
+```
 
-## Build Instructions
+Add these to your `.bashrc` or `.zshrc` to persist across sessions.
 
-### 5. Build the Console Application
+---
+
+## 🏗️ Build Instructions
+
+### 🧪 6. Build the Console App
 
 ```bash
 dotnet build -c Release PreEmptive.Dotfuscator.TestSamples.ConsoleApp.csproj
 ```
 
-### 6. Obfuscate the Console Application
+---
+
+### 🔐 7. Obfuscate the Console App
 
 ```bash
 dotfuscator.exe DotfuscatorConfig.xml -v
 ```
 
-### 7. Run the Obfuscated Console Application
+---
+
+### 🚦 8. Run the Obfuscated Console App
 
 ```bash
 bin/Release/net8.0/PreEmptive.Dotfuscator.TestSamples.ConsoleApp
@@ -86,23 +108,27 @@ bin/Release/net8.0/PreEmptive.Dotfuscator.TestSamples.ConsoleApp
 
 ---
 
-## Parallel Obfuscation Helper App
+## 🔁 Parallel Obfuscation Helper App
 
 The `PreEmptive.Dotfuscator.TestSamples.Helper.ParallelExecution` project uses multiple instances of Dotfuscator to concurrently obfuscate the ConsoleApp.
 
-### 8. Build the ParallelExecution App
+### 🧱 9. Build the ParallelExecution App
 
 ```bash
 dotnet build -c Release PreEmptive.Dotfuscator.TestSamples.Helper.ParallelExecution.csproj
 ```
 
-### 9. Obfuscate the ParallelExecution App
+---
+
+### 🔐 10. Obfuscate the ParallelExecution App
 
 ```bash
 dotfuscator.exe DotfuscatorConfig.xml -v
 ```
 
-### 10. Run the Obfuscated ParallelExecution App
+---
+
+### 🚦 11. Run the Obfuscated ParallelExecution App
 
 ```bash
 bin/Release/net8.0/PreEmptive.Dotfuscator.TestSamples.Helper.ParallelExecution
@@ -110,7 +136,12 @@ bin/Release/net8.0/PreEmptive.Dotfuscator.TestSamples.Helper.ParallelExecution
 
 ---
 
-## Notes
+## 📝 Notes
 
-- Ensure `dotfuscator.exe` is in your PATH or referenced via full path.
-- Both applications target `.NET 8.0` and assume the environment is set up correctly for CLI-based builds on Ubuntu.
+- Ensure `dotfuscator.exe` is either in your `$PATH` or used with the full path.
+- Both applications target **.NET 8.0**.
+- Designed for CLI-based builds on **Ubuntu**.
+
+---
+
+> 💡 Tip: Use `htop` or `top` to monitor CPU usage while running ParallelExecution for better insight into concurrency.
