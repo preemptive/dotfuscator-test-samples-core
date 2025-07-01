@@ -74,13 +74,7 @@ This repository contains sample projects demonstrating how to integrate [PreEmpt
 | `Dotfuscator.TestSamples.ConsoleApp` | A basic console app obfuscated via Dotfuscator. |
 | `DotfuscatorConfig.xml`            | Sample Dotfuscator configuration file.           |
 
-## 🚀 How to Build
 
-### Windows
-
-```bash
-dotnet build -c Release
----
 
 ## 🔧 Purpose
 
