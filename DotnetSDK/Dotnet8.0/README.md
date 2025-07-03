@@ -65,6 +65,7 @@ A MAUI application is a cross-platform app built with .NET MAUI (Multi-platform 
 	📦 NuGet Support	Reuse .NET libraries and third-party packages easily.
 	🧩 Platform Customization	Add platform-specific code in Platforms/Android, Platforms/Windows, etc.
 
+
 ### 6. `NuGet`
 This repository contains sample projects demonstrating how to integrate [PreEmptive Dotfuscator](https://www.preemptive.com/products/dotfuscator/) into a .NET 8 application using the NuGet package.
 ## 📦 Included Samples
@@ -73,7 +74,6 @@ This repository contains sample projects demonstrating how to integrate [PreEmpt
 |------------------------------------|--------------------------------------------------|
 | `Dotfuscator.TestSamples.ConsoleApp` | A basic console app obfuscated via Dotfuscator. |
 | `DotfuscatorConfig.xml`            | Sample Dotfuscator configuration file.           |
-
 
 
 ## 🔧 Purpose
