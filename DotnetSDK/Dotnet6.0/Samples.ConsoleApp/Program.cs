@@ -1,0 +1,52 @@
+﻿using System.Diagnostics;
+using System.Text.RegularExpressions;
+using PreEmptive.Dotfuscator.Samples.ConsoleApp.Abstracts;
+using PreEmptive.Dotfuscator.Samples.ConsoleApp.Classes;
+
+namespace Samples.ConsoleApp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, World!");
+            
+
+            string current = Directory.GetCurrentDirectory();
+            string projectPath = Path.GetFullPath(Path.Combine(current, @"..\..\..\"));
+            int processId = Process.GetCurrentProcess().Id;
+
+            Console.WriteLine("Current Path = {0}", current);
+            Console.WriteLine("ProjectPath =  {0}", projectPath);
+            Console.WriteLine("Process ID  =  {0}", processId);
+
+            // Call FileProcessor logic (correct static or instance call depending on your definition)
+            var processor = new FileProcessor();
+            processor.Process();
+
+            // Prepare log path
+            string logFolder = Path.Combine(projectPath, "Resources");
+            string logPath = Path.Combine(logFolder, "log.txt");
+
+            // Ensure the directory exists
+            Directory.CreateDirectory(logFolder);
+
+            // Write to log
+            File.WriteAllText(logPath, $"Current Path: {current}{Environment.NewLine}" +
+                                       $"Project Path: {projectPath}{Environment.NewLine}" +
+                                       "File Written Successfully:");
+
+            Console.WriteLine("Processes executed. Log file created.");
+
+
+            // abstract method implementation
+            ProcessHandler sysHandler = new SystemProcessHandler();
+            ProcessHandler bizHandler = new BusinessProcessHandler();
+
+            sysHandler.DisplayProcessDetails(processId);
+            Console.WriteLine();
+            bizHandler.DisplayProcessDetails(processId);
+
+        }
+    }
+}

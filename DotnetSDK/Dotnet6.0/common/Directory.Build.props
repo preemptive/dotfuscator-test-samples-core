@@ -1,0 +1,5 @@
+<Project>
+	<PropertyGroup>
+		<BaseNamespace>PreEmptive.Dotfuscator</BaseNamespace>
+	</PropertyGroup>
+</Project>

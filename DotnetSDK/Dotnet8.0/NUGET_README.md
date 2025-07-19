@@ -2,8 +2,8 @@
 
 This project includes two console applications for demonstration and testing:
 
-- 🖥️ `PreEmptive.Dotfuscator.TestSamples.ConsoleApp`
-- ⚙️ `PreEmptive.Dotfuscator.TestSamples.Helper.ParallelExecution`
+- 🖥️ `Samples.ConsoleApp`
+- ⚙️ `Helper.ParallelExecution`
 
 ---
 
@@ -87,7 +87,7 @@ Add these to your `.bashrc` or `.zshrc` to persist across sessions.
 ### 🧪 6. Build the Console App
 
 ```bash
-dotnet build -c Release PreEmptive.Dotfuscator.TestSamples.ConsoleApp.csproj
+dotnet build -c Release Samples.ConsoleApp.csproj
 ```
 
 ---
@@ -110,12 +110,12 @@ dotnet run
 
 ## 🔁 Parallel Obfuscation Helper App
 
-The `PreEmptive.Dotfuscator.TestSamples.Helper.ParallelExecution` project uses multiple instances of Dotfuscator to concurrently obfuscate the ConsoleApp.
+The `Helper.ParallelExecution` project uses multiple instances of Dotfuscator to concurrently obfuscate the ConsoleApp.
 
 ### 🧱 9. Build the ParallelExecution App
 
 ```bash
-dotnet build -c Release PreEmptive.Dotfuscator.TestSamples.Helper.ParallelExecution.csproj
+dotnet build -c Release Helper.ParallelExecution.csproj
 ```
 
 ---
