@@ -1,5 +1,5 @@
 <Project>
-	<Import Project="..\common\Directory.Build.props" />
+	<Import Project="..\Directory.Build.props" />
 	<PropertyGroup>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<OutputType>WinExe</OutputType>

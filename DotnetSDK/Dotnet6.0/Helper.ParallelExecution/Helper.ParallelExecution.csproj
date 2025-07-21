@@ -1,5 +1,5 @@
 ﻿<Project>
-	<Import Project="..\common\Directory.Build.props" />
+	<Import Project="..\Directory.Build.props" />
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<TargetFramework>net6.0</TargetFramework>
