@@ -15,12 +15,12 @@ To effectively support Dotfuscator's non-regression testing across different .NE
 ```
 /
 ├── dotnet8.0/
-│   └── PreEmptive.Dotfuscator.TestSamples.sln (configured for .NET 8)
-│       ├── PreEmptive.Dotfuscator.TestSamples.Console/
+│   └── Samples.sln (configured for .NET 8)
+│       ├── Samples.Console/
 │       └── ... (other .NET 8 projects)
 ├── dotnet6.0/
-│   └── PreEmptive.Dotfuscator.TestSamples.sln (configured for .NET 6)
-│       ├── PreEmptive.Dotfuscator.TestSamples.Console/
+│   └── Samples.sln (configured for .NET 6)
+│       ├── Samples.Console/
 │       └── ... (other .NET 6 projects)
 └── README.md
 ```
@@ -49,13 +49,13 @@ To effectively support Dotfuscator's non-regression testing across different .NE
 ## 📦 Project Structure & Naming Convention
 The solution is organized to clearly identify the target platform for each sample.
 
-**Naming Convention:** All projects adhere to the following naming convention: `PreEmptive.Dotfuscator.TestSamples.{TargetPlatform}`
+**Naming Convention:** All projects adhere to the following naming convention: `Samples.{TargetPlatform}`
 Examples:
-- PreEmptive.Dotfuscator.TestSamples.Console
-- PreEmptive.Dotfuscator.TestSamples.Api
-- PreEmptive.Dotfuscator.TestSamples.Maui
-- PreEmptive.Dotfuscator.TestSamples.WPF
-- PreEmptive.Dotfuscator.TestSamples.WinForms
+- Samples.Console
+- Samples.Api
+- Samples.Maui
+- Samples.WPF
+- Samples.WinForms
 
 ## 🛠️ Installation Guidelines
 To get started with these test samples, follow these simple steps:
