@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Text.RegularExpressions;
-using PreEmptive.Dotfuscator.Samples.ConsoleApp.Classes;
+using Samples.Common.Classes;
 
 namespace PreEmptive.Dotfuscator.Samples.ConsoleApp
 {
