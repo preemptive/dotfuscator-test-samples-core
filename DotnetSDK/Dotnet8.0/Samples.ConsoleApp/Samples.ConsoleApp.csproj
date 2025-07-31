@@ -9,6 +9,13 @@
 		<RootNamespace>$(AssemblyName)</RootNamespace>
 	</PropertyGroup>
 	<ItemGroup>
+	  <Compile Include="..\common\Abstracts\ProcessorBase.cs" Link="ProcessorBase.cs" />
+	  <Compile Include="..\common\Classes\FileProcessor.cs" Link="FileProcessor.cs" />
+	  <Compile Include="..\common\Interfaces\IProcessor.cs" Link="IProcessor.cs" />
+	  <Compile Include="..\common\Unused\UnusedClass.cs" Link="UnusedClass.cs" />
+	  <Compile Include="..\common\Unused\UnusedMethodHolder.cs" Link="UnusedMethodHolder.cs" />
+	</ItemGroup>
+	<ItemGroup>
 		<EmbeddedResource Include="Resources/Sample.txt" />
 
 	</ItemGroup>

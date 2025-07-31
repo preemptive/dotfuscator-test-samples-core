@@ -1,4 +1,4 @@
-<Project>
+﻿<Project>
 	<Import Project="..\Directory.Build.props" />
 	<PropertyGroup>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -8,6 +8,14 @@
 		<RootNamespace>$(AssemblyName)</RootNamespace>
 		<UseWPF>true</UseWPF>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Include="..\common\Classes\AbstractBase.cs" Link="AbstractBase.cs" />
+	  <Compile Include="..\common\Classes\PrivateClass.cs" Link="PrivateClass.cs" />
+	  <Compile Include="..\common\Classes\PublicClass.cs" Link="PublicClass.cs" />
+	  <Compile Include="..\common\Interfaces\IExample.cs" Link="IExample.cs" />
+	  <Compile Include="..\common\Unused\UnusedClass.cs" Link="UnusedClass.cs" />
+	  <Compile Include="..\common\Unused\UnusedMethodHolder.cs" Link="UnusedMethodHolder.cs" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<EmbeddedResource Include="Resources/video.mp4" />

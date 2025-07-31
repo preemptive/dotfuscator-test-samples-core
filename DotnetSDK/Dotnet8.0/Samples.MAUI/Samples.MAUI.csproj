@@ -99,6 +99,11 @@
         <MauiAsset Include="Resources/Raw/**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 
     </ItemGroup>
+	
+    <ItemGroup>
+      <Compile Include="..\common\Unused\UnusedClass.cs" Link="UnusedClass.cs" />
+      <Compile Include="..\common\Unused\UnusedMethodHolder.cs" Link="UnusedMethodHolder.cs" />
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
