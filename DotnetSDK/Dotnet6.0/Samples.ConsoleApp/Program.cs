@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Text.RegularExpressions;
-using PreEmptive.Dotfuscator.Samples.Common.ConsoleApp.Abstracts;
-using PreEmptive.Dotfuscator.Samples.Common.ConsoleApp.Classes;
+using Samples.Common.Abstracts;
+using Samples.Common.Classes;
 
 namespace Samples.ConsoleApp
 {

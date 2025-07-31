@@ -1,7 +1,7 @@
-using PreEmptive.Dotfuscator.Samples.Common.ConsoleApp.Abstracts;
+using Samples.Common.Abstracts;
 using System.Reflection;
 
-namespace PreEmptive.Dotfuscator.Samples.Common.ConsoleApp.Classes
+namespace Samples.Common.Classes
 {
     public class FileProcessor : ProcessorBase
     {
