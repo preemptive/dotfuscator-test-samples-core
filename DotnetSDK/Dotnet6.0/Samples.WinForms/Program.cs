@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
-using SampleLibrary.Classes;
-using SampleLibrary.Interfaces;
+using Samples.Common.Classes;
+using Samples.Common.Interfaces;
 
 namespace PreEmptive.Dotfuscator.Samples.WinForms
 {

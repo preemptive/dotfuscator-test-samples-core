@@ -1,4 +1,4 @@
-namespace SampleLibrary.Unused
+namespace Samples.Common.Unused
 {
     public class UnusedMethodHolder
     {

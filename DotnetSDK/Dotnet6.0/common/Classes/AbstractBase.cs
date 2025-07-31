@@ -1,4 +1,4 @@
-namespace SampleLibrary.Classes
+namespace Samples.Common.Classes
 {
     public abstract class AbstractBase
     {

@@ -1,6 +1,6 @@
-using PreEmptive.Dotfuscator.Samples.ConsoleApp.Interfaces;
+using PreEmptive.Dotfuscator.Samples.Common.ConsoleApp.Interfaces;
 
-namespace PreEmptive.Dotfuscator.Samples.ConsoleApp.Abstracts
+namespace PreEmptive.Dotfuscator.Samples.Common.ConsoleApp.Abstracts
 {
     public abstract class ProcessorBase : IProcessor
     {

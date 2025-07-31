@@ -1,4 +1,4 @@
-namespace SampleLibrary.Interfaces
+namespace Samples.Common.Interfaces
 {
     public interface IExample
     {

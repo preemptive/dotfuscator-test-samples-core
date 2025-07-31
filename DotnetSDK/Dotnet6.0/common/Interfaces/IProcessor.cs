@@ -1,4 +1,4 @@
-namespace PreEmptive.Dotfuscator.Samples.ConsoleApp.Interfaces
+namespace PreEmptive.Dotfuscator.Samples.Common.ConsoleApp.Interfaces
 {
     public interface IProcessor
     {
