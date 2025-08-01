@@ -14,6 +14,10 @@ To effectively support Dotfuscator's non-regression testing across different .NE
 - For example:
 ```
 /
+├── dotnet9.0/
+│   └── Samples.sln (configured for .NET 9)
+│       ├── Samples.Console/
+│       └── ... (other .NET 9 projects)
 ├── dotnet8.0/
 │   └── Samples.sln (configured for .NET 8)
 │       ├── Samples.Console/

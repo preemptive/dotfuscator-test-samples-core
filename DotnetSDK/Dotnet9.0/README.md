@@ -3,9 +3,9 @@
 
 ## 🚀 Overview
 
-**Samples** is a collection of .NET 8.0 sample applications created to showcase various C# language constructs and project structures. These test samples are specifically crafted to validate the obfuscation, protection, and hardening capabilities of **Dotfuscator** across different Microsoft .NET platforms.
+**Samples** is a collection of .NET 9.0 sample applications created to showcase various C# language constructs and project structures. These test samples are specifically crafted to validate the obfuscation, protection, and hardening capabilities of **Dotfuscator** across different Microsoft .NET platforms.
 
-All sample applications target **.NET 8.0**.
+All sample applications target **.NET 9.0**.
 
 ---
 
@@ -72,7 +72,7 @@ This repository contains sample projects demonstrating how to integrate [PreEmpt
 
 | Project                            | Description                                      |
 |------------------------------------|--------------------------------------------------|
-| `Samples.ConsoleApp`               | A basic console app obfuscated via Dotfuscator.  |
+| `Samples.ConsoleApp` 				 | A basic console app obfuscated via Dotfuscator.  |
 | `DotfuscatorConfig.xml`            | Sample Dotfuscator configuration file.           |
 
 
