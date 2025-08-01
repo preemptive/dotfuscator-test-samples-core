@@ -72,7 +72,7 @@ This repository contains sample projects demonstrating how to integrate [PreEmpt
 
 | Project                            | Description                                      |
 |------------------------------------|--------------------------------------------------|
-| `Samples.ConsoleApp` | A basic console app obfuscated via Dotfuscator. |
+| `Samples.ConsoleApp` 				 | A basic console app obfuscated via Dotfuscator.  |
 | `DotfuscatorConfig.xml`            | Sample Dotfuscator configuration file.           |
 
 
@@ -98,6 +98,7 @@ These projects serve as a robust testbed to:
 Samples/
 ├── Samples.ConsoleApp/
 └── Helper.ParallelExecution/
+├── Samples.MAUI/
 ├── Samples.WinForms/
 └── Samples.WPF/
 ```
