@@ -25,7 +25,7 @@ dotnet --list-sdks
 
 ---
 
-### ✅ 2. Check Installed Runtimes
+### ✅ 2. Check Installed Runtimes - Update the runtime for Dotnet9
 
 ```bash
 dotnet --list-runtimes
@@ -36,6 +36,9 @@ dotnet --list-runtimes
 ```
 Microsoft.AspNetCore.App 8.0.17 [/usr/lib/dotnet/shared/Microsoft.AspNetCore.App]
 Microsoft.NETCore.App 8.0.17 [/usr/lib/dotnet/shared/Microsoft.NETCore.App]
+Microsoft.AspNetCore.App 9.0.0-preview.6.24327.3 [/usr/share/dotnet/shared/Microsoft.AspNetCore.App]
+Microsoft.NETCore.App 9.0.0-preview.6.24327.3 [/usr/share/dotnet/shared/Microsoft.NETCore.App]
+
 ```
 
 ---
