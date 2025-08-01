@@ -15,7 +15,7 @@ namespace PreEmptive.Dotfuscator.Samples.Helper.ParallelExecution
             string dotfuscatorHome = Environment.GetEnvironmentVariable("DOTFUSCATOR_HOME");
             exePath = dotfuscatorHome + "dotfuscator.exe";
             arguments = projectPath + "TestSample.xml";
-            string obfusctedAssemblyDirectory = Path.Combine(projectPath, "bin", "Release", "net8.0");
+            string obfusctedAssemblyDirectory = Path.Combine(projectPath, "bin", "Release", "net9.0");
 
             Console.WriteLine("Current Path = {0}", current);
             Console.WriteLine("ProjectPath =  {0}", projectPath);
