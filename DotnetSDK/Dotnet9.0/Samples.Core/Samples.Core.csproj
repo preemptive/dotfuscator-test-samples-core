@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<AssemblyName>$(BaseNamespace).Samples.Core</AssemblyName>
+		<RootNamespace>$(AssemblyName)</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\doc.pdf" />
+	  <EmbeddedResource Include="Resources\image.jpeg" />
+	  <EmbeddedResource Include="Resources\Sample.txt" />
+	  <EmbeddedResource Include="Resources\video.mp4" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="PreEmptive.Dotfuscator.Samples.Core.Lib" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="appsettings.core.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+</Project>
