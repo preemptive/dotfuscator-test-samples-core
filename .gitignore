@@ -435,3 +435,6 @@ FodyWeavers.xsd
 
 # Ignore Rider
 .idea/
+
+# Add local packages
+!**/.packages/**/*.nupkg
