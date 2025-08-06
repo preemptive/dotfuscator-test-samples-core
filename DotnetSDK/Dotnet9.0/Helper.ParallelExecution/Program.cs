@@ -1,17 +1,17 @@
 ﻿using System.Diagnostics;
-using System.IO;
+
 namespace PreEmptive.Dotfuscator.Samples.Helper.ParallelExecution
 {
     internal class Program
     {
-        static string exePath;
-        public static string arguments;
-        const int noOfDotInstances = 5;
+        private static string exePath = string.Empty;
+        private static string arguments = string.Empty;
+        private const int noOfDotInstances = 5;
         static void Main(string[] args)
         {
             exePath = GetDotfuscatorExe(args);
             arguments = GetDotfuscatorArguments(args);
-            string obfusctedAssemblyDirectory = GetObfuscatedAssemblyDirectory(args); ;
+            string obfusctedAssemblyDirectory = GetObfuscatedAssemblyDirectory(args);
 
             Console.WriteLine("ExePath =  {0}", exePath);
             Console.WriteLine("obfusctedAssemblyDirectory =  {0}", obfusctedAssemblyDirectory);
