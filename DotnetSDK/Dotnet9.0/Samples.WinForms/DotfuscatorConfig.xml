@@ -12,7 +12,7 @@
       <file dir="${configdir}/bin/Release/net9.0-windows" />
     </loadpaths>
     <asmlist>
-      <inputassembly refid="93e12580-154e-466b-8a08-8e4b371c54bb">
+      <inputassembly refid="0ffd2ace-353d-42c0-9854-a5e94122f531">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>

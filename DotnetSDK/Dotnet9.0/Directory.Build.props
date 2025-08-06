@@ -5,6 +5,7 @@
 		<BaseNamespace>PreEmptive.Dotfuscator</BaseNamespace>
 		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
 		<SharedFilesPath>..\Samples.Core\</SharedFilesPath>
+		<FrameworkVersion>net9.0</FrameworkVersion>
 	</PropertyGroup>
 
 	<ItemGroup>

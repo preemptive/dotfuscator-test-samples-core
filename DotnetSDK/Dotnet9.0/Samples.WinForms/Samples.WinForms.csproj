@@ -1,8 +1,9 @@
 ﻿<Project>
 	<Import Project="..\Directory.Build.props" />
+
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net9.0-windows</TargetFramework>
+		<TargetFramework>$(FrameworkVersion)-windows</TargetFramework>
 		<UseWindowsForms>true</UseWindowsForms>
 		<AssemblyName>$(BaseNamespace).Samples.WinForms</AssemblyName>
 		<RootNamespace>$(AssemblyName)</RootNamespace>
