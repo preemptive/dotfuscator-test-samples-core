@@ -9,7 +9,7 @@
   </global>
   <input>
     <loadpaths>
-      <file dir="${configdir}/bin/Release/net9.0-windows" />
+      <file dir="${configdir}/bin/Release/net8.0-windows" />
     </loadpaths>
     <asmlist>
       <inputassembly refid="484bef29-3be0-45de-8821-a81d9ee73fb7">
@@ -17,7 +17,7 @@
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="${configdir}\obj\Release\net9.0-windows" name="PreEmptive.Dotfuscator.Samples.WPF.dll" />
+        <file dir="${configdir}\obj\Release\net8.0-windows" name="PreEmptive.Dotfuscator.Samples.WPF.dll" />
       </inputassembly>
     </asmlist>
   </input>

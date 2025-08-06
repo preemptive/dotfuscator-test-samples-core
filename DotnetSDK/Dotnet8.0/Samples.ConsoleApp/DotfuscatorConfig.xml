@@ -9,7 +9,7 @@
   </global>
   <input>
     <loadpaths>
-      <file dir="${configdir}/bin/Release/net9.0" />
+      <file dir="${configdir}/bin/Release/net8.0" />
     </loadpaths>
     <asmlist>
       <inputassembly refid="a62aecce-038e-49c8-bf8f-15d6b62ef3f3">
@@ -17,7 +17,7 @@
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="${configdir}\obj\Release\net9.0" name="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll" />
+        <file dir="${configdir}\obj\Release\net8.0" name="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll" />
       </inputassembly>
     </asmlist>
   </input>
