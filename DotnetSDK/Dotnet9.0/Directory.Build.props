@@ -8,7 +8,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageVersion Include="PreEmptive.Dotfuscator.Samples.Core.Lib" Version="0.0.8" />
+		<PackageVersion Include="PreEmptive.Dotfuscator.Samples.Core.Lib" Version="9.0.0" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(UseMaui)' == 'true'">
