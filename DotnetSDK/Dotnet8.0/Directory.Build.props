@@ -1,5 +1,29 @@
 <Project>
 	<PropertyGroup>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
 		<BaseNamespace>PreEmptive.Dotfuscator</BaseNamespace>
+		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+		<SharedFilesPath>..\Samples.Core\</SharedFilesPath>
+		<FrameworkVersion>net8.0</FrameworkVersion>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageVersion Include="PreEmptive.Dotfuscator.Samples.Core.Lib" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(UseMaui)' == 'true'">
+		<PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+	</ItemGroup>
+
+
+	<ItemGroup Condition="$(MSBuildProjectName) != 'Samples.Core' AND $(MSBuildProjectName) != 'Helper.ParallelExecution' AND $(MSBuildProjectName) != 'Samples.Core.Lib'">
+		<PackageReference Include="PreEmptive.Dotfuscator.Samples.Core.Lib" />
+
+		<Compile Include="$(SharedFilesPath)**\*.cs" Exclude="$(SharedFilesPath)**\bin\**\*;$(SharedFilesPath)**\obj\**\*" Link="Core\%(RecursiveDir)%(FileName)%(Extension)" />
+		<Content Include="$(SharedFilesPath)\appsettings.core.json" Link="Core\%(FileName)%(Extension)">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<EmbeddedResource Include="$(SharedFilesPath)**\*.txt;$(SharedFilesPath)**\*.pdf;$(SharedFilesPath)**\*.mp4;$(SharedFilesPath)**\*.jpeg" Exclude="$(SharedFilesPath)**\bin\**\*;$(SharedFilesPath)**\obj\**\*" Link="Core\%(RecursiveDir)%(FileName)%(Extension)" />
+	</ItemGroup>
 </Project>

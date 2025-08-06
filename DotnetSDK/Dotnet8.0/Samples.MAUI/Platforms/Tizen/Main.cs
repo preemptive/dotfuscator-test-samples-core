@@ -1,8 +1,8 @@
-using System;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
+using System;
 
-namespace MauiApp1
+namespace Samples.Maui
 {
     internal class Program : MauiApplication
     {

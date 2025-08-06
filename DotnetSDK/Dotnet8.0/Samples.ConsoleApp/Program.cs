@@ -1,6 +1,9 @@
-﻿using System.Diagnostics;
-using System.Text.RegularExpressions;
-using Samples.Common.Classes;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PreEmptive.Dotfuscator.Samples.Core.Abstractions;
+using PreEmptive.Dotfuscator.Samples.Core.Extensions;
+using PreEmptive.Dotfuscator.Samples.Core.Lib;
+using PreEmptive.Dotfuscator.Samples.Core.Services;
+using CoreConstants = PreEmptive.Dotfuscator.Samples.Core.Constants;
 
 namespace PreEmptive.Dotfuscator.Samples.ConsoleApp
 {
@@ -8,44 +11,16 @@ namespace PreEmptive.Dotfuscator.Samples.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
-            
+            ServiceManager.Services.AddStepsProcessors();
 
-            string current = Directory.GetCurrentDirectory();
-            string projectPath = Path.GetFullPath(Path.Combine(current, @"..\..\..\"));
-            int processId = Process.GetCurrentProcess().Id;
-
-            Console.WriteLine("Current Path = {0}", current);
-            Console.WriteLine("ProjectPath =  {0}", projectPath);
-            Console.WriteLine("Process ID  =  {0}", processId);
-
-            // Call FileProcessor logic (correct static or instance call depending on your definition)
-            var processor = new FileProcessor();
-            processor.Process();
-
-            // Prepare log path
-            string logFolder = Path.Combine(projectPath, "Resources");
-            string logPath = Path.Combine(logFolder, "log.txt");
-
-            // Ensure the directory exists
-            Directory.CreateDirectory(logFolder);
-
-            // Write to log
-            File.WriteAllText(logPath, $"Current Path: {current}{Environment.NewLine}" +
-                                       $"Project Path: {projectPath}{Environment.NewLine}" +
-                                       "File Written Successfully");
-
-            Console.WriteLine("Processes executed. Log file created.");
+            ConfigurationManager.AddSource($"Core\\{CoreConstants.CoreAppsettings}");
+            ConfigurationManager.AddSource("appsettings.json");
 
 
-            // Implementation call for abstract static members
-            var sysHandler = SystemProcessHandler.CreateFromId(1001);
-            var bizHandler = BusinessProcessHandler.CreateFromId(2002);
+            var workflow = new WorkflowExecutor(new ConsoleOutputStepProcessor());
+            var steps = StepsContextFactory.Create(ServiceManager.ServiceProvider.GetRequiredService<IEnumerable<IStepProcessor>>());
 
-            sysHandler.DisplayProcessDetails();
-            bizHandler.DisplayProcessDetails();
-
-
+            workflow.ExecuteAsync(steps).GetAwaiter().GetResult();
         }
     }
 }
