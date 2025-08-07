@@ -1,76 +1,33 @@
-﻿
+﻿using PreEmptive.Dotfuscator.Samples.Core.Abstractions;
+using PreEmptive.Dotfuscator.Samples.Core.Extensions;
+using PreEmptive.Dotfuscator.Samples.Core.Lib;
+using PreEmptive.Dotfuscator.Samples.Core.Services;
+using PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors;
 
-using PreEmptive.Dotfuscator.TestSamples.MAUI.Models;
-
-namespace MauiApp1
+namespace Samples.Maui
 {
     public partial class MainPage : ContentPage
     {
-        private FileStream _lockedStream;
-        private string _filePath;
+        private readonly IWorkflowExecutor _workflowExecutor;
 
         public MainPage()
         {
             InitializeComponent();
-            _filePath = Path.Combine(FileSystem.AppDataDirectory, "testfile.txt");
-            
+            _workflowExecutor = new WorkflowExecutor(new MessageCollectorStepProcessor());
         }
 
-        private void OnLockFileClicked(object sender, EventArgs e)
+        private async void OnRunClicked(object? sender, EventArgs e)
         {
-            BaseProcessor processor = new TextProcessor();
-            string description = processor.Describe();
+            var steps = StepsContextFactory.Create(ServiceManager.ServiceProvider.GetRequiredService<IEnumerable<IStepProcessor>>());
 
-            string staticType = StaticTextProcessor.ProcessorType();
+            ArgumentsCollector.Instance.PushDefaultArguments();
+            ArgumentsCollector.Instance.PushArgument("WriteToTextFile", nameof(WriteToFileStepProcessor.OutputPath), FileSystem.Current.AppDataDirectory);
 
-            DisplayAlert("Info", $"{description}\nStatic: {staticType}", "OK");
-            try
-            {
-                _lockedStream = new FileStream(_filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                using (var writer = new StreamWriter(_lockedStream))
-                {
-                    writer.WriteLine("File is locked and writer not disposed.");
-                    writer.Flush();
-                }
-                DisplayAlert("Success", "File locked and writer not disposed.", "OK");
-            }
-            catch (Exception ex)
-            {
-                DisplayAlert("Error", $"Failed to lock file: {ex.Message}", "OK");
-            }
-        }
+            await _workflowExecutor.ExecuteAsync(steps);
 
-        private async void OnWriteFileClicked(object sender, EventArgs e)
-        {
-            try
-            {
-                for (int i = 0; i < 100; i++)
-                {
-                    int taskId = i;
-                    _ = Task.Run(() =>
-                    {
-                        try
-                        {
-                            using (var stream = new FileStream(_filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite))
-                            using (var writer = new StreamWriter(stream))
-                            {
-                                writer.WriteLine($"Concurrent write from Task {taskId}");
-                                writer.Flush();
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"Task {taskId} failed: {ex.Message}");
-                        }
-                    });
-                }
-
-                await DisplayAlert("Concurrent Write", "Multiple tasks launched to write the file.", "OK");
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Error", $"Concurrent write failed: {ex.Message}", "OK");
-            }
+            var output = MessageCollectorStepProcessor.CollectOutput();
+            await DisplayAlert("Execution result", output, "OK");
         }
     }
+
 }

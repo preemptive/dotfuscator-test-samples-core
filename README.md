@@ -71,9 +71,36 @@ git clone https://github.com/preemptive/dotfuscator-test-samples-core.git
 
 2. Install .NET SDK: Ensure you have the .NET SDK installed for the Target Framework. You can download it from the official Microsoft .NET website: https://dotnet.microsoft.com/download
 
-3. Build the Solution: Navigate to the root of the cloned repository and build the entire solution using the .NET CLI:
+3. Install Dotfuscator - latest version
+
+4. Configuration environment variables.
+Note: Some of the environment variables may already been set up in Windows after Dotfuscator installation.
+
+```
+DOTFUSCATOR_HOME - The location of dotfuscaotr installer
+Windows: typically found at C:\Program Files (x86)\PreEmptive Protection Dotfuscator Professional (version)\
+Linux/Mac: typically found at {{nugetInstalledDir}}/PreEmptive.Protection.Dotfuscator.Pro/tools/programdir/netcore
+
+DOTFUSCATOR_MSBUILDPATH - The location of dotfuscator msbuild
+Windows: typically found at C:\Program Files (x86)\MSBuild\PreEmptive\Dotfuscator\7
+Linux/Mac: typically found at  {{nugetInstalledDir}}/PreEmptive.Protection.Dotfuscator.Pro/tools/msbuilddir
+
+export DOTFUSCATOR_LICENSE=xxxxxxx:user@domain.com
+```
+
+5. Navigate to the root folder of a specific dotnet sdk and build the Solution / Project using .NET CLI
+
 
 ```Bash
-dotnet build
+dotnet build -c Release
 ```
 This command will restore any necessary NuGet packages and compile all projects within the solution.
+
+### Obfuscating and running a project using CLI
+1. Go to the root directory of the target project
+2. dotnet build -c  {projectName}
+3. dotfuscator.exe DotfuscatorConfig.xml -v
+4. dotnet run
+
+## 📜 License
+This repository is intended for test and demonstration purposes only. All usage must comply with your organization's license for PreEmptive Dotfuscator.

@@ -1,39 +1,31 @@
+﻿using Microsoft.Extensions.DependencyInjection;
+using PreEmptive.Dotfuscator.Samples.Core.Abstractions;
+using PreEmptive.Dotfuscator.Samples.Core.Lib;
+using PreEmptive.Dotfuscator.Samples.Core.Services;
 using System.Windows;
-using Samples.Common.Classes;
-using Samples.Common.Interfaces;
 
-namespace PreEmptive.Dotfuscator.Samples.WPF
+namespace Samples.WPF
 {
-    public partial class MainWindow : Window, IExample
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
     {
+        private readonly IWorkflowExecutor _workflowExecutor;
+
         public MainWindow()
         {
             InitializeComponent();
+            _workflowExecutor = new WorkflowExecutor(new MessageCollectorStepProcessor());
         }
 
-        private void OnClick(object sender, RoutedEventArgs e)
+        private async void OnRunClicked(object? sender, EventArgs e)
         {
-            Program1.RunApp(this);
-        }
+            var steps = StepsContextFactory.Create(ServiceManager.ServiceProvider.GetRequiredService<IEnumerable<IStepProcessor>>());
+            await _workflowExecutor.ExecuteAsync(steps);
 
-        public void InterfaceMethod() => MessageBox.Show("IExample implemented");
-    }
-
-    public class Program1 : AbstractBase
-    {
-        public override void Run() => MessageBox.Show("Running app logic");
-
-        public static void RunApp(MainWindow context)
-        {
-            var p = new Program1();
-            p.Run();
-            context.InterfaceMethod();
-
-            var prog = new Program();
-            prog.Run();
-            prog.InterfaceMethod();
-            prog.LoadResources();
-
+            var output = MessageCollectorStepProcessor.CollectOutput();
+            MessageBox.Show(output, "Execution result", MessageBoxButton.OK);
         }
     }
 }

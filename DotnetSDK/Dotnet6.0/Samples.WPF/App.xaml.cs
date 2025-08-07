@@ -1,6 +1,26 @@
+﻿using Microsoft.Extensions.Configuration;
+using PreEmptive.Dotfuscator.Samples.Core;
+using PreEmptive.Dotfuscator.Samples.Core.Extensions;
+using PreEmptive.Dotfuscator.Samples.Core.Lib;
 using System.Windows;
+using ConfigurationManager = PreEmptive.Dotfuscator.Samples.Core.Lib.ConfigurationManager;
 
-namespace PreEmptive.Dotfuscator.TestSamples.WPF
+namespace Samples.WPF
 {
-    public partial class App : Application { }
+    /// <summary>
+    /// Interaction logic for App.xaml
+    /// </summary>
+    public partial class App : Application
+    {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            ServiceManager.Services.AddStepsProcessors();
+
+            ConfigurationManager.Builder
+                .AddJsonFile($"Core\\{Constants.CoreAppsettings}")
+                .AddJsonFile("appsettings.json");
+        }
+    }
+
 }

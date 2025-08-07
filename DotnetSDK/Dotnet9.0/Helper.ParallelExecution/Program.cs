@@ -1,24 +1,18 @@
 ﻿using System.Diagnostics;
-using System.IO;
+
 namespace PreEmptive.Dotfuscator.Samples.Helper.ParallelExecution
 {
     internal class Program
     {
-        static string exePath;
-        public static string arguments;
-        const int noOfDotInstances = 5;
+        private static string exePath = string.Empty;
+        private static string arguments = string.Empty;
+        private const int noOfDotInstances = 5;
         static void Main(string[] args)
         {
+            exePath = GetDotfuscatorExe(args);
+            arguments = GetDotfuscatorArguments(args);
+            string obfusctedAssemblyDirectory = GetObfuscatedAssemblyDirectory(args);
 
-            string current = Directory.GetCurrentDirectory();
-            string projectPath = Path.GetFullPath(Path.Combine(current, @"..\..\..\..\Samples.ConsoleApp\"));
-            string dotfuscatorHome = Environment.GetEnvironmentVariable("DOTFUSCATOR_HOME");
-            exePath = dotfuscatorHome + "dotfuscator.exe";
-            arguments = projectPath + "TestSample.xml";
-            string obfusctedAssemblyDirectory = Path.Combine(projectPath, "bin", "Release", "net9.0");
-
-            Console.WriteLine("Current Path = {0}", current);
-            Console.WriteLine("ProjectPath =  {0}", projectPath);
             Console.WriteLine("ExePath =  {0}", exePath);
             Console.WriteLine("obfusctedAssemblyDirectory =  {0}", obfusctedAssemblyDirectory);
 
@@ -42,13 +36,6 @@ namespace PreEmptive.Dotfuscator.Samples.Helper.ParallelExecution
             Task[] tasks = new Task[noOfDotInstances];
             try
             {
-                if (!Directory.Exists("C:\\Program Files (x86)"))
-                {
-                    Console.WriteLine("Directory does not exist");
-                    return;
-
-                }
-
                 if (!File.Exists(exePath))
                 {
                     Console.WriteLine("File {0} does not exist", exePath);
@@ -80,6 +67,46 @@ namespace PreEmptive.Dotfuscator.Samples.Helper.ParallelExecution
 
             Console.WriteLine("Processes executed");
             Console.ReadLine();
+        }
+
+        private static string GetObfuscatedAssemblyDirectory(string[] args)
+        {
+            if (args.Length > 0)
+            {
+                return args[0];
+            }
+
+            var current = Directory.GetCurrentDirectory();
+            var projectPath = Path.GetFullPath(Path.Combine(current, @"..\..\..\..\Samples.ConsoleApp\"));
+            return Path.Combine(projectPath, "bin", "Release", "net9.0");
+        }
+
+        private static string GetDotfuscatorArguments(string[] args)
+        {
+            if (args.Length > 1)
+            {
+                return args[1];
+            }
+
+            var current = Directory.GetCurrentDirectory();
+            var projectPath = Path.GetFullPath(Path.Combine(current, @"..\..\..\..\Samples.ConsoleApp\"));
+            return projectPath + "TestSample.xml";
+        }
+
+        private static string GetDotfuscatorExe(string[] args)
+        {
+            if (args.Length > 2)
+            {
+                return args[2];
+            }
+
+            var dotfuscatorHome = Environment.GetEnvironmentVariable("DOTFUSCATOR_HOME");
+            if (string.IsNullOrEmpty(dotfuscatorHome))
+            {
+                Console.WriteLine("DOTFUSCATOR_HOME is missing");
+            }
+
+            return dotfuscatorHome + "dotfuscator.exe";
         }
 
         private static void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)

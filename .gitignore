@@ -410,9 +410,6 @@ FodyWeavers.xsd
 **/log.txt
 **/Resources/log.txt
 
-# Ignore all DotfuscatorConfig files
-**/DotfuscatorConfig.xml
-
 # Ignore all Dotfuscator folders and their contents
 **/Dotfuscator/
 **/dotfuscated/
@@ -433,3 +430,8 @@ FodyWeavers.xsd
 # Specifically ignore Map.xml, Map1.xml, Map2.xml, etc., inside any Dotfuscator folder
 **/Dotfuscator/Map*.xml
 
+# Ignore Rider
+.idea/
+
+# Add local packages
+!**/.packages/**/*.nupkg
