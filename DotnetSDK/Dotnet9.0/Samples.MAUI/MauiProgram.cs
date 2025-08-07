@@ -1,7 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using PreEmptive.Dotfuscator.Samples.Core;
 using PreEmptive.Dotfuscator.Samples.Core.Extensions;
 using PreEmptive.Dotfuscator.Samples.Core.Lib;
+using ConfigurationManager = PreEmptive.Dotfuscator.Samples.Core.Lib.ConfigurationManager;
 
 namespace Samples.Maui
 {
@@ -11,8 +13,9 @@ namespace Samples.Maui
         {
             ServiceManager.Services.AddStepsProcessors();
 
-            ConfigurationManager.AddSource($"Core\\{Constants.CoreAppsettings}");
-            ConfigurationManager.AddSource("appsettings.json");
+            ConfigurationManager.Builder
+                .AddJsonFile($"Core\\{Constants.CoreAppsettings}")
+                .AddJsonFile("appsettings.json");
 
             var builder = MauiApp.CreateBuilder();
             builder

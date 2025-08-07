@@ -5,15 +5,15 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Lib;
 public static class ConfigurationManager
 {
     private static IConfiguration? _configuration;
-    private static readonly object Lock = new object();
-    private static readonly HashSet<string> _sources = [];
+    private static IConfigurationBuilder? _configurationBuilder;
+    private static readonly Lock Lock = new();
 
     public static IConfiguration? Configuration
     {
         get
         {
             if (_configuration != null) return _configuration;
-            
+
             lock (Lock)
             {
                 _configuration ??= BuildConfiguration();
@@ -23,20 +23,21 @@ public static class ConfigurationManager
         }
     }
 
-    public static void AddSource(string source) => _sources.Add(source);
+    public static IConfigurationBuilder Builder
+    {
+        get
+        {
+            if (_configurationBuilder != null) return _configurationBuilder;
 
-    public static void ClearSources() => _sources.Clear();
+            lock (Lock)
+            {
+                _configurationBuilder ??= new ConfigurationBuilder();
+            }
+
+            return _configurationBuilder;
+        }
+    }
 
     private static IConfiguration BuildConfiguration()
-    {
-        var builder = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory());
-
-        foreach (var source in _sources)
-        {
-            builder.AddJsonFile(source);
-        }
-        
-        return builder.Build();
-    }
+        => _configurationBuilder?.Build() ?? throw new ArgumentException($"{nameof(_configurationBuilder)} not set");
 }

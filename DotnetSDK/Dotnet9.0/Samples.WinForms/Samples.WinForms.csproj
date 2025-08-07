@@ -1,5 +1,4 @@
-﻿<Project>
-	<Import Project="..\Directory.Build.props" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
@@ -31,17 +30,6 @@
 
 	<!-- Import the Dotfuscator MSBuild targets. Must be done last. -->
 	<Import Project="$(DOTFUSCATOR_MSBUILDPATH)/PreEmptive.Dotfuscator.Common.targets" Condition="'$(Configuration)' == 'Release'" />
-	<ItemGroup>
-	  <Compile Remove="Classes\**" />
-	  <Compile Remove="Interfaces\**" />
-	  <Compile Remove="Unused\**" />
-	  <EmbeddedResource Remove="Classes\**" />
-	  <EmbeddedResource Remove="Interfaces\**" />
-	  <EmbeddedResource Remove="Unused\**" />
-	  <None Remove="Classes\**" />
-	  <None Remove="Interfaces\**" />
-	  <None Remove="Unused\**" />
-	</ItemGroup>
 	<ItemGroup>
 	  <None Update="appsettings.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
