@@ -6,16 +6,12 @@
 		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
 		<SharedFilesPath>..\Samples.Core\</SharedFilesPath>
 		<FrameworkVersion>net6.0</FrameworkVersion>
+		<NoWarn>MSB4011; NU1604</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageVersion Include="PreEmptive.Dotfuscator.Samples.Core.Lib" Version="6.0.0" />
 	</ItemGroup>
-
-	<ItemGroup Condition="'$(UseMaui)' == 'true'">
-		<PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-	</ItemGroup>
-
 
 	<ItemGroup Condition="$(MSBuildProjectName) != 'Samples.Core' AND $(MSBuildProjectName) != 'Helper.ParallelExecution' AND $(MSBuildProjectName) != 'Samples.Core.Lib'">
 		<PackageReference Include="PreEmptive.Dotfuscator.Samples.Core.Lib" />

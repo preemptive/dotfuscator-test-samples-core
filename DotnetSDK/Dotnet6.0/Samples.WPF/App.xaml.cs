@@ -1,7 +1,9 @@
-﻿using PreEmptive.Dotfuscator.Samples.Core;
+﻿using Microsoft.Extensions.Configuration;
+using PreEmptive.Dotfuscator.Samples.Core;
 using PreEmptive.Dotfuscator.Samples.Core.Extensions;
 using PreEmptive.Dotfuscator.Samples.Core.Lib;
 using System.Windows;
+using ConfigurationManager = PreEmptive.Dotfuscator.Samples.Core.Lib.ConfigurationManager;
 
 namespace Samples.WPF
 {
@@ -15,8 +17,9 @@ namespace Samples.WPF
             base.OnStartup(e);
             ServiceManager.Services.AddStepsProcessors();
 
-            ConfigurationManager.AddSource($"Core\\{Constants.CoreAppsettings}");
-            ConfigurationManager.AddSource("appsettings.json");
+            ConfigurationManager.Builder
+                .AddJsonFile($"Core\\{Constants.CoreAppsettings}")
+                .AddJsonFile("appsettings.json");
         }
     }
 

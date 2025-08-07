@@ -1,9 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using PreEmptive.Dotfuscator.Samples.Core;
 using PreEmptive.Dotfuscator.Samples.Core.Abstractions;
 using PreEmptive.Dotfuscator.Samples.Core.Extensions;
 using PreEmptive.Dotfuscator.Samples.Core.Lib;
 using PreEmptive.Dotfuscator.Samples.Core.Services;
-using CoreConstants = PreEmptive.Dotfuscator.Samples.Core.Constants;
+using ConfigurationManager = PreEmptive.Dotfuscator.Samples.Core.Lib.ConfigurationManager;
 
 namespace PreEmptive.Dotfuscator.Samples.ConsoleApp
 {
@@ -13,8 +15,9 @@ namespace PreEmptive.Dotfuscator.Samples.ConsoleApp
         {
             ServiceManager.Services.AddStepsProcessors();
 
-            ConfigurationManager.AddSource($"Core\\{CoreConstants.CoreAppsettings}");
-            ConfigurationManager.AddSource("appsettings.json");
+            ConfigurationManager.Builder
+                .AddJsonFile($"Core\\{Constants.CoreAppsettings}")
+                .AddJsonFile("appsettings.json");
 
 
             var workflow = new WorkflowExecutor(new ConsoleOutputStepProcessor());
