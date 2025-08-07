@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using PreEmptive.Dotfuscator.Samples.Core;
 using PreEmptive.Dotfuscator.Samples.Core.Extensions;
 using PreEmptive.Dotfuscator.Samples.Core.Lib;
