@@ -1,6 +1,5 @@
 ﻿using PreEmptive.Dotfuscator.Samples.Core.Abstractions;
 using PreEmptive.Dotfuscator.Samples.Core.Models;
-using System.Linq;
 
 namespace PreEmptive.Dotfuscator.Samples.Core.Services
 {

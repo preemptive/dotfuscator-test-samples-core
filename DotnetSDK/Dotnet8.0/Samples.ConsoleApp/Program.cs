@@ -4,6 +4,8 @@ using PreEmptive.Dotfuscator.Samples.Core.Extensions;
 using PreEmptive.Dotfuscator.Samples.Core.Lib;
 using PreEmptive.Dotfuscator.Samples.Core.Services;
 using CoreConstants = PreEmptive.Dotfuscator.Samples.Core.Constants;
+using ConfigurationManager = PreEmptive.Dotfuscator.Samples.Core.Lib.ConfigurationManager;
+using Microsoft.Extensions.Configuration;
 
 namespace PreEmptive.Dotfuscator.Samples.ConsoleApp
 {
@@ -13,9 +15,9 @@ namespace PreEmptive.Dotfuscator.Samples.ConsoleApp
         {
             ServiceManager.Services.AddStepsProcessors();
 
-            ConfigurationManager.AddSource($"Core\\{CoreConstants.CoreAppsettings}");
-            ConfigurationManager.AddSource("appsettings.json");
-
+            ConfigurationManager.Builder
+                .AddJsonFile($"Core\\{CoreConstants.CoreAppsettings}")
+                .AddJsonFile("appsettings.json");
 
             var workflow = new WorkflowExecutor(new ConsoleOutputStepProcessor());
             var steps = StepsContextFactory.Create(ServiceManager.ServiceProvider.GetRequiredService<IEnumerable<IStepProcessor>>());

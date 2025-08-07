@@ -1,11 +1,14 @@
 <Project>
 	<PropertyGroup>
+		<FrameworkVersion>net8.0</FrameworkVersion>
+	</PropertyGroup>
+	<PropertyGroup>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<BaseNamespace>PreEmptive.Dotfuscator</BaseNamespace>
 		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
 		<SharedFilesPath>..\Samples.Core\</SharedFilesPath>
-		<FrameworkVersion>net8.0</FrameworkVersion>
+		<NoWarn>MSB4011; NU1604</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -14,8 +17,12 @@
 
 	<ItemGroup Condition="'$(UseMaui)' == 'true'">
 		<PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageVersion Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 	</ItemGroup>
 
+	<ItemGroup Condition="'$(UseMaui)' == 'true'">
+		<MauiAsset Include="$(SharedFilesPath)\appsettings.core.json" Link="Core\%(FileName)%(Extension)" />
+	</ItemGroup>
 
 	<ItemGroup Condition="$(MSBuildProjectName) != 'Samples.Core' AND $(MSBuildProjectName) != 'Helper.ParallelExecution' AND $(MSBuildProjectName) != 'Samples.Core.Lib'">
 		<PackageReference Include="PreEmptive.Dotfuscator.Samples.Core.Lib" />

@@ -11,7 +11,7 @@
                 Source="dotnet_bot.png"
                 HeightRequest="185"
                 Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a hovercraft number nine" />
+                SemanticProperties.Description="dot net bot in a race car number eight" />
 
             <Label
                 Text="Hello, World!"
@@ -26,7 +26,7 @@
 
             <Button
                 x:Name="CounterBtn"
-                Text="Click me" 
+                Text="Run" 
                 SemanticProperties.Hint="Runs the entire workflow"
                 Clicked="OnRunClicked"
                 HorizontalOptions="Fill" />

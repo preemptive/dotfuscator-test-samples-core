@@ -1,7 +1,10 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using PreEmptive.Dotfuscator.Samples.Core;
 using PreEmptive.Dotfuscator.Samples.Core.Extensions;
 using PreEmptive.Dotfuscator.Samples.Core.Lib;
+using System.Reflection;
+using ConfigurationManager = PreEmptive.Dotfuscator.Samples.Core.Lib.ConfigurationManager;
 
 namespace Samples.Maui
 {
@@ -11,8 +14,23 @@ namespace Samples.Maui
         {
             ServiceManager.Services.AddStepsProcessors();
 
-            ConfigurationManager.AddSource($"Core\\{Constants.CoreAppsettings}");
-            ConfigurationManager.AddSource("appsettings.json");
+            ConfigurationManager.Builder
+                .AddJsonFile($"Core\\{Constants.CoreAppsettings}")
+                .AddJsonFile("appsettings.json");
+
+            //var assembly = Assembly.GetExecutingAssembly();
+            //using var coreAppSettingsStream = assembly.GetManifestResourceStream($"PreEmptive.Dotfuscator.Samples.Maui.Core.{Constants.CoreAppsettings}");
+            //if(coreAppSettingsStream is not null)
+            //{
+            //    ConfigurationManager.Builder.AddJsonStream(coreAppSettingsStream);
+            //}
+
+            //using var appSettingsStream = assembly.GetManifestResourceStream($"PreEmptive.Dotfuscator.Samples.Maui.appsettings.json");
+            //if (appSettingsStream is not null)
+            //{
+            //    ConfigurationManager.Builder.AddJsonStream(appSettingsStream);
+            //}
+            //ConfigurationManager.Builder.Build();
 
             var builder = MauiApp.CreateBuilder();
             builder
@@ -24,7 +42,7 @@ namespace Samples.Maui
                 });
 
 #if DEBUG
-            builder.Logging.AddDebug();
+    		builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

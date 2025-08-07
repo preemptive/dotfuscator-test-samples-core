@@ -1,6 +1,4 @@
-﻿<Project>
-	<Import Project="..\Directory.Build.props" />
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>$(FrameworkVersion)-windows</TargetFramework>

@@ -9,19 +9,19 @@
   </global>
   <input>
     <loadpaths>
-      <file dir="${configdir}/bin/Release/net8.0-ios/iossimulator-x64" />
-      <file dir="${configdir}/bin/Release/net8.0-maccatalyst/maccatalyst-x64" />
       <file dir="${configdir}/bin/Release/net8.0-android" />
       <file dir="${configdir}/bin/Release/net8.0-windows10.0.19041.0/win10-x64" />
       <file dir="${configdir}/bin/Release/net8.0-maccatalyst/maccatalyst-arm64" />
+      <file dir="${configdir}/bin/Release/net8.0-ios/iossimulator-x64" />
+      <file dir="${configdir}/bin/Release/net8.0-maccatalyst/maccatalyst-x64" />
     </loadpaths>
     <asmlist>
-      <inputassembly refid="bcbd6c47-2799-4dea-9a91-2fbb1921ee4b">
+      <inputassembly refid="6fd02817-91ff-4bbd-b314-ae3994077e3f">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="${configdir}\obj\Release\net8.0-maccatalyst\maccatalyst-arm64" name="PreEmptive.Dotfuscator.Samples.Maui.dll" />
+        <file dir="${configdir}\obj\Release\net8.0-maccatalyst\maccatalyst-x64" name="PreEmptive.Dotfuscator.Samples.Maui.dll" />
       </inputassembly>
     </asmlist>
   </input>

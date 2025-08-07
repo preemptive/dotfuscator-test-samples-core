@@ -30,9 +30,9 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services
         }
 
 
-        public void PushArgument(string typeName, string name, object value)
+        public void PushArgument(string stepName, string name, object value)
         {
-            var stepArguments = _argumentsPool.GetOrAdd(typeName, _ => new ConcurrentDictionary<string, object>());
+            var stepArguments = _argumentsPool.GetOrAdd(stepName, _ => new ConcurrentDictionary<string, object>());
             stepArguments.AddOrUpdate(name, value, (key, oldValue) => value);
         }
 

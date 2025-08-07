@@ -1,9 +1,11 @@
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PreEmptive.Dotfuscator.Samples.Core;
 using PreEmptive.Dotfuscator.Samples.Core.Abstractions;
 using PreEmptive.Dotfuscator.Samples.Core.Extensions;
 using PreEmptive.Dotfuscator.Samples.Core.Lib;
 using PreEmptive.Dotfuscator.Samples.Core.Services;
+using ConfigurationManager = PreEmptive.Dotfuscator.Samples.Core.Lib.ConfigurationManager;
 
 namespace PreEmptive.Dotfuscator.Samples.WinForms
 {
@@ -40,9 +42,9 @@ namespace PreEmptive.Dotfuscator.Samples.WinForms
                 Application.EnableVisualStyles();
                 
                 ServiceManager.Services.AddStepsProcessors();
-
-                ConfigurationManager.AddSource($"Core\\{Constants.CoreAppsettings}");
-                ConfigurationManager.AddSource("appsettings.json");
+                ConfigurationManager.Builder
+                    .AddJsonFile($"Core\\{Constants.CoreAppsettings}")
+                    .AddJsonFile("appsettings.json");
 
                 Application.Run(new MainForm());
             }
