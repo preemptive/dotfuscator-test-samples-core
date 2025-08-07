@@ -31,6 +31,17 @@
 		<Content Include="$(SharedFilesPath)\appsettings.core.json" Link="Core\%(FileName)%(Extension)">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
-		<EmbeddedResource Include="$(SharedFilesPath)**\*.txt;$(SharedFilesPath)**\*.pdf;$(SharedFilesPath)**\*.mp4;$(SharedFilesPath)**\*.jpeg" Exclude="$(SharedFilesPath)**\bin\**\*;$(SharedFilesPath)**\obj\**\*" Link="Core\%(RecursiveDir)%(FileName)%(Extension)" />
+		<EmbeddedResource
+			Include="$(SharedFilesPath)**\*.txt;$(SharedFilesPath)**\*.pdf;$(SharedFilesPath)**\*.mp4;$(SharedFilesPath)**\*.jpeg"
+			Exclude="$(SharedFilesPath)**\bin\**\*;$(SharedFilesPath)**\obj\**\*"
+			Link="Core\%(RecursiveDir)%(FileName)%(Extension)">
+			<LogicalName>$(BaseNamespace).Samples.Core.Resources.%(FileName)%(Extension)</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource
+			Include="$(SharedFilesPath)**\*.resx"
+			Exclude="$(SharedFilesPath)**\bin\**\*;$(SharedFilesPath)**\obj\**\*"
+			Link="Core\%(RecursiveDir)%(FileName)%(Extension)">
+			<LogicalName>$(BaseNamespace).Samples.Core.Resources.%(FileName).resources</LogicalName>
+		</EmbeddedResource>
 	</ItemGroup>
 </Project>
