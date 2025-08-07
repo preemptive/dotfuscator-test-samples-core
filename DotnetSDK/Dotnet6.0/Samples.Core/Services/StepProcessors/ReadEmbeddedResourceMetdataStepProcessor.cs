@@ -7,7 +7,7 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
 {
     public class ReadEmbeddedResourceMetdataStepProcessor : StepProcessorBase
     {
-        protected override async Task<StepResult> ExecuteInternalAsync(CancellationToken cancellationToken = default)
+        protected override Task<StepResult> ExecuteInternalAsync(CancellationToken cancellationToken = default)
         {
             var result = new StringBuilder();
             var isSuccess = true;
@@ -29,10 +29,10 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
 
             if (!isSuccess)
             {
-                return StepResult.Failure(result.ToString());
+                return Task.FromResult(StepResult.Failure(result.ToString()));
             }
 
-            return StepResult.Success(value: result.ToString());
+            return Task.FromResult(StepResult.Success(value: result.ToString()));
         }
     }
 }
