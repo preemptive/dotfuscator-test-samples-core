@@ -9,11 +9,15 @@ This repository is primarily intended for the technical team responsible for dev
 To effectively support Dotfuscator's non-regression testing across different .NET framework versions, this repository utilizes a **folder-based versioning strategy within the `main` branch**, allowing for clear separation and targeted backporting.
 
 **`main` Branch Structure:**
-- The main branch contains top-level directories, each dedicated to a specific .NET framework version (e.g., dotnet8.0/, dotnet6.0/).
+- The main branch contains top-level directories, each dedicated to a specific .NET framework version (e.g., dotnet8.0/, dotnet8.0/, dotnet6.0/).
 - Each of these directories holds a complete solution (.sln) and its associated projects, all configured specifically for that particular .NET version.
 - For example:
 ```
 /
+├── dotnet10.0/
+│   └── Samples.sln (configured for .NET 10)
+│       ├── Samples.Console/
+│       └── ... (other .NET 10 projects)
 ├── dotnet9.0/
 │   └── Samples.sln (configured for .NET 9)
 │       ├── Samples.Console/
