@@ -11,7 +11,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageVersion Include="PreEmptive.Dotfuscator.Samples.Core.Lib" Version="9.0.0" />
+		<PackageVersion Include="PreEmptive.Dotfuscator.Samples.Core.Lib" Version="10.0.0" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(UseMaui)' == 'true'">
