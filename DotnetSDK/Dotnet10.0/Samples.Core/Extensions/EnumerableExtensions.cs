@@ -13,7 +13,7 @@ namespace  PreEmptive.Dotfuscator.Samples.Core.Extensions
 
             public IEnumerable<T> WhereEven(Func<T, bool> predicate)
             {
-                Console.WriteLine("WhereEven extension method called.");
+                //Console.WriteLine("WhereEven extension method called.");
                 return source.Where(predicate);
             }
         }
@@ -23,7 +23,7 @@ namespace  PreEmptive.Dotfuscator.Samples.Core.Extensions
         {
             public static IEnumerable<T> Combine(IEnumerable<T> first, IEnumerable<T> second)
             {
-                Console.WriteLine("Combine static extension method called.");
+                //Console.WriteLine("Combine static extension method called.");
                 return first.Concat(second);
             }
 

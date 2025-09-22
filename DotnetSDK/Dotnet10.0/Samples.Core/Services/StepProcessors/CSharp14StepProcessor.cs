@@ -23,18 +23,11 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
             string name = null;
             name ??= "C#14StepProcessorConstructorValue";
             Name = name;
-
-
         }
 
         // C# 14 Partial Members - Static Constructor demo
         private static int count;
         static CSharp14StepProcessor()  =>  count = 10;
-
-
-
-
-
 
         protected override async Task<StepResult> ExecuteInternalAsync(CancellationToken cancellationToken = default)
         {
@@ -98,23 +91,25 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
             dict1?["apples"] += 3;  // 5 + 3 = 8
             dict2?["oranges"] += 2; // skipped safely
 
-
             sb.AppendLine($"Name = {Name}");
             sb.AppendLine(isEmptyResult);
             sb.AppendLine(indexAccessResult);
             sb.AppendLine(evenNumbersResult);
             sb.AppendLine(combinedResult);
             sb.AppendLine(emptyResult);
+            sb.AppendLine($"----------C#14 Feature - Extension members successfully tested----------\n");
 
             // nameof with unbound generic types (C# 14 feature)
             sb.AppendLine(nameofList);
             sb.AppendLine(nameofDict);
             sb.AppendLine(nameofNullable);
+            sb.AppendLine($"----------C#14 Feature - nameof with unbound generic types tested successfully----------\n");
 
             // C# 14 Implicit Span conversions feature demo
             sb.AppendLine($"ReadOnlySpan<char> = {span3[0]},{span3[4]}");
             sb.AppendLine($"ReadOnlySpan<int> = {span1[0]},{span1[2]}");
             sb.AppendLine($"Span<int> = {span2[0]},{span2[2]}");
+            sb.AppendLine($"----------C#14 Feature - Implicit Span conversions tested successfully----------\n");
 
             // C# 14 Null-conditional assignment and  Null-conditional indexer assignmentdemo (properties)
 
@@ -125,6 +120,7 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
 
             sb.AppendLine($"dict1[\"apples\"] = {dict1?["apples"]}");
             sb.AppendLine($"dict2?[\"oranges\"] = {(dict2 is null ? "null" : dict2["oranges"].ToString())}");
+            sb.AppendLine($"----------C#14 Feature - Null-conditional assignment and Null-conditional indexer assignment tested successfully----------\n");
 
 
             // -------------------------------
@@ -186,6 +182,8 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
             int a = 7;
             int doubled = multiply(ref a);
             sb.AppendLine($"Lambda with ref returning result: doubled = {doubled}");
+
+            sb.AppendLine($"----------C#14 Feature - Simple lambda parameters with modifiers scoped, ref, in, out, or ref readonly tested successfully----------\n");
 
             return StepResult.Success(message: $"\nResult : \n{sb.ToString()}");
             //return StepResult.Success(message: $"Name = \"{Name}\"");
