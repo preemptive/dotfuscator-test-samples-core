@@ -13,9 +13,16 @@ namespace Samples.Maui
         {
             ServiceManager.Services.AddStepsProcessors();
 
+#if ANDROID
+            // Load appsettings.core.json from Resources/Raw
+            var stream = FileSystem.OpenAppPackageFileAsync("appsettings.core.json").GetAwaiter().GetResult();
+            ConfigurationManager.Builder.AddJsonStream(stream);
+
+#else
             ConfigurationManager.Builder
                 .AddJsonFile($"Core\\{Constants.CoreAppsettings}")
                 .AddJsonFile("appsettings.json");
+#endif
 
             var builder = MauiApp.CreateBuilder();
             builder
