@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.WPF", "Samples.WPF\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Maui", "Samples.Maui\Samples.Maui.csproj", "{7AEC8266-CA2A-4D27-9E8C-5109808E1E74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Android", "Samples.Android\Samples.Android.csproj", "{D7F50E23-0CB4-4639-A42A-D73EB566961B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -126,6 +128,24 @@ Global
 		{7AEC8266-CA2A-4D27-9E8C-5109808E1E74}.Release|x86.ActiveCfg = Release|Any CPU
 		{7AEC8266-CA2A-4D27-9E8C-5109808E1E74}.Release|x86.Build.0 = Release|Any CPU
 		{7AEC8266-CA2A-4D27-9E8C-5109808E1E74}.Release|x86.Deploy.0 = Release|Any CPU
+		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Debug|x64.Build.0 = Debug|Any CPU
+		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Debug|x64.Deploy.0 = Debug|Any CPU
+		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Debug|x86.Build.0 = Debug|Any CPU
+		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Debug|x86.Deploy.0 = Debug|Any CPU
+		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Release|x64.ActiveCfg = Release|Any CPU
+		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Release|x64.Build.0 = Release|Any CPU
+		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Release|x64.Deploy.0 = Release|Any CPU
+		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Release|x86.ActiveCfg = Release|Any CPU
+		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Release|x86.Build.0 = Release|Any CPU
+		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Release|x86.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

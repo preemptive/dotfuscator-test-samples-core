@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11012.119 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.ConsoleApp", "Samples.ConsoleApp\Samples.ConsoleApp.csproj", "{409AA6E8-292C-45D4-B29B-1B497DEF0CB2}"
 EndProject
@@ -25,6 +25,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Maui", "Samples.Maui\Samples.Maui.csproj", "{160FD618-68CA-4B5B-9D54-305EB875D6FA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.WPF", "Samples.WPF\Samples.WPF.csproj", "{404DCB1C-650D-48B4-B58B-0DE44E022F27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Android", "Samples.Android\Samples.Android.csproj", "{156DFED6-9A47-44AF-BF3F-4D374D15C20F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -122,6 +124,24 @@ Global
 		{404DCB1C-650D-48B4-B58B-0DE44E022F27}.Release|x64.Build.0 = Release|Any CPU
 		{404DCB1C-650D-48B4-B58B-0DE44E022F27}.Release|x86.ActiveCfg = Release|Any CPU
 		{404DCB1C-650D-48B4-B58B-0DE44E022F27}.Release|x86.Build.0 = Release|Any CPU
+		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Debug|x64.Build.0 = Debug|Any CPU
+		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Debug|x64.Deploy.0 = Debug|Any CPU
+		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Debug|x86.Build.0 = Debug|Any CPU
+		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Debug|x86.Deploy.0 = Debug|Any CPU
+		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Release|x64.ActiveCfg = Release|Any CPU
+		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Release|x64.Build.0 = Release|Any CPU
+		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Release|x64.Deploy.0 = Release|Any CPU
+		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Release|x86.ActiveCfg = Release|Any CPU
+		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Release|x86.Build.0 = Release|Any CPU
+		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Release|x86.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
