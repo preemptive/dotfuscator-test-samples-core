@@ -59,10 +59,10 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
             int total = await SumAsync(numbersRef);
             message.Append("Total = " + total + "\n\n");
 
-            staticMessage.Append("------\"allows ref structs\" implementation-----\n");
-            var w = new Wrapper<MyRefStruct>();
-            MyRefStruct m = new MyRefStruct { X = 10 };
-            w.Print(m);
+            //staticMessage.Append("------\"allows ref structs\" implementation-----\n");
+            //var w = new Wrapper<MyRefStruct>();
+            //MyRefStruct m = new MyRefStruct { X = 10 };
+            //w.Print(m);
             // IProcessor p = m; Direct interface conversion is still forbidden
 
             staticMessage.Append("------\"Overload Resolution Priority\" implementation-----\n");
@@ -138,14 +138,14 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
         }
 
         // "allows ref structs" implementation
-        public class Wrapper<T> where T : IProcessor, allows ref struct
-        {
-            public void Print(scoped T value)
-            {
-                staticMessage.Append($"Ref Struct type processed: {typeof(T).Name}\n\n");
-                value.Process();
-            }
-        }
+        //public class Wrapper<T> where T : IProcessor, allows ref struct
+        //{
+        //    public void Print(scoped T value)
+        //    {
+        //        staticMessage.Append($"Ref Struct type processed: {typeof(T).Name}\n\n");
+        //        value.Process();
+        //    }
+        //}
 
         // Overload resolution priority
         class Logger

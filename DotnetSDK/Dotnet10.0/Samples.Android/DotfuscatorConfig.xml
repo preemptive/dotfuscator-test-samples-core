@@ -25,6 +25,7 @@
     <file dir="${configdir}/Dotfuscated" />
   </output>
   <renaming>
+    <option>disable</option>
     <option>xmlserialization</option>
     <mapping>
       <mapoutput overwrite="true">
