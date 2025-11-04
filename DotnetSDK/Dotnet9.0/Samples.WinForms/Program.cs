@@ -13,6 +13,42 @@ namespace PreEmptive.Dotfuscator.Samples.WinForms
     {
         private readonly IWorkflowExecutor _workflowExecutor;
 
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            button1 = new Button();
+            comboBox1 = new ComboBox();
+            panel1 = new Panel();
+            SuspendLayout();
+            // 
+            // button1
+            // 
+            resources.ApplyResources(button1, "button1");
+            button1.Name = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            resources.ApplyResources(comboBox1, "comboBox1");
+            comboBox1.Name = "comboBox1";
+            // 
+            // panel1
+            // 
+            resources.ApplyResources(panel1, "panel1");
+            panel1.Name = "panel1";
+            // 
+            // MainForm
+            // 
+            resources.ApplyResources(this, "$this");
+            Controls.Add(panel1);
+            Controls.Add(comboBox1);
+            Controls.Add(button1);
+            Name = "MainForm";
+            ResumeLayout(false);
+
+        }
+
         public MainForm()
         {
             Text = "WinForms Sample App";
@@ -40,7 +76,7 @@ namespace PreEmptive.Dotfuscator.Samples.WinForms
             static void Main()
             {
                 Application.EnableVisualStyles();
-                
+
                 ServiceManager.Services.AddStepsProcessors();
 
                 ConfigurationManager.Builder
@@ -50,5 +86,8 @@ namespace PreEmptive.Dotfuscator.Samples.WinForms
                 Application.Run(new MainForm());
             }
         }
+        private Button button1;
+        private ComboBox comboBox1;
+        private Panel panel1;
     }
 }

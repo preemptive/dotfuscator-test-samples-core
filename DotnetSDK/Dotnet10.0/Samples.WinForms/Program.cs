@@ -13,6 +13,11 @@ namespace PreEmptive.Dotfuscator.Samples.WinForms
     {
         private readonly IWorkflowExecutor _workflowExecutor;
 
+        private void InitializeComponent()
+        {
+
+        }
+
         public MainForm()
         {
             Text = "WinForms Sample App";
@@ -40,7 +45,7 @@ namespace PreEmptive.Dotfuscator.Samples.WinForms
             static void Main()
             {
                 Application.EnableVisualStyles();
-                
+
                 ServiceManager.Services.AddStepsProcessors();
 
                 ConfigurationManager.Builder
@@ -50,5 +55,9 @@ namespace PreEmptive.Dotfuscator.Samples.WinForms
                 Application.Run(new MainForm());
             }
         }
+
+        private Button button1;
+        private ComboBox comboBox1;
+        private Panel panel1;
     }
 }
