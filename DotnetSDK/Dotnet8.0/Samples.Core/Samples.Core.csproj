@@ -18,9 +18,16 @@
 
 	<ItemGroup>
 	  <PackageReference Include="PreEmptive.Dotfuscator.Samples.Core.Lib" />
+		<PackageReference Include="System.Resources.Extensions">
+		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Resources\ComplexObjectResources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>ComplexObjectResources.resx</DependentUpon>
+	  </Compile>
 	  <Compile Update="Resources\Messages.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
@@ -29,6 +36,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Update="Resources\ComplexObjectResources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>ComplexObjectResources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	  <EmbeddedResource Update="Resources\Messages.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>Messages.Designer.cs</LastGenOutput>

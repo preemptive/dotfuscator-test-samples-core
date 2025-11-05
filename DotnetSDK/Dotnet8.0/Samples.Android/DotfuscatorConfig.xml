@@ -12,12 +12,12 @@
       <file dir="${configdir}/bin/Release/net8.0-android" />
     </loadpaths>
     <asmlist>
-      <inputassembly refid="19d0c322-bd42-4c8f-9922-ea3e92e7ea56">
+      <inputassembly refid="410c850a-4d88-46f5-8bcd-cf8955a7e1eb">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="${configdir}\obj\Release\net8.0-android" name="Samples.Android.dll" />
+        <file dir="${configdir}\obj\Release\net8.0-android" name="PreEmptive.Dotfuscator.Samples.Android.dll" />
       </inputassembly>
     </asmlist>
   </input>

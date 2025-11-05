@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Resources;
 using System.Text;
+using PreEmptive.Dotfuscator.Samples.Core.Resources;
 
 namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors;
 
@@ -16,6 +17,8 @@ public class ResourceSatelliteStepProcessor : IStepProcessor
     public string? ResourceName { get; set; }
 
     private const string _resourceKey = "Greeting";
+
+    private ComplexObjectsClass complexObjectsClass1 = new ComplexObjectsClass();
     public Task<StepResult> ExecuteAsync(CancellationToken cancellationToken = default)
     {
         var resourceManager = new ResourceManager(ResourceName!, Assembly.GetExecutingAssembly());
@@ -24,6 +27,11 @@ public class ResourceSatelliteStepProcessor : IStepProcessor
 
         sb.AppendLine($"fr: {resourceManager.GetString(_resourceKey, new CultureInfo("fr"))}");
         sb.AppendLine($"default culture: {resourceManager.GetString(_resourceKey, new CultureInfo("de"))}");
+
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComplexObjectResources));
+        resources.ApplyResources(complexObjectsClass1, "ComplexObjectsClass1");
+        sb.AppendLine($"Complex Object Name = {complexObjectsClass1.Name}");
+        sb.AppendLine($"Complex Object Size = {complexObjectsClass1.Size}");
 
         return Task.FromResult(StepResult.Success(message: sb.ToString()));
     }

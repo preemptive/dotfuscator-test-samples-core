@@ -25,6 +25,11 @@
 		</AndroidResource>
 	</ItemGroup>
 
+	<ItemGroup>
+		<PackageReference Include="System.Resources.Extensions">
+		</PackageReference>
+	</ItemGroup>
+	
 	<Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
 	<Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
 
