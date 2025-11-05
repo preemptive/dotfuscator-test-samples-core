@@ -66,6 +66,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="System.Resources.Extensions">
+		</PackageReference>
+	</ItemGroup>
+	
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
 	</ItemGroup>

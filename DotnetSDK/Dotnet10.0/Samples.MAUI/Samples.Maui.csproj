@@ -72,6 +72,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="System.Resources.Extensions">
+		</PackageReference>
+	</ItemGroup>
+	
+	<ItemGroup>
 	  <None Update="appsettings.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
