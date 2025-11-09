@@ -16,7 +16,7 @@ namespace PreEmptive.Dotfuscator.Samples.ConsoleApp
             ServiceManager.Services.AddStepsProcessors();
 
             ConfigurationManager.Builder
-                .AddJsonFile($"Core\\{Constants.CoreAppsettings}")
+                .AddJsonFile($"Core/{Constants.CoreAppsettings}")
                 .AddJsonFile("appsettings.json");
 
 
