@@ -1,0 +1,10 @@
+﻿<Project>
+	<ItemGroup>
+		<PackageVersion Include="PreEmptive.Dotfuscator.Samples.Core.Lib" Version="10.0.0" />
+		<PackageVersion Include="System.Resources.Extensions" Version="10.0.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(UseMaui)' == 'true'">
+		<PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+	</ItemGroup>
+</Project>
