@@ -167,7 +167,7 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
             scopedDemo( ref s);
 
             // 6. Discards
-            Action<int, int> discardExample = (_, _) =>
+            Action<int, int> discardExample = (_, __) =>
             {
                 sb.AppendLine("Discard parameters example executed");
             };
