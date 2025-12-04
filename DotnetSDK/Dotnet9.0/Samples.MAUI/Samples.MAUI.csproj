@@ -79,11 +79,6 @@
 	  </None>
 	</ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Include="System.Resources.Extensions">
-		</PackageReference>
-	</ItemGroup>
-	
 	<!-- Import environment-specific build properties for Dotfuscator, if they exist. -->
 	<Import Project="$([System.Environment]::GetFolderPath(SpecialFolder.UserProfile))/.dotfuscator.user.props" Condition="Exists('$([System.Environment]::GetFolderPath(SpecialFolder.UserProfile))/.dotfuscator.user.props')" />
 

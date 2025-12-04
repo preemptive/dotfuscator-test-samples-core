@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>$(FrameworkVersion)-android</TargetFramework>
 		<AssemblyName>$(BaseNamespace).Samples.Android</AssemblyName>
@@ -23,11 +23,6 @@
 		<AndroidResource Update="Resources\raw\appsettings.core.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</AndroidResource>
-	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="System.Resources.Extensions">
-		</PackageReference>
 	</ItemGroup>
 	
 	<Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />

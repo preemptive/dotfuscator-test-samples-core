@@ -64,11 +64,6 @@
 	<ItemGroup>
 		<MauiAsset Include="appsettings.json" />
 	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="System.Resources.Extensions">
-		</PackageReference>
-	</ItemGroup>
 	
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" />
