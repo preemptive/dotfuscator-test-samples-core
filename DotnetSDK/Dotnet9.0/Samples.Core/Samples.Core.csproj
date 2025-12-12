@@ -14,13 +14,7 @@
 	  <EmbeddedResource Include="Resources\Sample.txt" />
 	  <EmbeddedResource Include="Resources\video.mp4" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Include="PreEmptive.Dotfuscator.Samples.Core.Lib" />
-		<PackageReference Include="System.Resources.Extensions">
-		</PackageReference>
-	</ItemGroup>
-
+	
 	<ItemGroup>
 	  <Compile Update="Resources\ComplexObjectResources.Designer.cs">
 	    <DesignTime>True</DesignTime>
