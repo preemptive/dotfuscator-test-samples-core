@@ -13,10 +13,12 @@
 		<MauiAsset Include="$(SharedFilesPath)\appsettings.core.json" Link="Core\%(FileName)%(Extension)" />
 	</ItemGroup>
 
-	<ItemGroup Condition="$(MSBuildProjectName) != 'Samples.Core' AND $(MSBuildProjectName) != 'Helper.ParallelExecution' AND $(MSBuildProjectName) != 'Samples.Core.Lib'">
+	<ItemGroup Condition="$(MSBuildProjectName) != 'Helper.ParallelExecution' AND $(MSBuildProjectName) != 'Samples.Core.Lib'">
 		<PackageReference Include="PreEmptive.Dotfuscator.Samples.Core.Lib" />
 		<PackageReference Include="System.Resources.Extensions" />
-
+	</ItemGroup>
+	
+	<ItemGroup Condition="$(MSBuildProjectName) != 'Samples.Core' AND $(MSBuildProjectName) != 'Helper.ParallelExecution' AND $(MSBuildProjectName) != 'Samples.Core.Lib'">
 		<Compile Include="$(SharedFilesPath)**\*.cs" Exclude="$(SharedFilesPath)**\bin\**\*;$(SharedFilesPath)**\obj\**\*" Link="Core\%(RecursiveDir)%(FileName)%(Extension)" />
 		<Content Include="$(SharedFilesPath)\appsettings.core.json" Link="Core\%(FileName)%(Extension)">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>

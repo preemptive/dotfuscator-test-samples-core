@@ -111,10 +111,5 @@
 	<data name="BoolValue" type="System.Boolean, mscorlib">
 		<value>True</value>
 	</data>
-	<data name="PointValue" type="System.Drawing.Point, System.Drawing">
-		<value>10, 20</value>
-	</data>
-	<data name="SizeValue" type="System.Drawing.Size, System.Drawing">
-		<value>100, 200</value>
-	</data>
+
 </root>
