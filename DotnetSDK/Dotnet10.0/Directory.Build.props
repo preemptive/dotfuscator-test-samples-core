@@ -13,7 +13,7 @@
 		<MauiAsset Include="$(SharedFilesPath)\appsettings.core.json" Link="Core\%(FileName)%(Extension)" />
 	</ItemGroup>
 
-	<ItemGroup Condition="$(MSBuildProjectName) != 'Samples.Core' AND $(MSBuildProjectName) != 'Helper.ParallelExecution' AND $(MSBuildProjectName) != 'Samples.Core.Lib'">
+	<ItemGroup Condition="$(MSBuildProjectName) != 'Helper.ParallelExecution' AND $(MSBuildProjectName) != 'Samples.Core.Lib'">
 		<PackageReference Include="PreEmptive.Dotfuscator.Samples.Core.Lib" />
 		<PackageReference Include="System.Resources.Extensions" />
 
@@ -27,11 +27,6 @@
 			Link="Core\%(RecursiveDir)%(FileName)%(Extension)">
 				<LogicalName>$(BaseNamespace).Samples.Core.Resources.%(FileName)%(Extension)</LogicalName>
 		</EmbeddedResource>
-		<EmbeddedResource
-			Include="$(SharedFilesPath)**\*.resx"
-			Exclude="$(SharedFilesPath)**\bin\**\*;$(SharedFilesPath)**\obj\**\*"
-			Link="Core\%(RecursiveDir)%(FileName)%(Extension)">
-			<LogicalName>$(BaseNamespace).Samples.Core.Resources.%(FileName).resources</LogicalName>
-		</EmbeddedResource>
+		
 	</ItemGroup>
 </Project>

@@ -98,25 +98,5 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Resources {
                 return ((int)(obj));
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Point similar to {X=10,Y=20}.
-        /// </summary>
-        internal static System.Drawing.Point PointValue {
-            get {
-                object obj = ResourceManager.GetObject("PointValue", resourceCulture);
-                return ((System.Drawing.Point)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Size similar to {Width=100, Height=200}.
-        /// </summary>
-        internal static System.Drawing.Size SizeValue {
-            get {
-                object obj = ResourceManager.GetObject("SizeValue", resourceCulture);
-                return ((System.Drawing.Size)(obj));
-            }
-        }
     }
 }

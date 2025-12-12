@@ -9,34 +9,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Resources\doc.pdf" />
-	  <EmbeddedResource Include="Resources\image.jpeg" />
-	  <EmbeddedResource Include="Resources\Sample.txt" />
-	  <EmbeddedResource Include="Resources\video.mp4" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Include="PreEmptive.Dotfuscator.Samples.Core.Lib" />
-		<PackageReference Include="System.Resources.Extensions">
-		</PackageReference>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Resources\ComplexObjectResources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>ComplexObjectResources.resx</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Update="Resources\ComplexObjectResources.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>ComplexObjectResources.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	</ItemGroup>
-
-	<ItemGroup>
 	  <None Update="appsettings.core.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
