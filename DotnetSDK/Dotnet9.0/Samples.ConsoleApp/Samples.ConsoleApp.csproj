@@ -4,6 +4,7 @@
 		<TargetFramework>$(FrameworkVersion)</TargetFramework>
 		<AssemblyName>$(BaseNamespace).Samples.ConsoleApp</AssemblyName>
 		<RootNamespace>$(AssemblyName)</RootNamespace>
+                <PublishAot>true</PublishAot>
 	</PropertyGroup>
 	
 	<Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />

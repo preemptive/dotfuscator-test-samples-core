@@ -9,7 +9,8 @@
 		<RootNamespace>$(AssemblyName)</RootNamespace>
 
 		<ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
-		<MicrosoftExtensionsVersion>10.0.0-preview.7.25380.108</MicrosoftExtensionsVersion>
+		<MicrosoftExtensionsVersion>10.0.0</MicrosoftExtensionsVersion>
+                <PublishAot>true</PublishAot>
 
     </PropertyGroup>
 	<Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
