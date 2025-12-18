@@ -6,6 +6,9 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<AssemblyName>$(BaseNamespace).Samples.WinForms</AssemblyName>
 		<RootNamespace>$(AssemblyName)</RootNamespace>
+                <PublishAot>true</PublishAot>
+                <PublishTrimmed>true</PublishTrimmed>
+                <_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
 	</PropertyGroup>
 
 	<Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
