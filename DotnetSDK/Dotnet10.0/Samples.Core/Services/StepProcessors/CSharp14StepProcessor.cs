@@ -1,8 +1,8 @@
-﻿using PreEmptive.Dotfuscator.Samples.Core.Abstractions;
+﻿using System.Text;
+using PreEmptive.Dotfuscator.Samples.Core.Abstractions;
 using PreEmptive.Dotfuscator.Samples.Core.Attributes;
-using PreEmptive.Dotfuscator.Samples.Core.Models;
 using PreEmptive.Dotfuscator.Samples.Core.Extensions;
-using System.Text;
+using PreEmptive.Dotfuscator.Samples.Core.Models;
 
 namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
 {
@@ -11,12 +11,12 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
         [InputArgument]
 
         // C# 14-Auto-property with backing field feature demo
-        public  string Name
+        public string Name
         {
-            get;                         
+            get;
             set => field = "C#14StepProcessorFieldValue";    // Modify the backing field
         }
-        
+
         // C# 14 Feature partial Constructor demo
         public partial CSharp14StepProcessor()
         {
@@ -27,7 +27,7 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
 
         // C# 14 Partial Members - Static Constructor demo
         private static int count;
-        static CSharp14StepProcessor()  =>  count = 10;
+        static CSharp14StepProcessor() => count = 10;
 
         protected override async Task<StepResult> ExecuteInternalAsync(CancellationToken cancellationToken = default)
         {
@@ -55,13 +55,13 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
             var nameofDict = $"nameof(Dictionary<,>) = {nameof(Dictionary<,>)}";
             var nameofNullable = $"nameof(Nullable<>) = {nameof(Nullable<>)}";
 
-           
+
             // C# 14 Implicit Span conversions feature demo
             int[] numbersForSpan = { 1, 2, 3, 4 };
             ReadOnlySpan<int> span1 = numbersForSpan;
             Span<int> span2 = numbersForSpan;
             ReadOnlySpan<char> span3 = Name;
-           
+
             // -------------------------------
             // C# 14 Null-conditional assignment demo (properties)
             // -------------------------------
@@ -161,10 +161,10 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
             // 5. 'scoped' modifier
             ScopedDelegate scopedDemo = (scoped ref value) =>
             {
-               sb.AppendLine($"Scoped modifier: value = {value}");
+                sb.AppendLine($"Scoped modifier: value = {value}");
             };
             int s = 42;
-            scopedDemo( ref s);
+            scopedDemo(ref s);
 
             // 6. Discards
             Action<int, int> discardExample = (_, __) =>

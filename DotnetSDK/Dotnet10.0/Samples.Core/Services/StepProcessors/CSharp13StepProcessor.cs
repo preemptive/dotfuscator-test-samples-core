@@ -1,8 +1,8 @@
-﻿using PreEmptive.Dotfuscator.Samples.Core.Abstractions;
+﻿using System.Runtime.CompilerServices;
+using System.Text;
+using PreEmptive.Dotfuscator.Samples.Core.Abstractions;
 using PreEmptive.Dotfuscator.Samples.Core.Attributes;
 using PreEmptive.Dotfuscator.Samples.Core.Models;
-using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
 {
@@ -148,7 +148,7 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
         //}
 
         // Overload resolution priority
-        class Logger
+        private class Logger
         {
             [OverloadResolutionPriority(0)]
             public void Log(string message)

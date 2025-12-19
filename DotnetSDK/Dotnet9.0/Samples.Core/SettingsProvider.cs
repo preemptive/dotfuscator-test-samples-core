@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using Microsoft.Extensions.Configuration;
 using PreEmptive.Dotfuscator.Samples.Core.Configurations;
-using System;
 
 namespace PreEmptive.Dotfuscator.Samples.Core
 {

@@ -1,7 +1,7 @@
+using System.Reflection;
 using PreEmptive.Dotfuscator.Samples.Core.Abstractions;
 using PreEmptive.Dotfuscator.Samples.Core.Attributes;
 using PreEmptive.Dotfuscator.Samples.Core.Services;
-using System.Reflection;
 
 namespace PreEmptive.Dotfuscator.Samples.Core.Models
 {

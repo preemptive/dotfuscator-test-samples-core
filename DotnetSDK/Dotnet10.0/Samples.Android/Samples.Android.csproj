@@ -20,6 +20,9 @@
 	  <None Remove="Resources\raw\appsettings.core.json" />
 	</ItemGroup>
 	<ItemGroup>
+	  <ProjectReference Include="..\Samples.Maui.Lib\Samples.Maui.Lib.csproj" />
+	</ItemGroup>
+	<ItemGroup>
 		<AndroidResource Update="Resources\raw\appsettings.core.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</AndroidResource>

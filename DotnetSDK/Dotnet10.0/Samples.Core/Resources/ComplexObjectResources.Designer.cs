@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PreEmptive.Dotfuscator.Samples.Core.Resources {
-    using System;
-    
-    
+using System;
+
+namespace PreEmptive.Dotfuscator.Samples.Core.Resources
+{
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,98 +22,118 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ComplexObjectResources {
-        
+    internal class ComplexObjectResources
+    {
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ComplexObjectResources() {
+        internal ComplexObjectResources()
+        {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
-            get {
-                if (object.ReferenceEquals(resourceMan, null)) {
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if (object.ReferenceEquals(resourceMan, null))
+                {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources", typeof(ComplexObjectResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
-            get {
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
                 return resourceCulture;
             }
-            set {
+            set
+            {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Boolean similar to True.
         /// </summary>
-        internal static bool BoolValue {
-            get {
+        internal static bool BoolValue
+        {
+            get
+            {
                 object obj = ResourceManager.GetObject("BoolValue", resourceCulture);
                 return ((bool)(obj));
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Rectangle.
         /// </summary>
-        internal static string ComplexObjectsClass1_Name {
-            get {
+        internal static string ComplexObjectsClass1_Name
+        {
+            get
+            {
                 return ResourceManager.GetString("ComplexObjectsClass1.Name", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Int32 similar to 897345.
         /// </summary>
-        internal static int ComplexObjectsClass1_Size {
-            get {
+        internal static int ComplexObjectsClass1_Size
+        {
+            get
+            {
                 object obj = ResourceManager.GetObject("ComplexObjectsClass1.Size", resourceCulture);
                 return ((int)(obj));
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Int32 similar to 42.
         /// </summary>
-        internal static int IntValue {
-            get {
+        internal static int IntValue
+        {
+            get
+            {
                 object obj = ResourceManager.GetObject("IntValue", resourceCulture);
                 return ((int)(obj));
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Point similar to {X=10,Y=20}.
         /// </summary>
-        internal static System.Drawing.Point PointValue {
-            get {
+        internal static System.Drawing.Point PointValue
+        {
+            get
+            {
                 object obj = ResourceManager.GetObject("PointValue", resourceCulture);
                 return ((System.Drawing.Point)(obj));
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Size similar to {Width=100, Height=200}.
         /// </summary>
-        internal static System.Drawing.Size SizeValue {
-            get {
+        internal static System.Drawing.Size SizeValue
+        {
+            get
+            {
                 object obj = ResourceManager.GetObject("SizeValue", resourceCulture);
                 return ((System.Drawing.Size)(obj));
             }

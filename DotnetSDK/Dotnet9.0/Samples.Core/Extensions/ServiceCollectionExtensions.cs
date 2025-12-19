@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
 using PreEmptive.Dotfuscator.Samples.Core.Abstractions;
-using System.Reflection;
 
 namespace PreEmptive.Dotfuscator.Samples.Core.Extensions
 {

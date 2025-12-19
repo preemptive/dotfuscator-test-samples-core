@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36623.8 d17.14
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11217.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.ConsoleApp", "Samples.ConsoleApp\Samples.ConsoleApp.csproj", "{409AA6E8-292C-45D4-B29B-1B497DEF0CB2}"
 EndProject
@@ -28,6 +28,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.WPF", "Samples.WPF\Samples.WPF.csproj", "{404DCB1C-650D-48B4-B58B-0DE44E022F27}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Android", "Samples.Android\Samples.Android.csproj", "{156DFED6-9A47-44AF-BF3F-4D374D15C20F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Maui.Lib", "Samples.Maui.Lib\Samples.Maui.Lib.csproj", "{0018BF9A-DC3D-4579-9F86-7904D058E6D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -143,6 +145,18 @@ Global
 		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Release|x86.ActiveCfg = Release|Any CPU
 		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Release|x86.Build.0 = Release|Any CPU
 		{156DFED6-9A47-44AF-BF3F-4D374D15C20F}.Release|x86.Deploy.0 = Release|Any CPU
+		{0018BF9A-DC3D-4579-9F86-7904D058E6D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0018BF9A-DC3D-4579-9F86-7904D058E6D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0018BF9A-DC3D-4579-9F86-7904D058E6D4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0018BF9A-DC3D-4579-9F86-7904D058E6D4}.Debug|x64.Build.0 = Debug|Any CPU
+		{0018BF9A-DC3D-4579-9F86-7904D058E6D4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0018BF9A-DC3D-4579-9F86-7904D058E6D4}.Debug|x86.Build.0 = Debug|Any CPU
+		{0018BF9A-DC3D-4579-9F86-7904D058E6D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0018BF9A-DC3D-4579-9F86-7904D058E6D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0018BF9A-DC3D-4579-9F86-7904D058E6D4}.Release|x64.ActiveCfg = Release|Any CPU
+		{0018BF9A-DC3D-4579-9F86-7904D058E6D4}.Release|x64.Build.0 = Release|Any CPU
+		{0018BF9A-DC3D-4579-9F86-7904D058E6D4}.Release|x86.ActiveCfg = Release|Any CPU
+		{0018BF9A-DC3D-4579-9F86-7904D058E6D4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -151,6 +165,7 @@ Global
 		{B3AB0383-9C66-40F6-82D4-56C8DC90BF18} = {3F7C5647-58A2-4A6F-AE3C-42B8E8313291}
 		{9B17A25C-DEDF-4BB3-97CB-F8E688F01F9B} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{6FDFF0FD-37BB-4FCD-BF0A-CE272AC36C17} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{0018BF9A-DC3D-4579-9F86-7904D058E6D4} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {495D77CF-AE4D-4847-9720-BCBBBCF68AA9}
