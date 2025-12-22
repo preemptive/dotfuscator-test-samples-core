@@ -23,6 +23,13 @@
         <option>transformxaml</option>
         <file dir="${configdir}\obj\Release\net9.0-ios\iossimulator-x64" name="PreEmptive.Dotfuscator.Samples.Maui.dll" />
       </inputassembly>
+      <inputassembly refid="03de5954-b26a-4b4a-ba82-ecb90d665402">
+        <option>honoroas</option>
+        <option>stripoa</option>
+        <option>library</option>
+        <option>transformxaml</option>
+        <file dir="${configdir}\..\Samples.Maui.Lib\bin\Release\net9.0-ios" name="Samples.Maui.Lib.dll" />
+      </inputassembly>
     </asmlist>
   </input>
   <output>
