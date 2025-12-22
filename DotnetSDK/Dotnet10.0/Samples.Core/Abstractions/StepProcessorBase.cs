@@ -1,6 +1,6 @@
-﻿using PreEmptive.Dotfuscator.Samples.Core.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using PreEmptive.Dotfuscator.Samples.Core.Models;
 
 namespace PreEmptive.Dotfuscator.Samples.Core.Abstractions
 {

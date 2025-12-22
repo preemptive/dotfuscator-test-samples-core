@@ -1,8 +1,8 @@
-﻿using PreEmptive.Dotfuscator.Samples.Core.Abstractions;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Reflection;
+using PreEmptive.Dotfuscator.Samples.Core.Abstractions;
 using PreEmptive.Dotfuscator.Samples.Core.Attributes;
 using PreEmptive.Dotfuscator.Samples.Core.Models;
-using System.ComponentModel.DataAnnotations;
-using System.Reflection;
 
 namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
 {

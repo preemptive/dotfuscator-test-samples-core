@@ -19,13 +19,20 @@
         <option>transformxaml</option>
         <file dir="${configdir}\obj\Release\net10.0-android" name="PreEmptive.Dotfuscator.Samples.Android.dll" />
       </inputassembly>
+      <inputassembly refid="c60eaa11-c5c9-4be9-a21f-0eaa208b20d3">
+        <option>honoroas</option>
+        <option>stripoa</option>
+        <option>library</option>
+        <option>transformxaml</option>
+        <file dir="${configdir}\..\Samples.Maui.Lib\bin\Release\net10.0-android" name="Samples.Maui.Lib.dll" />
+      </inputassembly>
     </asmlist>
   </input>
   <output>
     <file dir="${configdir}/Dotfuscated" />
   </output>
   <renaming>
-    <option>disable</option>
+    <!--<option>disable</option>-->
     <option>xmlserialization</option>
     <mapping>
       <mapoutput overwrite="true">

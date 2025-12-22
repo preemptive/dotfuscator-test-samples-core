@@ -12,11 +12,11 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
         public partial CSharp14StepProcessor();
 
         // Delegate examples
-        delegate bool TryParse<T>(string text, out T result);
-        delegate int RefModifierDelegate(ref int value);
-        delegate void InModifierDelegate(in int value);
-        delegate void RefReadonlyDelegate(ref readonly int value);
-        delegate void ScopedDelegate(scoped ref int value);
+        private delegate bool TryParse<T>(string text, out T result);
+        private delegate int RefModifierDelegate(ref int value);
+        private delegate void InModifierDelegate(in int value);
+        private delegate void RefReadonlyDelegate(ref readonly int value);
+        private delegate void ScopedDelegate(scoped ref int value);
     }
 
     // Helper classes for null-conditional assignment C#14 demo

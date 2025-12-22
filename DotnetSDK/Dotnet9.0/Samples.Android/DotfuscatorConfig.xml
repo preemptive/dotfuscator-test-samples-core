@@ -19,6 +19,13 @@
         <option>transformxaml</option>
         <file dir="${configdir}\obj\Release\net9.0-android" name="PreEmptive.Dotfuscator.Samples.Android.dll" />
       </inputassembly>
+      <inputassembly refid="d0f3fed0-e192-477f-bb6c-166dcc88c922">
+        <option>honoroas</option>
+        <option>stripoa</option>
+        <option>library</option>
+        <option>transformxaml</option>
+        <file dir="${configdir}\..\Samples.Maui.Lib\bin\Release\net9.0-android" name="Samples.Maui.Lib.dll" />
+      </inputassembly>
     </asmlist>
   </input>
   <output>

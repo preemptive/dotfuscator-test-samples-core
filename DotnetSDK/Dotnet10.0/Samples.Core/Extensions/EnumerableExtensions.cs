@@ -1,5 +1,5 @@
 ﻿
-namespace  PreEmptive.Dotfuscator.Samples.Core.Extensions
+namespace PreEmptive.Dotfuscator.Samples.Core.Extensions
 {
     public static class EnumerableExtensions
     {

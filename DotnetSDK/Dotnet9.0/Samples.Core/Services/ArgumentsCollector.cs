@@ -1,5 +1,5 @@
-﻿using PreEmptive.Dotfuscator.Samples.Core.Abstractions;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
+using PreEmptive.Dotfuscator.Samples.Core.Abstractions;
 
 namespace PreEmptive.Dotfuscator.Samples.Core.Services
 {
