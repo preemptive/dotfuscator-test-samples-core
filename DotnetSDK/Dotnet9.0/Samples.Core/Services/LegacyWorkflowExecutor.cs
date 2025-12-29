@@ -3,9 +3,6 @@ using PreEmptive.Dotfuscator.Samples.Core.Models;
 
 namespace PreEmptive.Dotfuscator.Samples.Core.Services
 {
-    /// <summary>
-    /// DO NOT REMOVE. DO NOT REFERENCE.
-    /// </summary>
     public class LegacyWorkflowExecutor : IWorkflowExecutor
     {
         public async Task ExecuteAsync(IEnumerable<StepContext> steps, CancellationToken cancellationToken = default)

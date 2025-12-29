@@ -40,9 +40,6 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Models
             }
         }
 
-        /// <summary>
-        /// DO NOT REMOVE. DO NOT REFERENCE.
-        /// </summary>
         /// <returns></returns>
         private bool CanPrepare()
         {

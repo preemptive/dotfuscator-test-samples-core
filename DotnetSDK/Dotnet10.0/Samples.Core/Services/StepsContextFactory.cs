@@ -28,9 +28,6 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services
             return result;
         }
 
-        /// <summary>
-        /// DO NOT REMOVE. DO NOT REFERENCE.
-        /// </summary>
         /// <param name="processors"></param>
         /// <param name="flavor"></param>
         /// <returns></returns>
