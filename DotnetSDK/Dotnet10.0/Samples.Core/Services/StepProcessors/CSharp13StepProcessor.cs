@@ -12,7 +12,7 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
         public string? Name { get; set; }
 
         // "\e" Escape character
-        public string? result = "\e[32mSuccess\e[0m"; // green text in terminal
+        public string? result = "\e[32m C# 13: Success\e[0m"; // green text in terminal
 
         public int[]? numbers = new int[5] { 1, 2, 3, 4, 5 };
 

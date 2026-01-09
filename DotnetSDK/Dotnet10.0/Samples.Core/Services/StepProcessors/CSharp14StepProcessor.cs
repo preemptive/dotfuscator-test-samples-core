@@ -28,8 +28,8 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
         // C# 14 Partial Members - Static Constructor demo
         private static int count;
         static CSharp14StepProcessor() => count = 10;
-
-        protected override async Task<StepResult> ExecuteInternalAsync(CancellationToken cancellationToken = default)
+		public string? result = "\e[32m C# 14: Success\e[0m"; // green text in terminal
+		protected override async Task<StepResult> ExecuteInternalAsync(CancellationToken cancellationToken = default)
         {
 
             // C# 14 extension members feature demo
@@ -184,8 +184,8 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
             sb.AppendLine($"Lambda with ref returning result: doubled = {doubled}");
 
             sb.AppendLine($"----------C#14 Feature - Simple lambda parameters with modifiers scoped, ref, in, out, or ref readonly tested successfully----------\n");
-
-            return StepResult.Success(message: $"\nResult : \n{sb.ToString()}");
+            sb.Append(result + "\n");
+			return StepResult.Success(message: $"\nResult : \n{sb.ToString()}");
             //return StepResult.Success(message: $"Name = \"{Name}\"");
         }
     }
