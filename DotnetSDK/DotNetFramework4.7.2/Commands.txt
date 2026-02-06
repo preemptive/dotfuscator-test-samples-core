@@ -1,0 +1,3 @@
+powershell -ExecutionPolicy Bypass -File .\lib-package.ps1 -version 4.7.2
+
+nuget install PreEmptive.Dotfuscator.Samples.Core.Lib -Source "C:\Users\Admin\Downloads\DotNetFramework4.7.2\Samples\.packages" -Version 4.7.2 -OutputDirectory "C:\Users\Admin\Downloads\DotNetFramework4.7.2\Samples\.packages\NewFolder"
