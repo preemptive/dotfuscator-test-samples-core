@@ -1,0 +1,303 @@
+Changes Summary (C# 7.3, .NET Framework 4.7.2)
+
+General Constraints:
+- C# 7.3 does not support: records, file-scoped namespaces, global using directives, nullable reference types (string?, object?), target-typed new(), and null-coalescing assignment (??=).
+- Classic, non-SDK .csproj projects do not honor ImplicitUsings; ensure each file includes required using directives.
+
+1) File: Samples.Core\Models\StepResult.cs
+Analysis:
+- Used C# 9 features not available in C# 7.3:
+  - 'record' type
+  - target-typed 'new' expressions
+- Used C# 8 nullable reference annotations (string?, object?), not enabled in this project.
+Fix:
+- Converted 'record' to 'sealed class'.
+- Replaced target-typed 'new' with explicit 'new StepResult(...)'.
+- Removed nullable reference annotations and used regular reference types (allowing null by convention).
+- Replaced 'default' with 'null' for object parameter.
+What changed and why:
+- Ensures compatibility with C# 7.3 by avoiding modern language features.
+- Explicit constructor calls and non-nullable annotations compile under the current target.
+
+2) File: Samples.Core\Models\StepContext.cs
+Analysis:
+- Original used 'record' and missing usings; C# 7.3 requires class and explicit usings.
+- Default literal for CancellationToken acceptable but explicit form improves compatibility.
+- Requires System.Reflection due to Assembly.GetExecutingAssembly() usage.
+Fix:
+- Converted to 'sealed class' with get-only properties set via constructor.
+- Added missing using directives: System, System.Linq, System.Threading, System.Threading.Tasks, System.Reflection.
+- Changed 'default' to 'default(CancellationToken)' in ExecuteAsync.
+What changed and why:
+- Aligns with C# 7.3 feature set and resolves missing type references.
+- Explicit default value avoids potential compiler issues.
+
+3) File: Samples.Core\Abstractions\IArgumentsCollector.cs
+Analysis:
+- Missing 'using System.Collections.Generic;' for Dictionary.
+- Parameter 'string?' uses nullable reference types (C# 8), incompatible with C# 7.3.
+Fix:
+- Added 'using System.Collections.Generic;'
+- Replaced 'string?' with 'string'.
+What changed and why:
+- Provides necessary type import for Dictionary.
+- Removes nullable reference type syntax to match C# 7.3; nullability handled by convention in implementations.
+
+4) File: Samples.Core\Abstractions\IStepProcessor.cs
+Analysis:
+- Missing 'using System.Threading;' and 'using System.Threading.Tasks;' for CancellationToken and Task.
+- Using 'default' for CancellationToken is permissible, but 'default(CancellationToken)' is clearer for C# 7.3.
+Fix:
+- Added required using directives.
+- Changed default parameter to 'default(CancellationToken)'.
+What changed and why:
+- Resolves missing type references and ensures clear, compatible default parameter usage with C# 7.3.
+
+5) File: Samples.Core\Models\StepMetadata.cs
+Analysis:
+- Uses ArgumentException but lacks 'using System;'
+Fix:
+- Added 'using System;'
+What changed and why:
+- Ensures the compiler finds ArgumentException without fully qualified names.
+
+6) File: Samples.Core.Lib\ServiceManager.cs
+Analysis:
+- Uses file-scoped namespace (namespace ...;) which requires C# 10.
+- Uses nullable reference types (IServiceProvider?).
+- Uses target-typed new() and null-coalescing assignment (??=), which require newer language versions.
+Fix:
+- Converted to block-scoped namespace.
+- Removed nullable reference annotations and used conventional null checks.
+- Replaced 'new()' with 'new object()'.
+- Replaced '??=' with explicit null checks and assignments inside a lock.
+- Added 'using System;' for IServiceProvider.
+What changed and why:
+- Brings the file into C# 7.3 compatibility by avoiding modern syntax and features while preserving behavior.
+
+7) File: Samples.Core.Lib\ConfigurationManager.cs
+Analysis:
+- Uses file-scoped namespace (C# 10).
+- Uses nullable reference types (IConfiguration?, IConfigurationBuilder?).
+- Uses null-coalescing assignment (??=).
+Fix:
+- Converted to block-scoped namespace.
+- Removed nullable reference annotations; used conventional null checks and locking.
+- Replaced '??=' with explicit assignments within lock blocks.
+- Added 'using System;' for exceptions.
+What changed and why:
+- Ensures compatibility with C# 7.3 and retains thread-safe lazy initialization semantics.
+
+8) File: Samples.Core\GlobalUsings.cs
+Analysis:
+- Uses 'global using', which is a C# 10 feature not supported in C# 7.3.
+Fix:
+- Removed global using.
+- Add standard 'using System.IO;' in files that require it.
+What changed and why:
+- Prevents compile error; uses conventional imports per file under C# 7.3.
+
+9) File: Samples.Core\Abstractions\IWorkflowExecutor.cs
+Analysis:
+- Missing using directives for IEnumerable, Task, and CancellationToken.
+- Use of 'default' for CancellationToken can be made explicit for clarity.
+Fix:
+- Added 'using System.Collections.Generic;', 'using System.Threading;', and 'using System.Threading.Tasks;'.
+- Changed default parameter to 'default(CancellationToken)'.
+What changed and why:
+- Resolves missing type references and aligns with explicit default usage under C# 7.3.
+
+10) File: Samples.Core\Abstractions\StepProcessorBase.cs
+Analysis:
+- Uses nullable reference types (string? and null-forgiving operator '!'), not supported in C# 7.3.
+- Missing using directives for Task, CancellationToken, and collections.
+Fix:
+- Replace 'message!' with 'message' after validating non-null usage path.
+- Change method signature to use 'out string message' (non-nullable) and return null via convention where appropriate, or avoid nullable annotations entirely.
+- Add missing using directives: System.Collections.Generic, System.ComponentModel.DataAnnotations, System.Linq, System.Threading, System.Threading.Tasks.
+Example compatible adjustments:
+- Ensure ExecuteAsync returns 'Task.FromResult(StepResult.Failure(message))' with 'message' guaranteed non-null when validation fails.
+What changed and why:
+- Removes nullable-only syntax and operators to compile under C# 7.3, and ensures required namespace imports are present.
+
+11) File: Samples.Core\Configurations\Settings.cs
+Analysis:
+- Used the null-forgiving operator (`!`) in the property initializer (`= null!;`), which is not supported in C# 7.3.
+- Property `Workflow` was not guaranteed to be initialized, risking a runtime `NullReferenceException`.
+Fix:
+- Removed the null-forgiving operator.
+- Added a constructor to initialize `Workflow` with a new `WorkflowSettings` instance.
+What changed and why:
+- Ensures C# 7.3 compatibility by removing unsupported syntax.
+- Guarantees `Workflow` is always initialized, preventing null reference issues at runtime.
+
+12) File: Samples.Core\Attributes\InputArgumentAttribute.cs
+Analysis:
+- Missing using directive for System, which is required for Attribute and AttributeUsageAttribute.
+Fix:
+- Added 'using System;' at the top of the file.
+What changed and why:
+- Ensures the compiler can resolve Attribute and AttributeUsageAttribute types, making the file compatible with C# 7.3.
+
+13) File: Samples.Core\Configurations\WorkflowStepSettings.cs
+Analysis:
+- Used the null-forgiving operator (`!`) in property initializers, which is not supported in C# 7.3.
+- Used target-typed `new()` for the `Arguments` property, which is not supported in C# 7.3.
+- Missing `using System.Collections.Generic;` for `Dictionary<string, object>`.
+Fix:
+- Removed the null-forgiving operator and initialized properties in the constructor.
+- Replaced target-typed `new()` with `new Dictionary<string, object>()`.
+- Added the required `using` directive.
+What changed and why:
+- Ensures C# 7.3 compatibility by removing unsupported syntax.
+- Guarantees all properties are initialized, preventing null reference issues at runtime.
+
+14) File: Samples.Core\Extensions\ServiceCollectionExtensions.cs
+Analysis:
+- Missing using directive for System.Linq, required for LINQ extension methods like .Where().
+- Incorrect type comparison: used x.GetType() != typeof(IStepProcessor), which is invalid since x is already a Type.
+Fix:
+- Added 'using System.Linq;'.
+- Changed type comparison to x != typeof(IStepProcessor).
+What changed and why:
+- Ensures LINQ methods are available and the correct type exclusion logic is used, making the code compatible and correct for C# 7.3.
+
+15) File: Samples.Core\Extensions\ArgumentsCollectorExtensions.cs
+Analysis:
+- Used ArgumentNullException.ThrowIfNull, which is not available in .NET Framework 4.7.2.
+Fix:
+- Replaced ArgumentNullException.ThrowIfNull(collector) with a manual null check and throw.
+What changed and why:
+- Ensures compatibility with C# 7.3 and .NET Framework 4.7.2 by using a supported null check pattern.
+
+16) File: Samples.Core\Services\ArgumentsCollector.cs
+Analysis:
+- Used Lazy<ArgumentsCollector> without a using directive for System, which is required for Lazy<T>.
+- Previously used C# 9/10 features (nullable reference types, target-typed new()) in earlier versions, but now uses only C# 7.3-compatible constructs.
+Fix:
+- Added 'using System;' to resolve Lazy<T>.
+- Ensured all types and initializations are compatible with C# 7.3 and .NET Framework 4.7.2.
+What changed and why:
+- Adding the using directive allows the compiler to resolve Lazy<T>, fixing the error and ensuring compatibility.
+
+17) File: Samples.Core\Services\ConsoleOutputStepProcessor.cs
+Analysis:
+- Used ArgumentNullException.ThrowIfNull, which is not available in .NET Framework 4.7.2.
+- Used pattern matching 'is not null', which is not available in C# 7.3.
+Fix:
+- Replaced ArgumentNullException.ThrowIfNull with a manual null check and throw.
+- Replaced 'is not null' with '!= null'.
+What changed and why:
+- Ensures compatibility with C# 7.3 and .NET Framework 4.7.2 by using supported null check and comparison patterns.
+
+18) File: Samples.Core\Services\LegacyWorkflowExecutor.cs
+Analysis:
+- Missing using directives for System, System.Collections.Generic, System.Threading, and System.Threading.Tasks.
+- Used default literal for CancellationToken, which is valid, but default(CancellationToken) is clearer for C# 7.3.
+Fix:
+- Added required using directives.
+- Used default(CancellationToken) for explicit compatibility.
+What changed and why:
+- Ensures all types are resolved and the method signature is clear and compatible.
+
+19) File: Samples.Core\Services\MessageCollectorStepProcessor.cs
+Analysis:
+- Used ArgumentNullException.ThrowIfNull, which is not available in .NET Framework 4.7.2.
+- Used pattern matching 'is not null', which is not available in C# 7.3.
+- Used target-typed new() for StringBuilder, which is not available in C# 7.3.
+Fix:
+- Replaced ArgumentNullException.ThrowIfNull with a manual null check and throw.
+- Replaced 'is not null' with '!= null'.
+- Replaced target-typed new() with new StringBuilder().
+What changed and why:
+- Ensures compatibility with C# 7.3 and .NET Framework 4.7.2 by using supported syntax.
+
+20) File: Samples.Core\Services\StepsContextFactory.cs
+Analysis:
+- Missing using directives for System and System.Collections.Generic.
+- Potential for NullReferenceException if workflow or workflow.Steps is not initialized.
+Fix:
+- Added required using directives.
+- Added null checks for workflow and workflow.Steps.
+What changed and why:
+- Ensures all types are resolved and prevents possible runtime exceptions.
+
+21) File: Samples.Core\Services\WorkflowExecutor.cs
+Analysis:
+- Used ArgumentNullException.ThrowIfNull(steps), which is not available in .NET Framework 4.7.2 or C# 7.3.
+Fix:
+- Replaced ArgumentNullException.ThrowIfNull(steps) with a manual null check and throw.
+What changed and why:
+- Ensures compatibility with C# 7.3 and .NET Framework 4.7.2 by using a supported null check pattern.
+
+22) File: Samples.Core\Services\StepProcessors\ReadEmbeddedResourceMetdataStepProcessor.cs
+Analysis:
+- Used 'using var' for resource management, which is not available in C# 7.3.
+Fix:
+- Replaced 'using var' with a traditional 'using' statement block.
+What changed and why:
+- Ensures compatibility with C# 7.3 by using supported resource management syntax.
+
+23) File: Samples.Core\Services\StepProcessors\ReadFromEmbeddedResourceStepProcessor.cs
+Analysis:
+- Used nullable reference type (string?) and null-forgiving operator (!), which are not supported in C# 7.3.
+- Used 'using var' for resource management, which is not available in C# 7.3.
+- Missing using directive for System.IO.
+Fix:
+- Changed 'string?' to 'string' and removed null-forgiving operator.
+- Replaced 'using var' with a traditional 'using' statement block.
+- Added 'using System.IO;'
+What changed and why:
+- Ensures compatibility with C# 7.3 and prevents runtime errors by using supported syntax and proper null handling.
+
+24) File: Samples.Core\Services\StepProcessors\ResourceSatelliteStepProcessor.cs
+Analysis:
+- Used file-scoped namespace, which is not supported in C# 7.3.
+- Used nullable reference type (string?) and null-forgiving operator (!), which are not supported in C# 7.3.
+- Missing using directives for threading.
+Fix:
+- Converted to block-scoped namespace.
+- Changed 'string?' to 'string' and removed null-forgiving operator.
+- Added missing using directives for threading.
+- Added null check for ResourceName.
+What changed and why:
+- Ensures compatibility with C# 7.3 and prevents runtime errors by using supported syntax and proper null handling.
+
+25) File: Samples.Core\Services\StepProcessors\WriteToFileStepProcessor.cs
+Analysis:
+- Used nullable reference type (string?) for OutputPath, which is not supported in C# 7.3.
+- Used File.WriteAllTextAsync, which is not available in .NET Framework 4.7.2.
+- Missing using directives for threading and tasks.
+Fix:
+- Changed 'string?' to 'string' for OutputPath.
+- Replaced File.WriteAllTextAsync with File.WriteAllText.
+- Added missing using directives for threading and tasks.
+What changed and why:
+- Ensures compatibility with C# 7.3 and .NET Framework 4.7.2 by using supported syntax and synchronous file writing.
+
+Files changed:
+- Samples.Core\Models\StepResult.cs
+- Samples.Core\Models\StepContext.cs
+- Samples.Core\Abstractions\IArgumentsCollector.cs
+- Samples.Core\Abstractions\IStepProcessor.cs
+- Samples.Core\Models\StepMetadata.cs
+- Samples.Core.Lib\ServiceManager.cs
+- Samples.Core.Lib\ConfigurationManager.cs
+- Samples.Core\GlobalUsings.cs
+- Samples.Core\Abstractions\IWorkflowExecutor.cs
+- Samples.Core\Abstractions\StepProcessorBase.cs
+- Samples.Core\Configurations\Settings.cs
+- Samples.Core\Attributes\InputArgumentAttribute.cs
+- Samples.Core\Configurations\WorkflowStepSettings.cs
+- Samples.Core\Extensions\ServiceCollectionExtensions.cs
+- Samples.Core\Extensions\ArgumentsCollectorExtensions.cs
+- Samples.Core\Services\ArgumentsCollector.cs
+- Samples.Core\Services\ConsoleOutputStepProcessor.cs
+- Samples.Core\Services\LegacyWorkflowExecutor.cs
+- Samples.Core\Services\MessageCollectorStepProcessor.cs
+- Samples.Core\Services\StepsContextFactory.cs
+- Samples.Core\Services\WorkflowExecutor.cs
+- Samples.Core\Services\StepProcessors\ReadEmbeddedResourceMetdataStepProcessor.cs
+- Samples.Core\Services\StepProcessors\ReadFromEmbeddedResourceStepProcessor.cs
+- Samples.Core\Services\StepProcessors\ResourceSatelliteStepProcessor.cs
+- Samples.Core\Services\StepProcessors\WriteToFileStepProcessor.cs
