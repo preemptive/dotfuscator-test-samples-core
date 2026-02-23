@@ -1,6 +1,3 @@
-# DotnetStandard (NetStandard + Net10)
-
-This solution mirrors the Dotnet6.0 sample-style structure, but keeps the library minimal.
 
 ## Projects
 
