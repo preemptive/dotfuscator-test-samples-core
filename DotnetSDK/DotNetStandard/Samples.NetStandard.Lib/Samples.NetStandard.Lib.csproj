@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(LibraryFramework)</TargetFramework>
+
+    <AssemblyName>$(BaseNamespace).Samples.NetStandard.Lib</AssemblyName>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+
+    <!-- NuGet package metadata -->
+    <PackageId>PreEmptive.Dotfuscator.Samples.NetStandard.Lib</PackageId>
+    <!-- Default version; lib-package.ps1 overrides via /p:Version=... -->
+    <Version>1.0.0</Version>
+    <Authors>PreEmptive Solutions</Authors>
+    <Company>PreEmptive Solutions</Company>
+    <Description>Lightweight .NET Standard helper library for samples.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Keep the library lightweight: no external dependencies by default -->
+  </ItemGroup>
+
+</Project>

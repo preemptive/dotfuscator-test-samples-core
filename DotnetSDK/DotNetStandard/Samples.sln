@@ -1,0 +1,37 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11505.172 d18.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.ConsoleApp", "Samples.ConsoleApp\Samples.ConsoleApp.csproj", "{6FAB9C5F-BABE-4A0A-AA4E-4CD8DBCAEA24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.NetStandard.Lib", "Samples.NetStandard.Lib\Samples.NetStandard.Lib.csproj", "{70D60CD8-9D41-4517-8203-2D58F8E063BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".common", ".common", "{80CD60F1-063F-4E0C-9AA3-1C1BBD941A89}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		lib-package.ps1 = lib-package.ps1
+		NuGet.config = NuGet.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FAB9C5F-BABE-4A0A-AA4E-4CD8DBCAEA24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FAB9C5F-BABE-4A0A-AA4E-4CD8DBCAEA24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FAB9C5F-BABE-4A0A-AA4E-4CD8DBCAEA24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FAB9C5F-BABE-4A0A-AA4E-4CD8DBCAEA24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70D60CD8-9D41-4517-8203-2D58F8E063BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70D60CD8-9D41-4517-8203-2D58F8E063BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70D60CD8-9D41-4517-8203-2D58F8E063BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70D60CD8-9D41-4517-8203-2D58F8E063BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{70D60CD8-9D41-4517-8203-2D58F8E063BE} = {80CD60F1-063F-4E0C-9AA3-1C1BBD941A89}
+	EndGlobalSection
+EndGlobal
