@@ -435,3 +435,4 @@ FodyWeavers.xsd
 
 # Add local packages
 !**/.packages/**/*.nupkg
+**/global.json
