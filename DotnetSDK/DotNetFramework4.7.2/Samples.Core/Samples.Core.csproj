@@ -46,6 +46,7 @@
     <Compile Include="Abstractions\IStepProcessor.cs" />
     <Compile Include="Abstractions\IStepResultProcessor.cs" />
     <Compile Include="Abstractions\IWorkflowExecutor.cs" />
+    <Compile Include="Abstractions\RedundantNestedInterfaces.cs" />
     <Compile Include="Abstractions\StepProcessorBase.cs" />
     <Compile Include="Attributes\InputArgumentAttribute.cs" />
     <Compile Include="Configurations\Settings.cs" />
@@ -64,9 +65,11 @@
     <Compile Include="Services\ConsoleOutputStepProcessor.cs" />
     <Compile Include="Services\LegacyWorkflowExecutor.cs" />
     <Compile Include="Services\MessageCollectorStepProcessor.cs" />
+    <Compile Include="Services\Sample2InterfaceImpl.cs" />
     <Compile Include="Services\StepProcessors\ReadEmbeddedResourceMetdataStepProcessor.cs" />
     <Compile Include="Services\StepProcessors\ReadFromEmbeddedResourceStepProcessor.cs" />
     <Compile Include="Services\StepProcessors\ResourceSatelliteStepProcessor.cs" />
+    <Compile Include="Services\StepProcessors\RedundantInterfaceRemovalStepProcessor.cs" />
     <Compile Include="Services\StepProcessors\WriteToFileStepProcessor.cs" />
     <Compile Include="Services\StepsContextFactory.cs" />
     <Compile Include="Services\WorkflowExecutor.cs" />

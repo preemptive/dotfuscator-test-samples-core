@@ -81,13 +81,13 @@ git clone https://github.com/preemptive/dotfuscator-test-samples-core.git
 Note: Some of the environment variables may already been set up in Windows after Dotfuscator installation.
 
 ```
-DOTFUSCATOR_HOME - The location of dotfuscaotr installer
+DOTFUSCATOR_HOME - The location of dotfuscator installer
 Windows: typically found at C:\Program Files (x86)\PreEmptive Protection Dotfuscator Professional (version)\
 Linux/Mac: typically found at {{nugetInstalledDir}}/PreEmptive.Protection.Dotfuscator.Pro/tools/programdir/netcore
 
 DOTFUSCATOR_MSBUILDPATH - The location of dotfuscator msbuild
 Windows: typically found at C:\Program Files (x86)\MSBuild\PreEmptive\Dotfuscator\7
-Linux/Mac: typically found at  {{nugetInstalledDir}}/PreEmptive.Protection.Dotfuscator.Pro/tools/msbuilddir
+Linux/Mac: typically found at {{nugetInstalledDir}}/PreEmptive.Protection.Dotfuscator.Pro/tools/msbuilddir
 
 export DOTFUSCATOR_LICENSE=xxxxxxx:user@domain.com
 ```
@@ -102,7 +102,8 @@ This command will restore any necessary NuGet packages and compile all projects 
 
 ### Obfuscating and running a project using CLI
 1. Go to the root directory of the target project
-2. dotnet build -c  {projectName}
+2. dotnet build -c Debug {{projectName}}
+	- Can also build in **Release** mode, but in this case it makes sense to set **DotfuscatorEnabled** from the CSPROJ to false, to avoid obfuscating multiple times
 3. dotfuscator.exe DotfuscatorConfig.xml -v
 4. dotnet run
 
