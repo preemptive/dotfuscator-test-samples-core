@@ -21,8 +21,8 @@
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-                <PublishAot>true</PublishAot>
-
+      <PublishAot>true</PublishAot>
+      <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
 		<!-- Display name -->
 		<ApplicationTitle>Samples.Maui</ApplicationTitle>
 
@@ -99,6 +99,7 @@
 
 		<!-- Enable Dotfuscator for Release builds. -->
 		<DotfuscatorEnabled Condition="'$(Configuration)' == 'Release'">true</DotfuscatorEnabled>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
 
 	</PropertyGroup>
 

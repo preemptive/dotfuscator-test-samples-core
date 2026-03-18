@@ -71,6 +71,9 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
 
             message.Append(staticMessage.ToString() + "\n");
 
+            message.Append("----\"Unsafe Keyword usage\"---\n");
+            ShowUnsafeVariables(message);
+
             message.Append("------\"New Escape Character\" implementation-----\n");
             message.Append(result);
             return StepResult.Success(message: $"\nResult : \n{message}\n");
@@ -86,6 +89,19 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
                     message.Append(item + " ");
                 }
                 message.Append("\n");
+            }
+        }
+
+        public void ShowUnsafeVariables(StringBuilder message)
+        {
+            unsafe
+            {
+                int unsafeVar = 15;
+                int* ptr = &unsafeVar;
+
+                message.Append($"---C# 13:Unsafe Variable value is, {unsafeVar}\n");
+                message.Append($"---C# 13:Pointer to unsafe variable in memory is: {ptr->ToString()}\n");
+                message.Append($"---C# 13:Address in pointer to unsafe variable is: {(int)ptr}\n");
             }
         }
 

@@ -4,7 +4,8 @@
 		<TargetFramework>$(FrameworkVersion)</TargetFramework>
 		<AssemblyName>$(BaseNamespace).Samples.ConsoleApp</AssemblyName>
 		<RootNamespace>$(AssemblyName)</RootNamespace>
-                <PublishAot>true</PublishAot>
+      <PublishAot>true</PublishAot>
+      <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
 	</PropertyGroup>
 	
 	<Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
