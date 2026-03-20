@@ -99,7 +99,6 @@
 
 		<!-- Enable Dotfuscator for Release builds. -->
 		<DotfuscatorEnabled Condition="'$(Configuration)' == 'Release'">true</DotfuscatorEnabled>
-		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
 
 	</PropertyGroup>
 
