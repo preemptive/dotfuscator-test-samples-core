@@ -10,7 +10,7 @@
 
 		<ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
 		<MicrosoftExtensionsVersion>10.0.0</MicrosoftExtensionsVersion>
-                <PublishAot>true</PublishAot>
+      <PublishAot>true</PublishAot>
 
     </PropertyGroup>
 	<Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />

@@ -6,6 +6,7 @@
 		<Nullable>enable</Nullable>
 		<AssemblyName>$(BaseNamespace).Samples.Core</AssemblyName>
 		<RootNamespace>$(AssemblyName)</RootNamespace>
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 
 	<ItemGroup>

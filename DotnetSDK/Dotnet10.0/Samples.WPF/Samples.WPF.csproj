@@ -9,7 +9,8 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseWPF>true</UseWPF>
-	</PropertyGroup>
+      <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+   </PropertyGroup>
 
 	<Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
 	<Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
