@@ -25,8 +25,41 @@
     <file dir="${configdir}/Dotfuscated" />
   </output>
   <renaming>
-    <option>disable</option>
     <option>xmlserialization</option>
+	  <excludelist>
+		  <type name="PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources">
+			  <method name="get_BoolValue" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.get_BoolValue" signature="bool()" />
+			  <method name="get_ComplexObjectsClass1_Name" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.get_ComplexObjectsClass1_Name" signature="string()" />
+			  <method name="get_ComplexObjectsClass1_Size" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.get_ComplexObjectsClass1_Size" signature="int32()" />
+			  <method name="get_Culture" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.get_Culture" signature="System.Globalization.CultureInfo()" />
+			  <method name="set_Culture" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.set_Culture" signature="void(System.Globalization.CultureInfo)" />
+			  <method name="get_IntValue" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.get_IntValue" signature="int32()" />
+			  <method name="get_PointValue" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.get_PointValue" signature="System.Drawing.Point()" />
+			  <method name="get_ResourceManager" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.get_ResourceManager" signature="System.Resources.ResourceManager()" />
+			  <method name="get_SizeValue" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.get_SizeValue" signature="System.Drawing.Size()" />
+			  <field name="resourceCulture" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.resourceCulture" signature="System.Globalization.CultureInfo" />
+			  <field name="resourceMan" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.resourceMan" signature="System.Resources.ResourceManager" />
+			  <propertymember name="BoolValue" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.BoolValue" />
+			  <propertymember name="ComplexObjectsClass1_Name" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.ComplexObjectsClass1_Name" />
+			  <propertymember name="ComplexObjectsClass1_Size" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.ComplexObjectsClass1_Size" />
+			  <propertymember name="Culture" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.Culture" />
+			  <propertymember name="IntValue" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.IntValue" />
+			  <propertymember name="PointValue" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.PointValue" />
+			  <propertymember name="ResourceManager" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.ResourceManager" />
+			  <propertymember name="SizeValue" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.ComplexObjectResources.SizeValue" />
+		  </type>
+		  <type name="PreEmptive.Dotfuscator.Samples.Core.Resources.Messages" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.Messages">
+			  <method name="get_Culture" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.Messages.get_Culture" signature="System.Globalization.CultureInfo()" />
+			  <method name="set_Culture" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.Messages.set_Culture" signature="void(System.Globalization.CultureInfo)" />
+			  <method name="get_Greeting" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.Messages.get_Greeting" signature="string()" />
+			  <method name="get_ResourceManager" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.Messages.get_ResourceManager" signature="System.Resources.ResourceManager()" />
+			  <field name="resourceCulture" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.Messages.resourceCulture" signature="System.Globalization.CultureInfo" />
+			  <field name="resourceMan" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.Messages.resourceMan" signature="System.Resources.ResourceManager" />
+			  <propertymember name="Culture" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.Messages.Culture" />
+			  <propertymember name="Greeting" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.Messages.Greeting" />
+			  <propertymember name="ResourceManager" fullname="PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.ConsoleApp.dll.PreEmptive.Dotfuscator.Samples.Core.Resources.Messages.ResourceManager" />
+		  </type>
+	  </excludelist>
     <mapping>
       <mapoutput overwrite="true">
         <file dir="${configdir}\DotfuscatorReports\${configuration}\${platform}" name="Renaming.xml" />
