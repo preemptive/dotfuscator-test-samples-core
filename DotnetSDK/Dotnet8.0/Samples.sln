@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Maui", "Samples.Mau
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Android", "Samples.Android\Samples.Android.csproj", "{D7F50E23-0CB4-4639-A42A-D73EB566961B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Blazor", "Samples.Blazor\Samples.Blazor.csproj", "{C1BB98D4-D1CC-749E-05B7-2CCFC2B1FC8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -148,6 +150,18 @@ Global
 		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Release|x86.ActiveCfg = Release|Any CPU
 		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Release|x86.Build.0 = Release|Any CPU
 		{D7F50E23-0CB4-4639-A42A-D73EB566961B}.Release|x86.Deploy.0 = Release|Any CPU
+		{C1BB98D4-D1CC-749E-05B7-2CCFC2B1FC8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1BB98D4-D1CC-749E-05B7-2CCFC2B1FC8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1BB98D4-D1CC-749E-05B7-2CCFC2B1FC8A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C1BB98D4-D1CC-749E-05B7-2CCFC2B1FC8A}.Debug|x64.Build.0 = Debug|Any CPU
+		{C1BB98D4-D1CC-749E-05B7-2CCFC2B1FC8A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C1BB98D4-D1CC-749E-05B7-2CCFC2B1FC8A}.Debug|x86.Build.0 = Debug|Any CPU
+		{C1BB98D4-D1CC-749E-05B7-2CCFC2B1FC8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1BB98D4-D1CC-749E-05B7-2CCFC2B1FC8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1BB98D4-D1CC-749E-05B7-2CCFC2B1FC8A}.Release|x64.ActiveCfg = Release|Any CPU
+		{C1BB98D4-D1CC-749E-05B7-2CCFC2B1FC8A}.Release|x64.Build.0 = Release|Any CPU
+		{C1BB98D4-D1CC-749E-05B7-2CCFC2B1FC8A}.Release|x86.ActiveCfg = Release|Any CPU
+		{C1BB98D4-D1CC-749E-05B7-2CCFC2B1FC8A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
