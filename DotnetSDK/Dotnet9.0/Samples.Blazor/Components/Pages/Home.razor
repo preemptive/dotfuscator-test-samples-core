@@ -1,0 +1,111 @@
+@page "/"
+@rendermode InteractiveServer
+
+@using Microsoft.Extensions.DependencyInjection
+@using PreEmptive.Dotfuscator.Samples.Core.Abstractions
+@using PreEmptive.Dotfuscator.Samples.Core.Lib
+@using PreEmptive.Dotfuscator.Samples.Core.Services
+
+@inject WorkflowService WorkflowService
+@inject HttpClient Http
+
+<PageTitle>Dotfuscator Blazor Sample</PageTitle>
+
+<h1>Dotfuscator Blazor Sample</h1>
+
+<section class="mb-4">
+    <h2>Step Processors</h2>
+    <button class="btn btn-primary" @onclick="RunWorkflowAsync" disabled="@_isRunning">
+        @(_isRunning ? "Running..." : "Run Processors")
+    </button>
+
+    @if (_output is not null)
+    {
+        <pre class="mt-3 p-3 border rounded bg-light">@_output</pre>
+    }
+</section>
+
+<hr />
+
+<section>
+    <h2>Public API</h2>
+    <p class="text-muted">Fetches data from <strong>JSONPlaceholder</strong> and <strong>Official-Joke-API</strong> to demonstrate async/await in Blazor.</p>
+    <button class="btn btn-secondary" @onclick="FetchDataAsync" disabled="@_isFetching">
+        @(_isFetching ? "Fetching..." : "Fetch Data")
+    </button>
+
+    @if (_apiError is not null)
+    {
+        <p class="text-danger mt-2">@_apiError</p>
+    }
+    else if (_post is not null && _getJoke is not null)
+    {
+        <br />
+        <br />
+        <h3>POST</h3>
+        <div class="mt-3 p-3 border rounded">
+            <p><strong>ID:</strong> @_post.Id</p>
+            <p><strong>Title:</strong> @_post.Title</p>
+            <p><strong>Body:</strong> @_post.Body</p>
+        </div>
+        <br />
+        <h3>GET</h3>
+        <div class="mt-3 p-3 border rounded">
+            <p><strong>Type:</strong> @_getJoke.type</p>
+            <p><strong>Question:</strong> @_getJoke.setup</p>
+            <p><strong>Punchline:</strong> @_getJoke.punchline</p>
+        </div>
+    }
+    <br />
+    <br />
+</section>
+
+@code {
+    private bool _isRunning;
+    private string? _output;
+
+    private bool _isFetching;
+    private Post? _post;
+    private Get? _getJoke;
+    private string? _apiError;
+
+    private async Task RunWorkflowAsync()
+    {
+        _isRunning = true;
+        _output = null;
+
+        var steps = StepsContextFactory.Create(
+            ServiceManager.ServiceProvider.GetRequiredService<IEnumerable<IStepProcessor>>());
+
+        _output = await WorkflowService.RunAsync(steps);
+
+        _isRunning = false;
+    }
+
+    private async Task FetchDataAsync()
+    {
+        _isFetching = true;
+        _post = null;
+        _getJoke = null;
+        _apiError = null;
+
+        try
+        {
+            _post = await Http.GetFromJsonAsync<Post>(
+                "https://jsonplaceholder.typicode.com/posts/1");
+            _getJoke = await Http.GetFromJsonAsync<Get>(
+                "https://official-joke-api.appspot.com/random_joke");
+        }
+        catch (Exception ex)
+        {
+            _apiError = $"Failed to fetch data: {ex.Message}";
+        }
+        finally
+        {
+            _isFetching = false;
+        }
+    }
+
+    private record Post(int Id, int UserId, string Title, string Body);
+    private record Get(string type, string setup, string punchline);
+}
