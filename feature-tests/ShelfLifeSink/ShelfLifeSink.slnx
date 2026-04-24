@@ -1,0 +1,8 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Release" />
+    <BuildType Name="ReleaseDotfuscated" />
+  </Configurations>
+  <Project Path="ShelfLifeSink/ShelfLifeSink.csproj" />
+</Solution>

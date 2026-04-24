@@ -2,6 +2,17 @@
 ## 🚀 Overview
 This repository houses a collection of test sample projects designed to demonstrate various C# application types and common language constructs. These samples serve as a robust test bed for Dotfuscator, providing diverse scenarios to validate its obfuscation, protection, and hardening capabilities across different Microsoft .NET platforms.
 
+## 📁 Repository Structure
+The repository contains these folders:
+- **`DotnetSDK`** — Integration test samples for all supported .NET versions, used as part of the smoke testing suite
+- **`feature-tests`** — Isolated samples for testing specific functionalities
+
+## 🧪 Feature Tests
+This section lists the available feature-test solutions, each designed to test specific functionalities in isolation:
+
+- **BasicSink** — [Readme.md](feature-tests/BasicSink/Readme.md)
+- **ShelfLifeSink** — [Readme.md](feature-tests/ShelfLifeSink/Readme.md)
+
 ## 👥 Audience
 This repository is primarily intended for the technical team responsible for developing, testing, and maintaining Dotfuscator. The samples provide practical, code-based scenarios to aid in product validation, feature development, and understanding Dotfuscator's behavior across various application types.
 
