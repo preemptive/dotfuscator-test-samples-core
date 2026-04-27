@@ -16,9 +16,14 @@
       <inputassembly refid="7b3a4e8c-9ff7-4520-81fd-4d716b274463">
         <option>honoroas</option>
         <option>stripoa</option>
-        <option>library</option>
         <option>transformxaml</option>
         <file dir="${configdir}\obj\Release\net9.0" name="PreEmptive.Dotfuscator.Samples.Blazor.dll" />
+      </inputassembly>
+      <inputassembly refid="c611eff8-60bc-4c76-b9fc-342daf61f384">
+        <option>honoroas</option>
+        <option>stripoa</option>
+        <option>transformxaml</option>
+        <file dir="${configdir}\..\Samples.Blazor.Client\bin\Release\net9.0" name="PreEmptive.Dotfuscator.Samples.Blazor.Client.dll" />
       </inputassembly>
     </asmlist>
   </input>
@@ -27,6 +32,13 @@
   </output>
   <renaming>
     <option>xmlserialization</option>
+    <excludelist>
+      <namespace name="PreEmptive.Dotfuscator.Samples.Core.Configurations" fullname="PreEmptive.Dotfuscator.Samples.Blazor.dll.PreEmptive.Dotfuscator.Samples.Blazor.dll.PreEmptive.Dotfuscator.Samples.Core.Configurations" />
+      <namespace name="PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors" fullname="PreEmptive.Dotfuscator.Samples.Blazor.dll.PreEmptive.Dotfuscator.Samples.Blazor.dll.PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors" />
+		<namespace name="PreEmptive.Dotfuscator.Samples.Core.Resources" fullname="PreEmptive.Dotfuscator.Samples.Blazor.dll.PreEmptive.Dotfuscator.Samples.Blazor.dll.PreEmptive.Dotfuscator.Samples.Core.Resources" />
+      <namespace name="PreEmptive.Dotfuscator.Samples.Blazor.Components.Pages" fullname="PreEmptive.Dotfuscator.Samples.Blazor.dll.PreEmptive.Dotfuscator.Samples.Blazor.dll.PreEmptive.Dotfuscator.Samples.Blazor.Components.Pages" />
+		<namespace name="PreEmptive.Dotfuscator.Samples.Blazor.Client.Pages" fullname="PreEmptive.Dotfuscator.Samples.Blazor.Client.dll.PreEmptive.Dotfuscator.Samples.Blazor.Client.dll.PreEmptive.Dotfuscator.Samples.Blazor.Client.Pages" />
+    </excludelist>
     <mapping>
       <mapoutput overwrite="true">
         <file dir="${configdir}\DotfuscatorReports\${configuration}\${platform}" name="Renaming.xml" />

@@ -1,6 +1,8 @@
 ﻿<Project>
 	<ItemGroup>
 		<PackageVersion Include="PreEmptive.Dotfuscator.Samples.Core.Lib" Version="8.0.0" />
+		<PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0" />
+		<PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
 		<PackageVersion Include="System.Resources.Extensions" Version="8.0.0" />
 	</ItemGroup>
 

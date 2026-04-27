@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
 		<TargetFramework>$(FrameworkVersion)</TargetFramework>
@@ -13,6 +13,11 @@
 		<None Update="appsettings.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
+		<ProjectReference Include="..\Samples.Blazor.Client\Samples.Blazor.Client.csproj" />
 	</ItemGroup>
 
 	 <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" /> 
@@ -35,6 +40,7 @@
 	</PropertyGroup>
 
 	<!-- Import the Dotfuscator MSBuild targets. Must be done last. -->
+	<!--<Import Project="D:\dev\Dotfuscator\Source\msbuildtasks\bin\Pro\Debug\net10.0\PreEmptive.Dotfuscator.Common.targets" Condition="'$(Configuration)' == 'Release'" />-->
 	<Import Project="$(DOTFUSCATOR_MSBUILDPATH)/PreEmptive.Dotfuscator.Common.targets" Condition="'$(Configuration)' == 'Release'" />
 
 </Project>
