@@ -40,7 +40,6 @@
 	</PropertyGroup>
 
 	<!-- Import the Dotfuscator MSBuild targets. Must be done last. -->
-	<!--<Import Project="D:\dev\Dotfuscator\Source\msbuildtasks\bin\Pro\Debug\net10.0\PreEmptive.Dotfuscator.Common.targets" Condition="'$(Configuration)' == 'Release'" />-->
 	<Import Project="$(DOTFUSCATOR_MSBUILDPATH)/PreEmptive.Dotfuscator.Common.targets" Condition="'$(Configuration)' == 'Release'" />
 
 </Project>
