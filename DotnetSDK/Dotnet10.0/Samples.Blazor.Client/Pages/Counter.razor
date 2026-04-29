@@ -1,0 +1,16 @@
+@page "/counter"
+@rendermode InteractiveWebAssembly
+
+<PageTitle>Counter (WASM)</PageTitle>
+
+<h1>Counter <span class="badge bg-info text-dark" style="font-size:0.5em;vertical-align:middle;">WebAssembly</span></h1>
+
+<p>Current count: <strong>@_currentCount</strong></p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int _currentCount = 0;
+
+    private void IncrementCount() => _currentCount++;
+}

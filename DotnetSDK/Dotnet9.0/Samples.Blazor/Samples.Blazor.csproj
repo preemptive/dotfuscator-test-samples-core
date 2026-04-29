@@ -15,9 +15,14 @@
 		</None>
 	</ItemGroup>
 
-	 <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" /> 
-	 <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" /> 
-	
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
+		<ProjectReference Include="..\Samples.Blazor.Client\Samples.Blazor.Client.csproj" />
+	</ItemGroup>
+
+	<Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+	<Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+
 	<!-- Import environment-specific build properties for Dotfuscator, if they exist. -->
 	<Import Project="$([System.Environment]::GetFolderPath(SpecialFolder.UserProfile))/.dotfuscator.user.props" Condition="Exists('$([System.Environment]::GetFolderPath(SpecialFolder.UserProfile))/.dotfuscator.user.props')" />
 

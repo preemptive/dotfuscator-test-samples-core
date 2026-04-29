@@ -16,7 +16,8 @@ ConfigurationManager.Builder
     .AddJsonFile("appsettings.json", optional: true);
 
 builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
+    .AddInteractiveServerComponents()
+    .AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddScoped(sp => new HttpClient());
 builder.Services.AddSingleton<WorkflowService>();
@@ -33,6 +34,8 @@ app.UseHttpsRedirection();
 app.UseAntiforgery();
 app.MapStaticAssets();
 app.MapRazorComponents<App>()
-    .AddInteractiveServerRenderMode();
+    .AddInteractiveServerRenderMode()
+    .AddInteractiveWebAssemblyRenderMode()
+    .AddAdditionalAssemblies(typeof(PreEmptive.Dotfuscator.Samples.Blazor.Client._Imports).Assembly);
 
 app.Run();

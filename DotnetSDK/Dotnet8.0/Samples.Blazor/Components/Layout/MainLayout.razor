@@ -1,6 +1,12 @@
 @inherits LayoutComponentBase
 
 <div class="page">
+    <nav class="navbar navbar-expand navbar-light bg-light px-4 mb-3">
+        <div class="navbar-nav">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">Home (Server)</NavLink>
+            <NavLink class="nav-link" href="counter">Counter (WASM)</NavLink>
+        </div>
+    </nav>
     <main>
         <article class="content px-4">
             @Body
