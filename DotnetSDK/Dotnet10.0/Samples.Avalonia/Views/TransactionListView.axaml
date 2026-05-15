@@ -1,0 +1,73 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PreEmptive.Dotfuscator.Samples.AvaloniaApp.Models"
+             x:Class="PreEmptive.Dotfuscator.Samples.AvaloniaApp.Views.TransactionListView"
+             Name="Root">
+  <TabControl>
+    <TabItem Header="Add Transaction">
+      <StackPanel Margin="16" Spacing="8">
+        <TextBlock Text="Add Transaction" FontWeight="Bold"/>
+        <StackPanel Orientation="Vertical" Spacing="8">
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <RadioButton Content="Income"
+                         IsChecked="{Binding DataContext.NewTransaction.IsIncome, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                         GroupName="Type"/>
+            <RadioButton Content="Expense"
+                         IsChecked="{Binding DataContext.NewTransaction.IsExpense, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                         GroupName="Type"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+            <DatePicker SelectedDate="{Binding DataContext.NewTransaction.Date, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}" Width="300" Height="32"/>
+            <TextBox Watermark="Amount"
+                     Text="{Binding DataContext.NewTransaction.Amount,
+                            Mode=TwoWay,
+                            Converter={StaticResource DecimalConverter},
+                            RelativeSource={RelativeSource AncestorType=UserControl}}"
+                     Width="80" Height="32"/>
+            <ComboBox ItemsSource="{Binding DataContext.Categories, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                      SelectedItem="{Binding DataContext.NewTransaction.Category, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                      IsVisible="{Binding DataContext.NewTransaction.IsExpense, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                      Width="120" Height="32"/>
+            <TextBox Watermark="Note"
+                     Text="{Binding DataContext.NewTransaction.Note, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                     Width="150" Height="32"/>
+            <Button Content="Add"
+                    Command="{Binding DataContext.AddTransactionCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    IsEnabled="{Binding DataContext.NewTransaction.Amount, Converter={StaticResource NullToBoolConverter}, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    Height="32"/>
+          </StackPanel>
+          <TextBlock Text="{Binding ValidationError}"
+                     Foreground="Red"
+                     IsVisible="{Binding ValidationError, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+        </StackPanel>
+      </StackPanel>
+    </TabItem>
+    <TabItem Header="All Transactions">
+      <StackPanel Margin="16" Spacing="8">
+        <TextBlock Text="Transactions" FontWeight="Bold" FontSize="20"/>
+        <DataGrid ItemsSource="{Binding Transactions}"
+                  AutoGenerateColumns="False"
+                  Height="300"
+                  CanUserResizeColumns="True"
+                  GridLinesVisibility="All">
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="Date"     Binding="{Binding Date, StringFormat='yyyy-MM-dd'}" Width="120"/>
+            <DataGridTextColumn Header="Amount"   Binding="{Binding Amount}"   Width="80"/>
+            <DataGridTextColumn Header="Type"     Binding="{Binding Type}"     Width="100"/>
+            <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="100"/>
+            <DataGridTextColumn Header="Note"     Binding="{Binding Note}"     Width="*"/>
+            <DataGridTemplateColumn Header="Delete" Width="80">
+              <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                  <Button Content="Delete"
+                          Command="{Binding DataContext.RemoveTransactionCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                          CommandParameter="{Binding .}"/>
+                </DataTemplate>
+              </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+          </DataGrid.Columns>
+        </DataGrid>
+      </StackPanel>
+    </TabItem>
+  </TabControl>
+</UserControl>

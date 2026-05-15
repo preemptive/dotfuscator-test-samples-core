@@ -1,12 +1,20 @@
 ﻿<Project>
-	<ItemGroup>
-		<PackageVersion Include="PreEmptive.Dotfuscator.Samples.Core.Lib" Version="10.0.0" />
-		<PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.0" />
-		<PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.0" />
-		<PackageVersion Include="System.Resources.Extensions" Version="10.0.0" />
-	</ItemGroup>
+  <ItemGroup>
+    <PackageVersion Include="PreEmptive.Dotfuscator.Samples.Core.Lib" Version="10.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.0" />
+    <PackageVersion Include="System.Resources.Extensions" Version="10.0.0" />
+    <!-- Avalonia -->
+    <PackageVersion Include="Avalonia" Version="11.2.7" />
+    <PackageVersion Include="Avalonia.Controls.DataGrid" Version="11.2.7" />
+    <PackageVersion Include="Avalonia.Desktop" Version="11.2.7" />
+    <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.2.7" />
+    <PackageVersion Include="Avalonia.Fonts.Inter" Version="11.2.7" />
+    <PackageVersion Include="Tmds.DBus.Protocol" Version="0.92.0" />
+    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.1" />
+  </ItemGroup>
 
-	<ItemGroup Condition="'$(UseMaui)' == 'true'">
-		<PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-	</ItemGroup>
+  <ItemGroup Condition="'$(UseMaui)' == 'true'">
+    <PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+  </ItemGroup>
 </Project>
