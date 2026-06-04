@@ -12,6 +12,8 @@ This section lists the available feature-test solutions, each designed to test s
 
 - **BasicSink** — [Readme.md](feature-tests/BasicSink/Readme.md)
 - **ShelfLifeSink** — [Readme.md](feature-tests/ShelfLifeSink/Readme.md)
+- **MauiAppforChecks** — MAUI App for testing RASP Root check or other checks
+- **SimpleChecks** — .NET 10 and .NET Framework console samples for testing Debug Check and other RASP checks
 
 ## 👥 Audience
 This repository is primarily intended for the technical team responsible for developing, testing, and maintaining Dotfuscator. The samples provide practical, code-based scenarios to aid in product validation, feature development, and understanding Dotfuscator's behavior across various application types.
