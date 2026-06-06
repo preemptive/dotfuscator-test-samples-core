@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="MauiLib1/MauiLib1.csproj" />
+  <Project Path="MauiNativeCppDiag/MauiNativeCppDiag.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>
