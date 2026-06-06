@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Net472Checks/Net472Checks.csproj" Id="4442425c-f1c7-4d07-b5d7-4da983d359d3" />
+  <Project Path="Net472Lib/Net472Lib.csproj" />
+  <Project Path="SimpleChecks/SimpleChecks.csproj" />
+  <Project Path="SimpleLib/SimpleLib.csproj" />
+</Solution>
