@@ -35,6 +35,17 @@
                 x:Name="ResultLabel"
                 Text="Result will appear here"
                 HorizontalOptions="Center" />
+
+            <Button
+                x:Name="TestBtnDirect"
+                Text="Test Native Library - Direct Call" 
+                Clicked="OnTestBtnDirectClicked"
+                HorizontalOptions="Fill" />
+
+            <Label
+                x:Name="ResultLabelDirect"
+                Text="Result will appear here"
+                HorizontalOptions="Center" />
         </VerticalStackLayout>
     </ScrollView>
 

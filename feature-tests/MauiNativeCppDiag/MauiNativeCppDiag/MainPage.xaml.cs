@@ -4,7 +4,7 @@ namespace MauiNativeCppDiag;
 
 public partial class MainPage : ContentPage
 {
-    private static byte[] _expectedHash = new byte[] { 0xE5, 0x00, 0xFB, 0x19, 0x33, 0xAC, 0x81, 0xB8, 0xE4, 0x00, 0x89, 0xBF, 0xE6, 0xC4, 0xAF, 0x45, 0x72, 0xAA, 0xA1, 0x74, 0x9C, 0x44, 0xC3, 0x9C, 0xA4, 0xF6, 0x3C, 0xA0, 0xBF, 0x74, 0xA8, 0x5C };
+    private static byte[] _expectedHash = [0xE5, 0x00, 0xFB, 0x19, 0x33, 0xAC, 0x81, 0xB8, 0xE4, 0x00, 0x89, 0xBF, 0xE6, 0xC4, 0xAF, 0x45, 0x72, 0xAA, 0xA1, 0x74, 0x9C, 0x44, 0xC3, 0x9C, 0xA4, 0xF6, 0x3C, 0xA0, 0xBF, 0x74, 0xA8, 0x5C];
 
     public MainPage()
     {
@@ -26,15 +26,27 @@ public partial class MainPage : ContentPage
         SeedLabel.Text = $"Seed: {keySeed:X8}";
 
         var hash = RuntimeExtensionsNative.CreateKey2(new byte[][]
-       {
-                    System.Text.Encoding.UTF8.GetBytes("Hello"),
-                    System.Text.Encoding.UTF8.GetBytes("World"),
-       });
+        {
+            System.Text.Encoding.UTF8.GetBytes("Hello"),
+            System.Text.Encoding.UTF8.GetBytes("World"),
+        });
         Mix(hash, keySeed);
 
         var isValid = hash.SequenceEqual(_expectedHash);
         ResultLabel.Text = SampleClass.SampleMethod();
         ResultLabel.Text = $"Hash: {BitConverter.ToString(hash.Take(8).ToArray()).Replace("-", "")}... Result: {(isValid ? "Valid" : "Invalid")}";
+    }
+
+    private void OnTestBtnDirectClicked(object? sender, EventArgs e)
+    {
+        var hash = RuntimeExtensionsNative.CreateKey(new byte[][]
+        {
+            System.Text.Encoding.UTF8.GetBytes("Hello"),
+            System.Text.Encoding.UTF8.GetBytes("World"),
+        });
+
+        var isValid = hash.SequenceEqual(_expectedHash);
+        ResultLabelDirect.Text = $"Hash: {BitConverter.ToString(hash.Take(8).ToArray()).Replace("-", "")}... Result: {(isValid ? "Valid" : "Invalid")}";
     }
 
     static void Mix(byte[] data, uint seed)
