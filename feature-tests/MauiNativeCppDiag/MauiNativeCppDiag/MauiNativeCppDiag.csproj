@@ -54,7 +54,7 @@
 		<AndroidNativeLibrary Include="native\android\x86_64\libRuntime.Extensions.so">
 			<Abi>x86_64</Abi>
 		</AndroidNativeLibrary>
-		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+		<MauiAsset Include="Resources\Raw\environment0f617e02.bin" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -71,7 +71,8 @@
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
 
-		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->		
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+	<MauiAsset Include="Resources\Raw\**" Exclude="Resources\Raw\environment0f617e02.bin" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -101,8 +102,8 @@
 	</PropertyGroup>
 
 	<!-- Import the Dotfuscator MSBuild targets. Must be done last. -->
-	<!--<Import Project="$(CUSTOM_MSBUILDPATH)/PreEmptive.Dotfuscator.Common.targets" />-->
-	<Import Project="$(DOTFUSCATOR_MSBUILDPATH)/PreEmptive.Dotfuscator.Common.targets" />
+	<Import Project="$(CUSTOM_MSBUILDPATH)/PreEmptive.Dotfuscator.Common.targets" />
+	<!--<Import Project="$(DOTFUSCATOR_MSBUILDPATH)/PreEmptive.Dotfuscator.Common.targets" />-->
 	<!--<Import Project="Custom.targets" />-->
 
 </Project>
