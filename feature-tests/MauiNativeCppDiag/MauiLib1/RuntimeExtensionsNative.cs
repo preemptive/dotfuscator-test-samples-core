@@ -23,11 +23,6 @@ public static class RuntimeExtensionsNative
         int count,
         [Out] byte[] outHash32);
 
-    [DllImport(LibName, EntryPoint = "parse_env")]
-    private static extern uint parse_env(
-    IntPtr env_data,
-    [Out] byte[] outData);
-
     private static byte[] envData;
     private static GCHandle envDataHandle;
 
@@ -230,35 +225,5 @@ public static class RuntimeExtensionsNative
                     handles[i].Free();
             }
         }
-    }
-
-    public static EnvFileData ParseEnv()
-    {
-        var outData = new byte[32];
-
-        try
-        {
-            uint keySeed = parse_env(
-                GetEnvDataPtr(),
-                outData);
-
-            return new EnvFileData
-            {
-                KeySeed = keySeed,
-                Status = outData[0],
-                ModuleCount = outData[1]
-            };
-        }
-        catch (Exception ex)
-        {
-            throw;
-        }
-    }
-
-    public class EnvFileData
-    {
-        public uint KeySeed { get; set; }
-        public byte Status { get; set; }
-        public byte ModuleCount { get; set; }
     }
 }

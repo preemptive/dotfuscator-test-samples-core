@@ -17,14 +17,14 @@
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="D:\fluxcode\samples\MauiNativeCppDiag\MauiNativeCppDiag\obj\Release\net10.0-android" name="MauiNativeCppDiag.dll" />
+        <file dir="${configdir}\obj\Release\net10.0-android" name="MauiNativeCppDiag.dll" />
       </inputassembly>
       <inputassembly refid="4d83a5f6-9e88-4975-af8f-4d3c16d26653">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="D:\fluxcode\samples\MauiNativeCppDiag\MauiLib1\bin\Release\net10.0-android" name="MauiLib1.dll" />
+        <file dir="${configdir}\..\MauiLib1\bin\Release\net10.0-android" name="MauiLib1.dll" />
       </inputassembly>
     </asmlist>
   </input>
@@ -50,7 +50,13 @@
       <referencerule rulekey="{62bd3899-7d53-4336-8ca2-4e5dbae187d5}" />
     </referencerulelist>
   </renaming>
-  <stringencrypt version="2" />
+  <stringencrypt version="2">
+    <includelist>
+      <type name="MauiNativeCppDiag.SampleClass" fullname="MauiNativeCppDiag.dll.MauiNativeCppDiag.dll.MauiNativeCppDiag.SampleClass" excludetype="false">
+        <method name="SampleMethod" fullname="MauiNativeCppDiag.dll.MauiNativeCppDiag.dll.MauiNativeCppDiag.SampleClass.SampleMethod" signature="string()" />
+      </type>
+    </includelist>
+  </stringencrypt>
   <removal>
     <option>disable</option>
     <removalreport overwrite="true">

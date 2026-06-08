@@ -20,6 +20,13 @@
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
 
             <Button
+                x:Name="SetSampleStringBtn"
+                Text="Set Sample String" 
+                SemanticProperties.Hint="Set a sample string"
+                Clicked="OnSetSampleStringBtnClicked"
+                HorizontalOptions="Fill" />
+
+            <Button
                 x:Name="TestBtn"
                 Text="Test Native Library" 
                 SemanticProperties.Hint="Test native library using from MAUI app"

@@ -1,4 +1,5 @@
 ﻿using MauiLib1;
+using System;
 
 namespace MauiNativeCppDiag;
 
@@ -25,28 +26,33 @@ public partial class MainPage : ContentPage
 
         SeedLabel.Text = $"Seed: {keySeed:X8}";
 
-        var hash = RuntimeExtensionsNative.CreateKey2(new byte[][]
-        {
+        var hash = RuntimeExtensionsNative.CreateKey2(
+        [
             System.Text.Encoding.UTF8.GetBytes("Hello"),
             System.Text.Encoding.UTF8.GetBytes("World"),
-        });
+        ]);
         Mix(hash, keySeed);
 
         var isValid = hash.SequenceEqual(_expectedHash);
-        ResultLabel.Text = SampleClass.SampleMethod();
+        
         ResultLabel.Text = $"Hash: {BitConverter.ToString(hash.Take(8).ToArray()).Replace("-", "")}... Result: {(isValid ? "Valid" : "Invalid")}";
     }
 
     private void OnTestBtnDirectClicked(object? sender, EventArgs e)
     {
-        var hash = RuntimeExtensionsNative.CreateKey(new byte[][]
-        {
+        var hash = RuntimeExtensionsNative.CreateKey(
+        [
             System.Text.Encoding.UTF8.GetBytes("Hello"),
             System.Text.Encoding.UTF8.GetBytes("World"),
-        });
+        ]);
 
         var isValid = hash.SequenceEqual(_expectedHash);
         ResultLabelDirect.Text = $"Hash: {BitConverter.ToString(hash.Take(8).ToArray()).Replace("-", "")}... Result: {(isValid ? "Valid" : "Invalid")}";
+    }
+
+    private void OnSetSampleStringBtnClicked(object? sender, EventArgs e)
+    {
+        ResultLabel.Text = SampleClass.SampleMethod();
     }
 
     static void Mix(byte[] data, uint seed)
