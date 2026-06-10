@@ -50,6 +50,18 @@ public partial class MainPage : ContentPage
         ResultLabelDirect.Text = $"Hash: {BitConverter.ToString(hash.Take(8).ToArray()).Replace("-", "")}... Result: {(isValid ? "Valid" : "Invalid")}";
     }
 
+    private void OnTestBtnNativeCppClicked(object? sender, EventArgs e)
+    {
+        var hash = NativeCPP.ComputeKey(
+        [
+            System.Text.Encoding.UTF8.GetBytes("Hello"),
+            System.Text.Encoding.UTF8.GetBytes("World"),
+        ]);
+
+        var isValid = hash.SequenceEqual(_expectedHash);
+        ResultLabelDirect.Text = $"Hash: {BitConverter.ToString(hash.Take(8).ToArray()).Replace("-", "")}... Result: {(isValid ? "Valid" : "Invalid")}";
+    }
+
     private void OnSetSampleStringBtnClicked(object? sender, EventArgs e)
     {
         ResultLabel.Text = SampleClass.SampleMethod();

@@ -48,6 +48,11 @@
                 Text="Test Native Library - Direct Call" 
                 Clicked="OnTestBtnDirectClicked"
                 HorizontalOptions="Fill" />
+            <Button
+                x:Name="TestBtnNativeCpp"
+                Text="Test Native Library - NativeCpp" 
+                Clicked="OnTestBtnNativeCppClicked"
+                HorizontalOptions="Fill" />
 
             <Label
                 x:Name="ResultLabelDirect"
