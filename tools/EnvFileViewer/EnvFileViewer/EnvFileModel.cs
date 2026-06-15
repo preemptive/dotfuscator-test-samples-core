@@ -1,4 +1,6 @@
-﻿namespace EnvFileViewer;
+﻿using System.Text.Json.Serialization;
+
+namespace EnvFileViewer;
 
 public class EnvFileModel
 {
@@ -11,14 +13,19 @@ public class EnvFileModel
     public uint KeySeed { get; set; }
 
     public VersionInfo Version { get; set; }
-    public FeatureFlags Flags { get; set; } = new FeatureFlags();
+    public FeatureFlags Flags { get; set; } = new FeatureFlags(false, false, false);
+    public ModuleCheckInfo ModuleCheckInfo { get; set; } = new ModuleCheckInfo(ModuleCheckType.AtLeast, 0);
 }
 
-public class FeatureFlags
+public record FeatureFlags(bool ModuleCheckEnabled, bool DebugCheckEnabled, bool TimestampCheckEnabled);
+
+public record ModuleCheckInfo(ModuleCheckType CheckType, byte CheckValue);
+
+public record VersionInfo(int Major, int Minor, int Patch);
+
+[JsonConverter(typeof(JsonStringEnumConverter))]
+public enum ModuleCheckType : byte
 {
-    public bool ModuleCheckEnabled { get; set; }
-    public bool DebugCheckEnabled { get; set; }
-    public bool TimestampCheckEnabled { get; set; }
+    All = 1,
+    AtLeast = 2
 }
-
-public  record VersionInfo(int Major, int Minor, int Patch);

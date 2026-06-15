@@ -23,6 +23,10 @@ internal class EnvFileParser
     private const byte DebugCheckFlag = 0x02;
     private const byte TimestampCheckFlag = 0x04;
 
+    private const int MatchTypeOffset = 25;
+    private const byte MatchTypeXorValue = 0x9F;
+    private const int MatchValueOffset = 29;
+    private const byte MatchValueXorValue = 0xD3;
 
     public static EnvFileModel Parse(string filePath)
     {
@@ -39,7 +43,8 @@ internal class EnvFileParser
             Version = GetVersion(content),
             ModuleCount = GetModuleCount(content),
             KeySeed = GetKeySeed(content),
-            Flags = GetFeatureFlags(content)
+            Flags = GetFeatureFlags(content),
+            ModuleCheckInfo = GetModuleCheckInfo(content),
         };
         return model;
     }
@@ -79,15 +84,8 @@ internal class EnvFileParser
             0xEC, 0xB4, 0xE3, 0xB3, 0x66, 0x84, 0x61, 0x63, 0xF2, 0xBE, 0xF3
         ];
 
-        // generate a new ECDSA key and load the public key from public_key
         ECDsa ecdsa = ECDsa.Create();
         ecdsa.ImportSubjectPublicKeyInfo(public_key, out _);
-        //ecdsa.ImportECPrivateKey(PrivateKey, out _);
-
-        //using var signingKey = ECDsa.Create();
-        //signingKey.ImportECPrivateKey(EnvFileKeyProvider.PrivateKey, out _);
-        //var signature = signingKey.SignData(new ReadOnlySpan<byte>(data, 0, 18 * 1024), hashAlgorithm);
-        //Array.Copy(signature, 0, data, 18 * 1024, signature.Length);
 
         // validate the signature using the public key
         var hashAlgorithm = HashAlgorithmName.SHA256;
@@ -123,13 +121,19 @@ internal class EnvFileParser
     private static FeatureFlags GetFeatureFlags(byte[] content)
     {
         if (content.Length < FeatureFlagsOffset + 1)
-            return new FeatureFlags();
+            return new FeatureFlags(false, false, false);
         byte flagsByte = (byte)(content[FeatureFlagsOffset] ^ FeatureFlagsXorValue);
-        return new FeatureFlags
-        {
-            ModuleCheckEnabled = (flagsByte & ModuleCheckFlag) != 0,
-            DebugCheckEnabled = (flagsByte & DebugCheckFlag) != 0,
-            TimestampCheckEnabled = (flagsByte & TimestampCheckFlag) != 0
-        };
+        return new FeatureFlags((flagsByte & ModuleCheckFlag) != 0, (flagsByte & DebugCheckFlag) != 0, (flagsByte & TimestampCheckFlag) != 0);
+    }
+
+    private static ModuleCheckInfo GetModuleCheckInfo(byte[] content)
+    {
+        if (content.Length < MatchValueOffset + 1)
+            return new ModuleCheckInfo(ModuleCheckType.AtLeast, 0);
+        byte checkTypeByte = (byte)(content[MatchTypeOffset] ^ MatchTypeXorValue);
+        byte checkValueByte = (byte)(content[MatchValueOffset] ^ MatchValueXorValue);
+        var checkType = (ModuleCheckType)checkTypeByte;
+
+        return new ModuleCheckInfo(checkType, checkValueByte);
     }
 }
