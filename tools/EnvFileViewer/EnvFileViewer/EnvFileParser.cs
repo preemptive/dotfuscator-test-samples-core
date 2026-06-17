@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System;
+using System.Security.Cryptography;
 
 namespace EnvFileViewer;
 
@@ -28,6 +29,9 @@ internal class EnvFileParser
     private const int MatchValueOffset = 29;
     private const byte MatchValueXorValue = 0xD3;
 
+    private const int TimestampOffset = 30;
+    private const long TimestampXorValue = 0x0A5DFB499C6830CD;
+
     public static EnvFileModel Parse(string filePath)
     {
         var content = System.IO.File.ReadAllBytes(filePath);
@@ -45,6 +49,7 @@ internal class EnvFileParser
             KeySeed = GetKeySeed(content),
             Flags = GetFeatureFlags(content),
             ModuleCheckInfo = GetModuleCheckInfo(content),
+            TimestampUtc = GetTimestampUtc(content)
         };
         return model;
     }
@@ -116,6 +121,29 @@ internal class EnvFileParser
                    content[KeySeedOffset + 3]);
 
         return result ^ KeySeedXorValue;
+    }
+
+    private static DateTime? GetTimestampUtc(byte[] content)
+    {
+        if (content.Length < TimestampOffset + 8)
+            return null;
+
+        try
+        {
+            var slice = new byte[8];
+            Array.Copy(content, TimestampOffset, slice, 0, 8);
+
+            if (BitConverter.IsLittleEndian)
+                Array.Reverse(slice);
+
+            long timestamp = BitConverter.ToInt64(slice, 0);
+            timestamp ^= TimestampXorValue;
+            return DateTimeOffset.FromUnixTimeSeconds(timestamp).UtcDateTime;
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     private static FeatureFlags GetFeatureFlags(byte[] content)

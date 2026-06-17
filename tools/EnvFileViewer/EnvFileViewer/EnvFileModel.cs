@@ -15,6 +15,7 @@ public class EnvFileModel
     public VersionInfo Version { get; set; }
     public FeatureFlags Flags { get; set; } = new FeatureFlags(false, false, false);
     public ModuleCheckInfo ModuleCheckInfo { get; set; } = new ModuleCheckInfo(ModuleCheckType.AtLeast, 0);
+    public DateTime? TimestampUtc { get; set; }
 }
 
 public record FeatureFlags(bool ModuleCheckEnabled, bool DebugCheckEnabled, bool TimestampCheckEnabled);
