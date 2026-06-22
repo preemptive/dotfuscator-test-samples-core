@@ -9,10 +9,15 @@ namespace MauiNativeCppDiag
     public static class NativeCPP
 #pragma warning restore CA1060
     {
+        private const string envFileName = "environment0f617e02.bin";
+        static bool isMaui = Type.GetType("Microsoft.Maui.Storage.FileSystem, Microsoft.Maui.Essentials") != null;
         static NativeCPP()
         {
             if (IsAndroid())
+            {
+                TryPreloadAndroidLibrary();
                 return;
+            }
 
             if (IsIOS() || IsMacCatalyst())
             {
@@ -201,6 +206,97 @@ namespace MauiNativeCppDiag
                 $"Unsupported operating system: {RuntimeInformation.OSDescription} (Architecture: {arch})");
         }
 
+        private static byte[] envData;
+        private static GCHandle envDataHandle;
+
+        private static void InitEnvData()
+        {
+            if (envData == null)
+            {
+                if (isMaui)
+                {
+                    ReadEnvDataMaui();
+                }
+                else
+                {
+                    ReadEnvData();
+                }
+
+                // Pin envData so it won't be moved by GC
+                envDataHandle = GCHandle.Alloc(envData, GCHandleType.Pinned);
+            }
+        }
+
+        private static void ReadEnvDataMaui()
+        {
+            try
+            {
+                // Get the FileSystem type from the MAUI assembly
+                var fileSystemType = Type.GetType("Microsoft.Maui.Storage.FileSystem, Microsoft.Maui.Essentials");
+                if (fileSystemType == null)
+                    throw new InvalidOperationException("FileSystem type not found. MAUI assembly may not be loaded.");
+
+                // Get the OpenAppPackageFileAsync method
+                var method = fileSystemType.GetMethod("OpenAppPackageFileAsync",
+                    System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static,
+                    null,
+                    new[] { typeof(string) },
+                    null);
+
+                if (method == null)
+                    throw new InvalidOperationException("OpenAppPackageFileAsync method not found.");
+
+                // Invoke the method and get the Task
+                var task = method.Invoke(null, new object[] { envFileName }) as System.Threading.Tasks.Task;
+                if (task == null)
+                    throw new InvalidOperationException("OpenAppPackageFileAsync returned null.");
+
+                // Wait for the task to complete
+                task.Wait();
+
+                // Get the Result property from the Task<Stream>
+                var resultProperty = task.GetType().GetProperty("Result");
+                var stream = resultProperty?.GetValue(task) as System.IO.Stream;
+
+                if (stream == null)
+                    throw new InvalidOperationException("Failed to get Stream from task result.");
+
+                envData = new byte[20480];
+                stream.Read(envData, 0, 20480);
+                stream.Close();
+                stream.Dispose();
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Failed to read environment data using MAUI FileSystem.", ex);
+            }
+        }
+
+        private static void ReadEnvData()
+        {
+            try
+            {
+                var assemblyFolder = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                envData = File.ReadAllBytes($"{assemblyFolder}/{envFileName}");
+            }
+            catch
+            {
+                envData = new byte[20480]; // Fallback to empty data if file read fails
+            }
+        }
+
+        public static byte[] GetEnvData()
+        {
+            InitEnvData();
+            return envData;
+        }
+
+        public static IntPtr GetEnvDataPtr()
+        {
+            InitEnvData();
+            return envDataHandle.AddrOfPinnedObject();
+        }
+
         /// <summary>
         /// Computes the key using the native enc_create_key.
         /// CRITICAL: This method must be as simple as possible to avoid .NET Framework JIT limitations.
@@ -243,14 +339,15 @@ namespace MauiNativeCppDiag
                 lensHandle = GCHandle.Alloc(lens, GCHandleType.Pinned);
 
                 byte[] outHash = new byte[32];
-                int rc = enc_create_key(
+                int rc = __eck(
+                    GetEnvDataPtr(),
                     ptrsHandle.AddrOfPinnedObject(),
                     lensHandle.AddrOfPinnedObject(),
                     parts.Length,
                     outHash);
 
                 if (rc != 0)
-                    throw new InvalidOperationException($"enc_create_key failed (rc={rc}).");
+                    throw new InvalidOperationException($"__eck failed (rc={rc}).");
 
                 return outHash;
             }
@@ -333,7 +430,7 @@ namespace MauiNativeCppDiag
 
             try
             {
-                rc = enc_create_key((IntPtr)ptrsArray, (IntPtr)lensArray, count, outHash);
+                rc = __eck(GetEnvDataPtr(), (IntPtr)ptrsArray, (IntPtr)lensArray, count, outHash);
             }
             finally
             {
@@ -353,7 +450,7 @@ namespace MauiNativeCppDiag
             }
 
             if (rc != 0)
-                throw new InvalidOperationException($"enc_create_key failed (rc={rc}).");
+                throw new InvalidOperationException($"__eck failed (rc={rc}).");
 
             return outHash;
         }
@@ -547,6 +644,45 @@ namespace MauiNativeCppDiag
 #endif
         }
 
+        /// <summary>
+        /// On Android the native library is packaged in the APK as "libRuntime.Extensions.so".
+        /// Preload it and cache the handle so the (post-obfuscation) enc_create_key resolves the
+        /// export from loadedLibraryHandle instead of relying on a non-probing NativeLibrary.TryLoad
+        /// of the bare name "Runtime.Extensions", which fails because dlopen needs the lib/.so form.
+        /// </summary>
+        private static void TryPreloadAndroidLibrary()
+        {
+#if NET5_0_OR_GREATER
+            try
+            {
+                // 1) Probing overload — same resolution the original [DllImport] used
+                //    (applies the "lib" prefix and ".so" suffix and searches the app lib dir).
+                if (NativeLibrary.TryLoad(
+                        "Runtime.Extensions",
+                        typeof(NativeCPP).Assembly,
+                        DllImportSearchPath.SafeDirectories | DllImportSearchPath.AssemblyDirectory,
+                        out IntPtr handle)
+                    && handle != IntPtr.Zero)
+                {
+                    SetupDllImportResolver(handle);
+                    return;
+                }
+
+                // 2) Fallback: explicit platform names via the simple loader (dlopen by soname).
+                string[] candidates = { "libRuntime.Extensions.so", "Runtime.Extensions.so", "Runtime.Extensions" };
+                foreach (string name in candidates)
+                {
+                    if (NativeLibrary.TryLoad(name, out handle) && handle != IntPtr.Zero)
+                    {
+                        SetupDllImportResolver(handle);
+                        return;
+                    }
+                }
+            }
+            catch { }
+#endif
+        }
+
         private static IntPtr TryPreload(string fullPath)
         {
             if (string.IsNullOrEmpty(fullPath) || !File.Exists(fullPath))
@@ -608,11 +744,21 @@ namespace MauiNativeCppDiag
         [DllImport("Runtime.Extensions.dll", CallingConvention = System.Runtime.InteropServices.CallingConvention.Cdecl)]
         private static extern int enc_create_key(
             IntPtr parts, IntPtr lengths, int count, [Out] byte[] outHash32);
+
+        [DllImport("Runtime.Extensions.dll", CallingConvention = System.Runtime.InteropServices.CallingConvention.Cdecl,
+            EntryPoint = "__eck")]
+        private static extern int __eck(
+            IntPtr a, IntPtr b, IntPtr c, int d, [Out] byte[] e);
 #else
         // .NET 5+ (and .NET Core): omit extension for cross‑platform resolution
         [DllImport("Runtime.Extensions", CallingConvention = System.Runtime.InteropServices.CallingConvention.Cdecl)]
         private static extern int enc_create_key(
             IntPtr parts, IntPtr lengths, int count, [Out] byte[] outHash32);
+
+        [DllImport("Runtime.Extensions", CallingConvention = System.Runtime.InteropServices.CallingConvention.Cdecl,
+            EntryPoint = "__eck")]
+        private static extern int __eck(
+            IntPtr a, IntPtr b, IntPtr c, int d, [Out] byte[] e);
 #endif
     }
 }

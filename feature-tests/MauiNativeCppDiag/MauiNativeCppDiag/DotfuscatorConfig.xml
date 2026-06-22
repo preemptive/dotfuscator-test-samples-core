@@ -24,14 +24,7 @@
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="${configdir}\obj\Release\net10.0-maccatalyst\maccatalyst-arm64" name="MauiNativeCppDiag.dll" />
-      </inputassembly>
-      <inputassembly refid="4d83a5f6-9e88-4975-af8f-4d3c16d26653">
-        <option>honoroas</option>
-        <option>stripoa</option>
-        <option>library</option>
-        <option>transformxaml</option>
-        <file dir="${configdir}\..\MauiLib1\bin\Release\net10.0-maccatalyst" name="MauiLib1.dll" />
+        <file dir="${configdir}\obj\Release\net10.0-android" name="MauiNativeCppDiag.dll" />
       </inputassembly>
     </asmlist>
   </input>

@@ -1,5 +1,4 @@
-﻿using MauiLib1;
-using System;
+﻿using System;
 
 namespace MauiNativeCppDiag;
 
@@ -12,51 +11,27 @@ public partial class MainPage : ContentPage
         InitializeComponent();
     }
 
-    private void OnTestBtnClicked(object? sender, EventArgs e)
+    private void OnTestBtnNativeCppClicked(object? sender, EventArgs e)
     {
         const uint KeySeedXorValue = 0x3B527B1C;
         const int KeySeedOffset = 16 * 1024;
 
-        var envData = RuntimeExtensionsNative.GetEnvData();
+        var envData = NativeCPP.GetEnvData();
         uint keySeed = (uint)(envData[KeySeedOffset + 0] << 24 |
                             envData[KeySeedOffset + 1] << 16 |
                             envData[KeySeedOffset + 2] << 8 |
                             envData[KeySeedOffset + 3] << 0);
         keySeed ^= KeySeedXorValue;
 
-        SeedLabel.Text = $"Seed: {keySeed:X8}";
+        SeedLabel.Text = $"Seed: {keySeed}";
 
-        var hash = RuntimeExtensionsNative.CreateKey2(
-        [
-            System.Text.Encoding.UTF8.GetBytes("Hello"),
-            System.Text.Encoding.UTF8.GetBytes("World"),
-        ]);
-        Mix(hash, keySeed);
-
-        var isValid = hash.SequenceEqual(_expectedHash);
-        
-        ResultLabel.Text = $"Hash: {BitConverter.ToString(hash.Take(8).ToArray()).Replace("-", "")}... Result: {(isValid ? "Valid" : "Invalid")}";
-    }
-
-    private void OnTestBtnDirectClicked(object? sender, EventArgs e)
-    {
-        var hash = RuntimeExtensionsNative.CreateKey(
-        [
-            System.Text.Encoding.UTF8.GetBytes("Hello"),
-            System.Text.Encoding.UTF8.GetBytes("World"),
-        ]);
-
-        var isValid = hash.SequenceEqual(_expectedHash);
-        ResultLabelDirect.Text = $"Hash: {BitConverter.ToString(hash.Take(8).ToArray()).Replace("-", "")}... Result: {(isValid ? "Valid" : "Invalid")}";
-    }
-
-    private void OnTestBtnNativeCppClicked(object? sender, EventArgs e)
-    {
         var hash = NativeCPP.ComputeKey(
         [
             System.Text.Encoding.UTF8.GetBytes("Hello"),
             System.Text.Encoding.UTF8.GetBytes("World"),
         ]);
+
+        Mix(hash, keySeed);
 
         var isValid = hash.SequenceEqual(_expectedHash);
         ResultLabelDirect.Text = $"Hash: {BitConverter.ToString(hash.Take(8).ToArray()).Replace("-", "")}... Result: {(isValid ? "Valid" : "Invalid")}";

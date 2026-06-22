@@ -26,13 +26,6 @@
                 Clicked="OnSetSampleStringBtnClicked"
                 HorizontalOptions="Fill" />
 
-            <Button
-                x:Name="TestBtn"
-                Text="Test Native Library" 
-                SemanticProperties.Hint="Test native library using from MAUI app"
-                Clicked="OnTestBtnClicked"
-                HorizontalOptions="Fill" />
-
             <Label
                 x:Name="SeedLabel"
                 Text="Seed will appear here"
@@ -43,11 +36,6 @@
                 Text="Result will appear here"
                 HorizontalOptions="Center" />
 
-            <Button
-                x:Name="TestBtnDirect"
-                Text="Test Native Library - Direct Call" 
-                Clicked="OnTestBtnDirectClicked"
-                HorizontalOptions="Fill" />
             <Button
                 x:Name="TestBtnNativeCpp"
                 Text="Test Native Library - NativeCpp" 
