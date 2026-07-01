@@ -1,4 +1,4 @@
-﻿using EnvFileViewer;
+﻿using EnvLib;
 
 var noWait = args.Contains("--no-wait");
 var filePath = args.FirstOrDefault(a => a != "--no-wait");

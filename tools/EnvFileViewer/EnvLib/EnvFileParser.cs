@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Security.Cryptography;
 
-namespace EnvFileViewer;
+namespace EnvLib;
 
-internal class EnvFileParser
+public class EnvFileParser
 {
     private const int VersionMajorOffset = 10;
     private const int VersionMinorOffset = 11;
@@ -20,9 +20,12 @@ internal class EnvFileParser
 
     private const int FeatureFlagsOffset = 60;
     private const byte FeatureFlagsXorValue = 0x5C;
-    private const byte ModuleCheckFlag = 0x01;
-    private const byte DebugCheckFlag = 0x02;
-    private const byte TimestampCheckFlag = 0x04;
+    private const byte ModuleCheckFlag = 1 << 0;
+    private const byte DebugCheckFlag = 1 << 1;
+    private const byte TimestampCheckFlag = 1 << 2;
+    private const byte EntryPointCheckFlag = 1 << 3;
+    private const byte EnvCheckFlag = 1 << 4;
+    private const byte HookCheckFlag = 1 << 5;
 
     private const int MatchTypeOffset = 25;
     private const byte MatchTypeXorValue = 0x9F;
@@ -32,11 +35,19 @@ internal class EnvFileParser
     private const int TimestampOffset = 30;
     private const long TimestampXorValue = 0x0A5DFB499C6830CD;
 
+    private const int MixSeedOffset = 20;
+
+    private const int ModuleDataOffset = 64;
+
     public static EnvFileModel Parse(string filePath)
     {
         var content = System.IO.File.ReadAllBytes(filePath);
+        var folder = System.IO.Path.GetDirectoryName(filePath);
 
         var version = GetVersion(content);
+        var moduleCount = GetModuleCount(content);
+
+        var hashSeed = GetModuleHashSeedGetModuleHashSeed(content);
 
         var model = new EnvFileModel
         {
@@ -44,9 +55,11 @@ internal class EnvFileParser
             HeaderValid = ValidateHeader(content),
             FooterValid = ValidateFooter(content),
             SignatureValid = ValidateSignature(content),
-            Version = GetVersion(content),
-            ModuleCount = GetModuleCount(content),
+            Version = version,
+            ModuleCount = moduleCount,
+            Modules = GetModules(folder, hashSeed, content, moduleCount),
             KeySeed = GetKeySeed(content),
+            ModuleHashSeed = hashSeed,
             Flags = GetFeatureFlags(content),
             ModuleCheckInfo = GetModuleCheckInfo(content),
             TimestampUtc = GetTimestampUtc(content)
@@ -123,6 +136,18 @@ internal class EnvFileParser
         return result ^ KeySeedXorValue;
     }
 
+    private static uint GetModuleHashSeedGetModuleHashSeed(byte[] content)
+    {
+        if (content.Length < MixSeedOffset + 4)
+            return 0;
+        uint result =
+            (uint)(content[MixSeedOffset + 0] << 24 |
+                   content[MixSeedOffset + 1] << 16 |
+                   content[MixSeedOffset + 2] << 8 |
+                   content[MixSeedOffset + 3]);
+        return result;
+    }
+
     private static DateTime? GetTimestampUtc(byte[] content)
     {
         if (content.Length < TimestampOffset + 8)
@@ -149,9 +174,15 @@ internal class EnvFileParser
     private static FeatureFlags GetFeatureFlags(byte[] content)
     {
         if (content.Length < FeatureFlagsOffset + 1)
-            return new FeatureFlags(false, false, false);
+            return new FeatureFlags(false, false, false, false, false, false);
         byte flagsByte = (byte)(content[FeatureFlagsOffset] ^ FeatureFlagsXorValue);
-        return new FeatureFlags((flagsByte & ModuleCheckFlag) != 0, (flagsByte & DebugCheckFlag) != 0, (flagsByte & TimestampCheckFlag) != 0);
+        return new FeatureFlags(
+            (flagsByte & ModuleCheckFlag) != 0,
+            (flagsByte & DebugCheckFlag) != 0,
+            (flagsByte & TimestampCheckFlag) != 0,
+            (flagsByte & EntryPointCheckFlag) != 0,
+            (flagsByte & EnvCheckFlag) != 0,
+            (flagsByte & HookCheckFlag) != 0);
     }
 
     private static ModuleCheckInfo GetModuleCheckInfo(byte[] content)
@@ -163,5 +194,58 @@ internal class EnvFileParser
         var checkType = (ModuleCheckType)checkTypeByte;
 
         return new ModuleCheckInfo(checkType, checkValueByte);
+    }
+
+    private static List<ModuleInfo> GetModules(string folder, uint seed, byte[] content, int moduleCount)
+    {
+        var modules = new List<ModuleInfo>();
+        int offset = ModuleDataOffset;
+        for (int i = 0; i < moduleCount; i++)
+        {
+            if (offset + 64 > content.Length)
+                break;
+            byte[] fileNameHash = new byte[32];
+            byte[] contentHash = new byte[32];
+            Array.Copy(content, offset, fileNameHash, 0, 32);
+            Array.Copy(content, offset + 32, contentHash, 0, 32);
+            modules.Add(new ModuleInfo(fileNameHash, contentHash));
+            offset += 64;
+        }
+
+        FillModuleStatus(folder, seed, modules);
+
+        return modules;
+    }
+
+    private static void FillModuleStatus(string folder, uint seed, IEnumerable<ModuleInfo> modules)
+    {
+        var files = Helper.GetModuleFiles(folder);
+        List<(byte[] fileNameHash, byte[] contentHash)> moduleHashes = new List<(byte[], byte[])>();
+        foreach (var module in files)
+        {
+            var fileName = Path.GetFileName(module)?.ToLowerInvariant();
+            if (fileName == null)
+            {
+                continue;
+            }
+            var fileNameHash = Helper.GetStringSHA256Hash(fileName, seed);
+            var contentHash = Helper.GetSHA256Hash(module, seed);
+            moduleHashes.Add((fileNameHash, contentHash));
+        }
+
+        foreach(var module in modules)
+        {
+            var matchingModule = moduleHashes.FirstOrDefault(m => m.fileNameHash.SequenceEqual(module.FileNameHash));
+            if (matchingModule.fileNameHash != null)
+            {
+                module.FileExists = true;
+                module.ContentMatches = matchingModule.contentHash.SequenceEqual(module.ContentHash);
+            }
+            else
+            {
+                module.FileExists = false;
+                module.ContentMatches = false;
+            }
+        }
     }
 }
