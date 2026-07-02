@@ -19,7 +19,9 @@ This section lists the available feature-test solutions, each designed to test s
 ## 🧰 Tools
 Contains internal tools used in Dotfuscator development process, including testing and debugging.
 - **EnvFileViewer** - Reads the environment file (`environment0f617e02.bin`) and displays data in JSON format
-	- Usage: drag-and-drop a file on `EnvFileViewer.exe` or run `EnvFileViewer.exe ...full-path\environment0f617e02.bin`
+	- Usage: run as Administrator `EnvFileViewer.exe --register` to register `Preview` action for `.bin` files
+	- Unregister Preview action: run as Administrator `EnvFileViewer.exe --unregister`
+	- Preview a file: drag-and-drop a file on `EnvFileViewer.exe` or run `EnvFileViewer.exe ...full-path\environment0f617e02.bin`
 	- By default, waits for a key press before exit
 	- Allows using `--no-wait` command line argument to avoid waiting for a key press.
 
