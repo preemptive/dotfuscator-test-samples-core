@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(FrameworkVersion)</TargetFramework>
+    <AssemblyName>$(BaseNamespace).Samples.Avalonia.Lib</AssemblyName>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+</Project>

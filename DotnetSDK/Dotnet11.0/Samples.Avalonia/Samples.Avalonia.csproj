@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>$(FrameworkVersion)</TargetFramework>
+    <AssemblyName>$(BaseNamespace).Samples.AvaloniaApp</AssemblyName>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+	  <AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
+	  <EnableAvaloniaCompiledBindings>false</EnableAvaloniaCompiledBindings>
+	  <AvaloniaXamlIlForceEnableCompilation>false</AvaloniaXamlIlForceEnableCompilation>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Project Reference (by reference) -->
+    <ProjectReference Include="..\Samples.Avalonia.Lib\Samples.Avalonia.Lib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- NuGet References (by NuGet) -->
+    <PackageReference Include="Avalonia" />
+    <PackageReference Include="Avalonia.Desktop" />
+    <PackageReference Include="Avalonia.Themes.Fluent" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" />
+    <PackageReference Include="Avalonia.Fonts.Inter" />
+    <PackageReference Include="Tmds.DBus.Protocol" />
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+	
+  <!-- Import environment-specific build properties for Dotfuscator, if they exist. -->
+  <Import Project="$([System.Environment]::GetFolderPath(SpecialFolder.UserProfile))/.dotfuscator.user.props"
+          Condition="Exists('$([System.Environment]::GetFolderPath(SpecialFolder.UserProfile))/.dotfuscator.user.props')" />
+
+  <PropertyGroup>
+	<!-- Specify the location of the MSBuild targets, if not already provided. -->
+	<!--<DotfuscatorMSBuildDir Condition="'$(DotfuscatorMSBuildDir)' == ''">C:\Program Files (x86)\MSBuild\PreEmptive\Dotfuscator\7</DotfuscatorMSBuildDir>-->
+    <DotfuscatorGenerateConfigFileIfMissing>true</DotfuscatorGenerateConfigFileIfMissing>
+    <DotfuscatorEnabled Condition="'$(Configuration)' == 'Release'">true</DotfuscatorEnabled>
+  </PropertyGroup>
+
+  <!-- Import the Dotfuscator MSBuild targets. Must be done last. -->
+  <Import Project="$(DOTFUSCATOR_MSBUILDPATH)/PreEmptive.Dotfuscator.Common.targets" Condition="'$(Configuration)' == 'Release'" />
+
+</Project>

@@ -1,0 +1,43 @@
+@page "/counter"
+@rendermode InteractiveWebAssembly
+
+<PageTitle>Counter (WASM)</PageTitle>
+
+<h1>Counter <span class="badge bg-info text-dark" style="font-size:0.5em;vertical-align:middle;">WebAssembly</span></h1>
+
+<p>Current count: <strong>@_currentCount</strong></p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int _currentCount = 0;
+
+    private void IncrementCount() => _currentCount++;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine("Reached 1");
+
+        var result = await FirstAsync();
+
+        if (result)
+        {
+            await SecondAsync();
+        }
+
+    
+        Console.WriteLine("Reached 2");
+    }
+
+    private async Task<bool> FirstAsync()
+    {
+        await Task.Delay(10);
+        return true;
+    }
+
+    private async Task SecondAsync()
+    {
+        await Task.Delay(10);
+    }
+
+}
