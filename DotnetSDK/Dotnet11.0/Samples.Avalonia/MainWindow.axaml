@@ -1,0 +1,24 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:views="clr-namespace:PreEmptive.Dotfuscator.Samples.AvaloniaApp.Views"
+        x:Class="PreEmptive.Dotfuscator.Samples.AvaloniaApp.MainWindow"
+        Title="Personal Budget Tracker" Width="1100" Height="600">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="180"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <!-- Sidebar -->
+    <Border Grid.Column="0" Background="#EEE" Padding="16">
+      <StackPanel Spacing="8">
+        <TextBlock Text="Budget Tracker" FontWeight="Bold" FontSize="18" Margin="0,0,0,16"/>
+        <Button Content="Dashboard" Name="DashboardBtn" Margin="0,0,0,8"/>
+        <Button Content="Transactions" Name="TransactionsBtn" Margin="0,0,0,8"/>
+        <Button Content="Run Core" Name="RunCoreBtn" Margin="0,24,0,0"/>
+      </StackPanel>
+    </Border>
+    <!-- Main Content — named views, toggled by code-behind -->
+    <views:DashboardView Name="DashboardView" Grid.Column="1"/>
+    <views:TransactionListView Name="TransactionListView" Grid.Column="1" IsVisible="False"/>
+  </Grid>
+</Window>

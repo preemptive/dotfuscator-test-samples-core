@@ -1,0 +1,24 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:views="clr-namespace:PreEmptive.Dotfuscator.Samples.AvaloniaApp.Views"
+             xmlns:vms="clr-namespace:PreEmptive.Dotfuscator.Samples.AvaloniaApp.ViewModels"
+             xmlns:converters="clr-namespace:PreEmptive.Dotfuscator.Samples.AvaloniaApp.Converters"
+             x:Class="PreEmptive.Dotfuscator.Samples.AvaloniaApp.App">
+  <Application.Styles>
+    <FluentTheme />
+    <!-- Required for DataGrid to render rows correctly -->
+    <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+  </Application.Styles>
+  <Application.Resources>
+    <converters:NullToBoolConverter x:Key="NullToBoolConverter"/>
+    <converters:DecimalConverter x:Key="DecimalConverter"/>
+  </Application.Resources>
+  <Application.DataTemplates>
+    <DataTemplate DataType="{x:Type vms:DashboardViewModel}">
+      <views:DashboardView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:TransactionListViewModel}">
+      <views:TransactionListView />
+    </DataTemplate>
+  </Application.DataTemplates>
+</Application>

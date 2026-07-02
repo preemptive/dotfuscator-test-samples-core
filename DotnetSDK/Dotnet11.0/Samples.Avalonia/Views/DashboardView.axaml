@@ -1,0 +1,24 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="PreEmptive.Dotfuscator.Samples.AvaloniaApp.Views.DashboardView">
+  <StackPanel Margin="16" Spacing="12">
+    <TextBlock Text="Dashboard" FontWeight="Bold" FontSize="20" Margin="0,0,0,8"/>
+    <!-- Strategy selector -->
+    <StackPanel Orientation="Horizontal" Spacing="8">
+      <TextBlock Text="View:" VerticalAlignment="Center"/>
+      <ComboBox ItemsSource="{Binding AvailableStrategies}"
+                SelectedItem="{Binding SelectedStrategy, Mode=TwoWay}"
+                Width="200">
+        <ComboBox.ItemTemplate>
+          <DataTemplate>
+            <TextBlock Text="{Binding Label}"/>
+          </DataTemplate>
+        </ComboBox.ItemTemplate>
+      </ComboBox>
+    </StackPanel>
+    <!-- Summary -->
+    <TextBlock Text="{Binding TotalIncome,  StringFormat='Total Income:  {0:C}'}" Margin="0,0,0,4"/>
+    <TextBlock Text="{Binding TotalExpense, StringFormat='Total Expense: {0:C}'}" Margin="0,0,0,4"/>
+    <TextBlock Text="{Binding Balance,      StringFormat='Balance:       {0:C}'}" FontWeight="Bold"/>
+  </StackPanel>
+</UserControl>

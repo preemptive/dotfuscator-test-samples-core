@@ -22,7 +22,7 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
 			primaryConstructorClass.primaryConstructorMethod();
 			CollectionExpressionMethod();
 			InlineArrayMethod();
-			//DefaultLambdaParameterMethod();
+			DefaultLambdaParameterMethod();
 			RefReadonlyMethod();
 #pragma warning disable TS0001
 			ExperimenalAttributesMethod(); // Experimental Attributes feature will give a warning if used without pragma
@@ -79,12 +79,11 @@ namespace PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors
 		}
 
 		// C# 12: Optional parameters in lambda expressions 
-		// This feature is currently commented out because currently dotfuscator 7.5.0 does not fully support it yet.
-		//public void DefaultLambdaParameterMethod()
-		//{
-		//	var add = (int x, int y = 10) => x + y;
-		//	staticMessage.Append($"---C# 12: Optional parameters in lambda expressions - {add(5)}\n");
-		//}
+		public void DefaultLambdaParameterMethod()
+		{
+			var add = (int x, int y = 10) => x + y;
+			staticMessage.Append($"---C# 12: Optional parameters in lambda expressions - {add(5)}\n");
+		}
 
 		// C# 12: ref readonly parameters 
 		public void RefReadonlyMethod()
