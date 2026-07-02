@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="EnvFileViewer/EnvFileViewer.csproj" />
+  <Project Path="EnvLib/EnvLib.csproj" Id="0246c832-0d9a-4f30-afcd-19e6d0ff374e" />
+  <Project Path="HashFile/HashFile.csproj" Id="4c8396bd-5685-4188-a79d-ed449d130fd4" />
+</Solution>
