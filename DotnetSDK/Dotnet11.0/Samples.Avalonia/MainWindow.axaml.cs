@@ -32,9 +32,9 @@ public partial class MainWindow : Window
         this.FindControl<DashboardView>("DashboardView")!.DataContext = _dashboardVm;
         this.FindControl<TransactionListView>("TransactionListView")!.DataContext = _transactionsVm;
 
-        this.FindControl<Button>("DashboardBtn")!.Click += (_, _) => ShowDashboard();
-        this.FindControl<Button>("TransactionsBtn")!.Click += (_, _) => ShowTransactions();
-        this.FindControl<Button>("RunCoreBtn")!.Click += async (_, _) =>
+        this.FindControl<Button>("DashboardBtn")!.Click += (_, __) => ShowDashboard();
+        this.FindControl<Button>("TransactionsBtn")!.Click += (_, __) => ShowTransactions();
+        this.FindControl<Button>("RunCoreBtn")!.Click += async (_, __) =>
         {
             var steps = StepsContextFactory.Create(
                 ServiceManager.ServiceProvider.GetRequiredService<IEnumerable<IStepProcessor>>());
