@@ -7,11 +7,32 @@ internal class Helper
 {
     public static string[] GetModuleFiles(string outputPath)
     {
-        var files = Directory.GetFiles(outputPath, "*", SearchOption.TopDirectoryOnly)
-            .Where(f => f.EndsWith(".dll", StringComparison.OrdinalIgnoreCase)
-                     || f.EndsWith(".exe", StringComparison.OrdinalIgnoreCase)
-                     || IsAotExecutable(f)
-            )
+        string runtimesPath = Path.Combine(outputPath, "runtimes") + Path.DirectorySeparatorChar;
+        var files = Directory.GetFiles(outputPath, "*", SearchOption.AllDirectories)
+            .Where(f =>
+            {
+                // Exclude files from runtimes subfolder
+                if (f.StartsWith(runtimesPath, StringComparison.OrdinalIgnoreCase))
+                    return false;
+
+                var isDll = f.EndsWith(".dll", StringComparison.OrdinalIgnoreCase);
+                var isExe = f.EndsWith(".exe", StringComparison.OrdinalIgnoreCase);
+
+                // .exe files only in top directory (direct children of outputPath)
+                if (isExe)
+                    return Path.GetDirectoryName(f) == outputPath;
+
+                // .dll files and AoT executables allowed anywhere (except runtimes)
+                if (isDll)
+                    return true;
+
+#if NET6_0_OR_GREATER
+                if (IsAotExecutable(f))
+                    return true;
+#endif
+
+                return false;
+            })
             .ToArray();
 
         return files;
