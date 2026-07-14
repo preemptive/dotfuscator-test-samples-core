@@ -51,7 +51,7 @@
     </referencerulelist>
   </renaming>
   <removal>
-    <option>disable</option>
+    <option>enable</option>
     <removalreport overwrite="true">
       <file dir="${configdir}\DotfuscatorReports\${configuration}\${platform}" name="Removal.xml" />
     </removalreport>

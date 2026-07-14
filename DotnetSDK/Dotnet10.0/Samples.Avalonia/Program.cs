@@ -1,5 +1,7 @@
 using Avalonia;
 using Microsoft.Extensions.Configuration;
+//using Microsoft.Extensions.DependencyInjection;
+//using PreEmptive.Dotfuscator.Samples.AvaloniaApp.Services;
 using PreEmptive.Dotfuscator.Samples.Core;
 using PreEmptive.Dotfuscator.Samples.Core.Extensions;
 using PreEmptive.Dotfuscator.Samples.Core.Lib;
@@ -13,6 +15,8 @@ internal sealed class Program
     public static void Main(string[] args)
     {
         ServiceManager.Services.AddStepsProcessors();
+        //ServiceManager.Services.AddTransient<UnusedTestService>();
+        //ServiceManager.Services.AddTransient<PartiallyUsedTestService>();
 
         ConfigurationManager.Builder
             .AddJsonFile(Path.Combine("Core", Constants.CoreAppsettings))

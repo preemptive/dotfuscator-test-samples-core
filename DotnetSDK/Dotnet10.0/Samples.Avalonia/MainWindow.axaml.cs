@@ -9,6 +9,8 @@ using PreEmptive.Dotfuscator.Samples.Core.Services;
 using PreEmptive.Dotfuscator.Samples.AvaloniaApp.Infrastructure;
 using PreEmptive.Dotfuscator.Samples.AvaloniaApp.ViewModels;
 using PreEmptive.Dotfuscator.Samples.AvaloniaApp.Views;
+//using Avalonia.Platform;
+//using PreEmptive.Dotfuscator.Samples.AvaloniaApp.Services;
 
 namespace PreEmptive.Dotfuscator.Samples.AvaloniaApp;
 
@@ -36,6 +38,7 @@ public partial class MainWindow : Window
         this.FindControl<Button>("TransactionsBtn")!.Click += (_, __) => ShowTransactions();
         this.FindControl<Button>("RunCoreBtn")!.Click += async (_, __) =>
         {
+            //ExecLogic();
             var steps = StepsContextFactory.Create(
                 ServiceManager.ServiceProvider.GetRequiredService<IEnumerable<IStepProcessor>>());
 
@@ -59,6 +62,12 @@ public partial class MainWindow : Window
             }.ShowDialog(this);
         };
     }
+
+    //private static void ExecLogic()
+    //{
+    //    var service = ServiceManager.ServiceProvider.GetRequiredService<PartiallyUsedTestService>();
+    //    service.ExecuteLogic();
+    //}
 
     private void ShowDashboard()
     {

@@ -1,3 +1,4 @@
+//using PreEmptive.Dotfuscator.Samples.Blazor.Services;
 using PreEmptive.Dotfuscator.Samples.Core.Abstractions;
 using PreEmptive.Dotfuscator.Samples.Core.Models;
 using PreEmptive.Dotfuscator.Samples.Core.Services;
@@ -15,6 +16,7 @@ public class WorkflowService
 
     public async Task<string> RunAsync(IEnumerable<StepContext> steps)
     {
+
         await _workflowExecutor.ExecuteAsync(steps);
         return MessageCollectorStepProcessor.CollectOutput();
     }
