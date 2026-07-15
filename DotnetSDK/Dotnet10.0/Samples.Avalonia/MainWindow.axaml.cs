@@ -9,8 +9,8 @@ using PreEmptive.Dotfuscator.Samples.Core.Services;
 using PreEmptive.Dotfuscator.Samples.AvaloniaApp.Infrastructure;
 using PreEmptive.Dotfuscator.Samples.AvaloniaApp.ViewModels;
 using PreEmptive.Dotfuscator.Samples.AvaloniaApp.Views;
-//using Avalonia.Platform;
-//using PreEmptive.Dotfuscator.Samples.AvaloniaApp.Services;
+using Avalonia.Platform;
+using PreEmptive.Dotfuscator.Samples.AvaloniaApp.Services;
 
 namespace PreEmptive.Dotfuscator.Samples.AvaloniaApp;
 
@@ -63,11 +63,11 @@ public partial class MainWindow : Window
         };
     }
 
-    //private static void ExecLogic()
-    //{
-    //    var service = ServiceManager.ServiceProvider.GetRequiredService<PartiallyUsedTestService>();
-    //    service.ExecuteLogic();
-    //}
+    private static void ExecLogic()
+    {
+        var service = ServiceManager.ServiceProvider.GetRequiredService<PartiallyUsedTestService>();
+        service.ExecuteLogic();
+    }
 
     private void ShowDashboard()
     {
