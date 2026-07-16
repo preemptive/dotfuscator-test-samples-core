@@ -6,6 +6,7 @@ This repository houses a collection of test sample projects designed to demonstr
 The repository contains these folders:
 - **`DotnetSDK`** — Integration test samples for all supported .NET versions, used as part of the smoke testing suite
 - **`feature-tests`** — Isolated samples for testing specific functionalities
+- **`tools`** - Internal tools used for testing and debugging obfuscated applications
 
 ## 🧪 Feature Tests
 This section lists the available feature-test solutions, each designed to test specific functionalities in isolation:
@@ -14,6 +15,15 @@ This section lists the available feature-test solutions, each designed to test s
 - **ShelfLifeSink** — [Readme.md](feature-tests/ShelfLifeSink/Readme.md)
 - **MauiAppforChecks** — MAUI App for testing RASP Root check or other checks
 - **SimpleChecks** — .NET 10 and .NET Framework console samples for testing Debug Check and other RASP checks
+
+## 🧰 Tools
+Contains internal tools used in Dotfuscator development process, including testing and debugging.
+- **EnvFileViewer** - Reads the environment file (`environment0f617e02.bin`) and displays data in JSON format
+	- Usage: run as Administrator `EnvFileViewer.exe --register` to register `Preview` action for `.bin` files
+	- Unregister Preview action: run as Administrator `EnvFileViewer.exe --unregister`
+	- Preview a file: drag-and-drop a file on `EnvFileViewer.exe` or run `EnvFileViewer.exe ...full-path\environment0f617e02.bin`
+	- By default, waits for a key press before exit
+	- Allows using `--no-wait` command line argument to avoid waiting for a key press.
 
 ## 👥 Audience
 This repository is primarily intended for the technical team responsible for developing, testing, and maintaining Dotfuscator. The samples provide practical, code-based scenarios to aid in product validation, feature development, and understanding Dotfuscator's behavior across various application types.
