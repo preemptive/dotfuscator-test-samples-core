@@ -57,7 +57,11 @@
   </renaming>
   <controlflow level="high" />
   <removal>
-    <option>disable</option>
+     <triggerlist>		 
+	    <type name="PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors.*" fullname="" regex="true" />
+		<type name="PreEmptive.Dotfuscator.Samples.Blazor.Components.*" fullname="" regex="true" />
+		<type name="PreEmptive.Dotfuscator.Samples.Core.Configurations.*" fullname="" regex="true" />
+     </triggerlist>
     <removalreport overwrite="true">
       <file dir="${configdir}\DotfuscatorReports\${configuration}\${platform}" name="Removal.xml" />
     </removalreport>

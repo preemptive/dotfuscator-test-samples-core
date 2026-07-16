@@ -15,7 +15,6 @@
       <inputassembly refid="7b3a4e8c-9ff7-4520-81fd-4d716b274463">
         <option>honoroas</option>
         <option>stripoa</option>
-        <option>library</option>
         <option>transformxaml</option>
         <file dir="${configdir}\obj\Release\net10.0" name="PreEmptive.Dotfuscator.Samples.Blazor.dll" />
       </inputassembly>
@@ -58,8 +57,9 @@
   <controlflow level="high" />
   <removal>
      <triggerlist>             
-     <type name="PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors.*" fullname="" regex="true" />
+      <type name="PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors.*" fullname="" regex="true" />
       <type name="PreEmptive.Dotfuscator.Samples.Blazor.Components.*" fullname="" regex="true" />
+      <type name="PreEmptive.Dotfuscator.Samples.Core.Configurations.*" fullname="" regex="true" />
      </triggerlist>
     <removalreport overwrite="true">
       <file dir="${configdir}\DotfuscatorReports\${configuration}\${platform}" name="Removal.xml" />
