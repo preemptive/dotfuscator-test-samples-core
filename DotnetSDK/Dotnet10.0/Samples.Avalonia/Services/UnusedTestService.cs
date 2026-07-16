@@ -1,6 +1,6 @@
 ﻿namespace PreEmptive.Dotfuscator.Samples.AvaloniaApp.Services;
 
-public class UnusedTestService
+internal class UnusedTestService
 {
     public void ExecuteLogic()
     {

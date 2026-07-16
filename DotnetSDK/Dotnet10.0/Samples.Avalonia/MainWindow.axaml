@@ -15,6 +15,7 @@
         <Button Content="Dashboard" Name="DashboardBtn" Margin="0,0,0,8"/>
         <Button Content="Transactions" Name="TransactionsBtn" Margin="0,0,0,8"/>
         <Button Content="Run Core" Name="RunCoreBtn" Margin="0,24,0,0"/>
+		<Button Content="ExecuteLogic" Name="PartiallyUsedTestServiceBtn" Margin="0,0,0,8"/>
       </StackPanel>
     </Border>
     <!-- Main Content — named views, toggled by code-behind -->

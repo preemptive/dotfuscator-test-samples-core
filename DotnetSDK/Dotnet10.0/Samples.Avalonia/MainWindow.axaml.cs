@@ -36,9 +36,9 @@ public partial class MainWindow : Window
 
         this.FindControl<Button>("DashboardBtn")!.Click += (_, __) => ShowDashboard();
         this.FindControl<Button>("TransactionsBtn")!.Click += (_, __) => ShowTransactions();
+        this.FindControl<Button>("PartiallyUsedTestServiceBtn")!.Click += (_, __) => ExecLogic();
         this.FindControl<Button>("RunCoreBtn")!.Click += async (_, __) =>
         {
-            //ExecLogic();
             var steps = StepsContextFactory.Create(
                 ServiceManager.ServiceProvider.GetRequiredService<IEnumerable<IStepProcessor>>());
 
@@ -63,10 +63,16 @@ public partial class MainWindow : Window
         };
     }
 
-    private static void ExecLogic()
+    private void ExecLogic()
     {
         var service = ServiceManager.ServiceProvider.GetRequiredService<PartiallyUsedTestService>();
         service.ExecuteLogic();
+
+        var btn = this.FindControl<Button>("PartiallyUsedTestServiceBtn")!;
+        
+        btn.IsEnabled = false;
+        btn.Content = "Executed";
+
     }
 
     private void ShowDashboard()

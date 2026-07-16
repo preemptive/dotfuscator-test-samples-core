@@ -64,7 +64,9 @@
 
 <section>
     <h2>PartiallyUsedTestService Call</h2>
-    <button class="btn btn-secondary" @onclick="ExecuteLogic">
+    <button class="btn btn-secondary"
+            @onclick="ExecuteLogic"
+            disabled="@_isLogicExecuted">
         ExecuteLogic
     </button>
 </section>
@@ -77,6 +79,7 @@
     private Post? _post;
     private Get? _getJoke;
     private string? _apiError;
+    private bool _isLogicExecuted;
 
     private async Task RunWorkflowAsync()
     {
@@ -120,6 +123,8 @@
         ServiceManager.ServiceProvider
             .GetRequiredService<Services.PartiallyUsedTestService>()
             .ExecuteLogic();
+
+        _isLogicExecuted = true;
     }
 
     private record Post(int Id, int UserId, string Title, string Body);

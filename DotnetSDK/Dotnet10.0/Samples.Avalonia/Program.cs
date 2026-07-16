@@ -15,7 +15,6 @@ internal sealed class Program
     public static void Main(string[] args)
     {
         ServiceManager.Services.AddStepsProcessors();
-        ServiceManager.Services.AddTransient<UnusedTestService>();
         ServiceManager.Services.AddTransient<PartiallyUsedTestService>();
 
         ConfigurationManager.Builder
