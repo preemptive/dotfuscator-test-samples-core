@@ -50,13 +50,15 @@
       <referencerule rulekey="{62bd3899-7d53-4336-8ca2-4e5dbae187d5}" />
     </referencerulelist>
   </renaming>
-  <removal>
-    <option>disable</option>
-    <removalreport overwrite="true">
-      <file dir="${configdir}\DotfuscatorReports\${configuration}\${platform}" name="Removal.xml" />
-    </removalreport>
-    <referencerulelist />
-  </removal>
+   <removal>
+      <triggerlist>
+         <type name="PreEmptive.Dotfuscator.Samples.Core.Services.StepProcessors.*" fullname="" regex="true" />
+      </triggerlist>
+      <removalreport overwrite="true">
+         <file dir="${configdir}\DotfuscatorReports\${configuration}\${platform}" name="Removal.xml" />
+      </removalreport>
+      <referencerulelist />
+   </removal>
   <sos>
     <option>disable</option>
   </sos>
