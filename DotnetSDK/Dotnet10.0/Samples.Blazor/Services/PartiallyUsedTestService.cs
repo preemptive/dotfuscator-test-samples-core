@@ -1,6 +1,7 @@
 ﻿namespace PreEmptive.Dotfuscator.Samples.Blazor.Services;
 
-public class PartiallyUsedTestService
+
+internal class PartiallyUsedTestService
 {
     public void ExecuteLogic()
     {

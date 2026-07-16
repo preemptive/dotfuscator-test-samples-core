@@ -60,6 +60,15 @@
     <br />
 </section>
 
+<hr />
+
+<section>
+    <h2>PartiallyUsedTestService Call</h2>
+    <button class="btn btn-secondary" @onclick="ExecuteLogic">
+        ExecuteLogic
+    </button>
+</section>
+
 @code {
     private bool _isRunning;
     private string? _output;
@@ -104,6 +113,13 @@
         {
             _isFetching = false;
         }
+    }
+
+    private void ExecuteLogic()
+    {
+        ServiceManager.ServiceProvider
+            .GetRequiredService<Services.PartiallyUsedTestService>()
+            .ExecuteLogic();
     }
 
     private record Post(int Id, int UserId, string Title, string Body);
