@@ -43,6 +43,7 @@ public class ModuleInfo
 
     public bool FileExists { get; set; }
     public bool ContentMatches { get; set; }
+    public string? FileName { get; set; }
 
 
     public string FileNameHashHex => BitConverter.ToString(FileNameHash).Replace("-", "").ToLowerInvariant();

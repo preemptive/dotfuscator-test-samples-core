@@ -220,26 +220,28 @@ public class EnvFileParser
     private static void FillModuleStatus(string folder, uint seed, IEnumerable<ModuleInfo> modules)
     {
         var files = Helper.GetModuleFiles(folder);
-        List<(byte[] fileNameHash, byte[] contentHash)> moduleHashes = new List<(byte[], byte[])>();
+        List<(byte[] FileNameHash, byte[] ContentHash, string FileName)> moduleHashes = new List<(byte[] FileNameHash, byte[] ContentHash, string FileName)>();
         foreach (var module in files)
         {
-            var fileName = Path.GetFileName(module)?.ToLowerInvariant();
-            if (fileName == null)
+            var rawRelativePath = Path.GetRelativePath(folder, module).Replace("\\", "/");
+            var relativeFilePath = GetModuleRelativePath(module, folder);
+            if (relativeFilePath == null)
             {
                 continue;
             }
-            var fileNameHash = Helper.GetStringSHA256Hash(fileName, seed);
+            var relativePathHash = Helper.GetStringSHA256Hash(relativeFilePath, seed);
             var contentHash = Helper.GetSHA256Hash(module, seed);
-            moduleHashes.Add((fileNameHash, contentHash));
+            moduleHashes.Add((relativePathHash, contentHash, rawRelativePath));
         }
 
         foreach(var module in modules)
         {
-            var matchingModule = moduleHashes.FirstOrDefault(m => m.fileNameHash.SequenceEqual(module.FileNameHash));
-            if (matchingModule.fileNameHash != null)
+            var matchingModule = moduleHashes.FirstOrDefault(m => m.FileNameHash.SequenceEqual(module.FileNameHash));
+            if (matchingModule.FileNameHash != null)
             {
                 module.FileExists = true;
-                module.ContentMatches = matchingModule.contentHash.SequenceEqual(module.ContentHash);
+                module.FileName = matchingModule.FileName;
+                module.ContentMatches = matchingModule.ContentHash.SequenceEqual(module.ContentHash);
             }
             else
             {
@@ -247,5 +249,34 @@ public class EnvFileParser
                 module.ContentMatches = false;
             }
         }
+    }
+
+    private static string GetModuleRelativePath(string fullPath, string basePath)
+    {
+        var fullPathNormalized = Path.GetFullPath(fullPath);
+        var basePathNormalized = Path.GetFullPath(basePath);
+
+        // Ensure base path ends with separator for proper prefix matching
+        if (!basePathNormalized.EndsWith(Path.DirectorySeparatorChar.ToString(), StringComparison.InvariantCulture))
+            basePathNormalized += Path.DirectorySeparatorChar;
+
+        // Extract relative path by removing base path prefix
+        string relativePath;
+        if (fullPathNormalized.Length > basePathNormalized.Length &&
+            fullPathNormalized.Substring(0, basePathNormalized.Length).Equals(basePathNormalized, StringComparison.OrdinalIgnoreCase))
+        {
+            relativePath = fullPathNormalized.Substring(basePathNormalized.Length);
+        }
+        else
+        {
+            // Fallback: if fullPath is not under basePath, use filename
+            relativePath = Path.GetFileName(fullPathNormalized);
+        }
+
+        // Replace backslashes with forward slashes
+        relativePath = relativePath.Replace('\\', '/');
+
+        // Convert to lowercase
+        return relativePath.ToLower();
     }
 }
